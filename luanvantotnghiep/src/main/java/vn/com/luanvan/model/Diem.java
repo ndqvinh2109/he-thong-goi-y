@@ -24,6 +24,13 @@ public class Diem {
 	@JoinColumn(name="sinhVienId")
 	private SinhVien sinhvien;
 	
+	@ManyToOne
+	@JoinColumn(name="nienkhoaId")
+	private NienKhoaHocKy nienKhoaHocKy;
+	
+	@ManyToOne
+	@JoinColumn(name="hocPhanId")
+	private HocPhan hocPhan;
 	
 	public long getDiemId() {
 		return diemId;

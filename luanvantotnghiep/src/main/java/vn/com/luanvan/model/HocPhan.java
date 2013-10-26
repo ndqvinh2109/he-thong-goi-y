@@ -1,10 +1,15 @@
 package vn.com.luanvan.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +31,23 @@ public class HocPhan {
 	
 	private int soTietTH;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="hocPhanId")
+	private List<Diem> diems;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="hocPhanId")
+	private List<ChuongTrinhDaoTao> chuongTrinhs;
+	
+	
+	public List<Diem> getDiems() {
+		return diems;
+	}
+
+	public void setDiems(List<Diem> diems) {
+		this.diems = diems;
+	}
+
 	public long getHocPhanId() {
 		return hocPhanId;
 	}
@@ -72,6 +94,14 @@ public class HocPhan {
 
 	public void setSoTietTH(int soTietTH) {
 		this.soTietTH = soTietTH;
+	}
+
+	public List<ChuongTrinhDaoTao> getChuongTrinhs() {
+		return chuongTrinhs;
+	}
+
+	public void setChuongTrinhs(List<ChuongTrinhDaoTao> chuongTrinhs) {
+		this.chuongTrinhs = chuongTrinhs;
 	}
 
 
