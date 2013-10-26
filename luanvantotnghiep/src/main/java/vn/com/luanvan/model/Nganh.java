@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,6 +30,14 @@ public class Nganh {
 	@JoinColumn(name="nganhId")
 	private List<ChuongTrinhDaoTao> chuongTrinhs;
 	
+	@OneToMany
+	@JoinColumn(name="nganhId")
+	private List<Lop> lops;
+	
+	@ManyToOne
+	@JoinColumn(name="boMonId")
+	private BoMon bomon;
+		
 	public long getNganhId() {
 		return nganhId;
 	}
@@ -60,5 +69,20 @@ public class Nganh {
 	public void setChuongTrinhs(List<ChuongTrinhDaoTao> chuongTrinhs) {
 		this.chuongTrinhs = chuongTrinhs;
 	}
-	
+
+	public List<Lop> getLops() {
+		return lops;
+	}
+
+	public void setLops(List<Lop> lops) {
+		this.lops = lops;
+	}
+
+	public BoMon getBomon() {
+		return bomon;
+	}
+
+	public void setBomon(BoMon bomon) {
+		this.bomon = bomon;
+	}
 }
