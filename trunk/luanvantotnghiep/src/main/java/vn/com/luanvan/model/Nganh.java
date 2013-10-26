@@ -1,10 +1,15 @@
 package vn.com.luanvan.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +25,10 @@ public class Nganh {
 	
 	private String tenNganh;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="nganhId")
+	private List<ChuongTrinhDaoTao> chuongTrinhs;
+	
 	public long getNganhId() {
 		return nganhId;
 	}
@@ -42,6 +51,14 @@ public class Nganh {
 
 	public void setTenNganh(String tenNganh) {
 		this.tenNganh = tenNganh;
+	}
+
+	public List<ChuongTrinhDaoTao> getChuongTrinhs() {
+		return chuongTrinhs;
+	}
+
+	public void setChuongTrinhs(List<ChuongTrinhDaoTao> chuongTrinhs) {
+		this.chuongTrinhs = chuongTrinhs;
 	}
 	
 }
