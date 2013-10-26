@@ -29,6 +29,10 @@ public class KhoaDaoTao {
 	@JoinColumn(name="khoaDaoTaoId")
 	private List<ChuongTrinhDaoTao> chuongTrinhs;
 	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="khoaDaoTaoId")
+	private List<Lop> lops;
+	
 	public long getKhoaDaoTaoId() {
 		return khoaDaoTaoId;
 	}
@@ -59,6 +63,14 @@ public class KhoaDaoTao {
 
 	public void setChuongTrinhs(List<ChuongTrinhDaoTao> chuongTrinhs) {
 		this.chuongTrinhs = chuongTrinhs;
+	}
+
+	public List<Lop> getLops() {
+		return lops;
+	}
+
+	public void setLops(List<Lop> lops) {
+		this.lops = lops;
 	}
 	
 }

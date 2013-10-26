@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,6 +39,18 @@ public class SinhVien {
 	@JoinColumn(name="sinhVienId")
 	private List<Diem> diems;
 	
+	@ManyToOne
+	@JoinColumn(name="lopId")
+	private Lop lop;
+	
+	public Lop getLop() {
+		return lop;
+	}
+
+	public void setLop(Lop lop) {
+		this.lop = lop;
+	}
+
 	public long getSinhVienId() {
 		return sinhVienId;
 	}
