@@ -1,10 +1,16 @@
 package vn.com.luanvan.model;
 
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +26,10 @@ public class KhoaChuQuan {
 	
 	private String tenKhoa;
 
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="khoaChuQuanId")
+	private List<BoMon> boMons;
+	
 	public long getKhoaChuQuanId() {
 		return khoaChuQuanId;
 	}
@@ -44,5 +54,11 @@ public class KhoaChuQuan {
 		this.tenKhoa = tenKhoa;
 	}
 	
-	
+	public List<BoMon> getBoMons() {
+		return boMons;
+	}
+
+	public void setBoMons(List<BoMon> boMons) {
+		this.boMons = boMons;
+	}
 }
