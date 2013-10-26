@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -39,7 +40,10 @@ public class HocPhan {
 	@JoinColumn(name="hocPhanId")
 	private List<ChuongTrinhDaoTao> chuongTrinhs;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="hocPhanId")
+	private HocPhan hocPhanTienQuyet;
+		
 	public List<Diem> getDiems() {
 		return diems;
 	}
@@ -104,5 +108,12 @@ public class HocPhan {
 		this.chuongTrinhs = chuongTrinhs;
 	}
 
+	public HocPhan getHocPhanTienQuyet() {
+		return hocPhanTienQuyet;
+	}
+
+	public void setHocPhanTienQuyet(HocPhan hocPhanTienQuyet) {
+		this.hocPhanTienQuyet = hocPhanTienQuyet;
+	}
 
 }
