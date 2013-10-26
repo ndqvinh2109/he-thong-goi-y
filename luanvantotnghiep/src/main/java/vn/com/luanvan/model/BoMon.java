@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="bomon")
 public class BoMon {
-
+	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)

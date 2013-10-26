@@ -8,24 +8,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="hk_nk")
-public class HK_NK {
+@Table(name="nienkhoahocky")
+public class NienKhoaHocKy {
 	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private long hk_nkId;
+	private long nienkhoaId;
 	
 	private String hocKy;
 	
 	private String namHoc;
 
-	public long getHk_nkId() {
-		return hk_nkId;
+	public long getNienkhoaId() {
+		return nienkhoaId;
 	}
 
-	public void setHk_nkId(long hk_nkId) {
-		this.hk_nkId = hk_nkId;
+	public void setNienkhoaId(long nienkhoaId) {
+		this.nienkhoaId = nienkhoaId;
 	}
 
 	public String getHocKy() {
