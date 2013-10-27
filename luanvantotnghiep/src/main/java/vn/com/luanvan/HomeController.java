@@ -6,10 +6,16 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import vn.com.luanvan.model.BoMon;
+import vn.com.luanvan.model.KhoaChuQuan;
+import vn.com.luanvan.service.BoMonService;
+import vn.com.luanvan.service.KhoaChuQuanService;
 
 /**
  * Handles requests for the application home page.
@@ -22,6 +28,11 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	@Autowired
+	private BoMonService boMonService;
+	@Autowired
+	private KhoaChuQuanService khoaChuQuanService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -32,6 +43,17 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		KhoaChuQuan kcq = new KhoaChuQuan();
+		kcq.setMaKhoa("cntt");
+		kcq.setTenKhoa("công nghệ thông tin");
+		khoaChuQuanService.saveKhoaChuQuan(kcq);
+		
+		BoMon boMon = new BoMon();
+		boMon.setKhoaChuQuan(kcq);
+		boMon.setMaBoMon("httt");
+		boMon.setTenBoMon("hệ thống thông tin");
+		
+		boMonService.saveBoMon(boMon);
 		return "home";
 	}
 	
