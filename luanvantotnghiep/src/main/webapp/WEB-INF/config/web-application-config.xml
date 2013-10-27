@@ -12,6 +12,16 @@
 	<!-- Enable component scanning -->
 	<context:component-scan base-package="vn.com.luanvan" />
 	
+	<!-- wro4j configuration -->
+	<bean name="wroFilter" id="wroFilter" class="ro.isdc.wro.http.ConfigurableWroFilter">
+		<property name="properties" ref="wroProperties" />
+	</bean>
+
+	<bean id="wroProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:wro.properties" />
+	</bean>
+	
 	<!-- Imports the configurations of the different infrastructure systems 
 		of the application -->
 	<import resource="servlet-context.xml" />

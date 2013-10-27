@@ -5,6 +5,7 @@
 	<group name="bootstrap">
 		<css>/resources/assets/libs/bootstrap/css/bootstrap.min.css</css>
 		<css>/resources/assets/libs/bootstrap/css/datepicker.css</css>
+		<css>/resources/assets/css/main.css</css>
 		<js>/resources/assets/libs/bootstrap/js/bootstrap-datepicker.js</js>
 		<js>/resources/assets/libs/bootstrap/js/bootstrap.min.js</js>
 	</group>	
