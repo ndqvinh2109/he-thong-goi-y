@@ -43,17 +43,17 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		KhoaChuQuan kcq = new KhoaChuQuan();
-		kcq.setMaKhoa("cntt");
-		kcq.setTenKhoa("công nghệ thông tin");
-		khoaChuQuanService.saveKhoaChuQuan(kcq);
+		KhoaChuQuan khoaChuQuan = new KhoaChuQuan();
+		khoaChuQuan.setMaKhoa("cntt");
+		khoaChuQuan.setTenKhoa("Cong nghe thong tin");
+		khoaChuQuanService.saveKhoaChuQuan(khoaChuQuan);
 		
 		BoMon boMon = new BoMon();
-		boMon.setKhoaChuQuan(kcq);
 		boMon.setMaBoMon("httt");
-		boMon.setTenBoMon("hệ thống thông tin");
-		
+		boMon.setTenBoMon("He thong thong tin");
+		boMon.setKhoaChuQuan(khoaChuQuan);
 		boMonService.saveBoMon(boMon);
+				
 		return "home";
 	}
 	
