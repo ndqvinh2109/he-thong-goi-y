@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns="http://www.isdc.ro/wro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.isdc.ro/wro wro.xsd">
+	<!-- Libs -->
+	<group name="bootstrap">
+		<css>/resources/assets/libs/bootstrap/css/bootstrap.min.css</css>
+		<css>/resources/assets/libs/bootstrap/css/datepicker.css</css>
+		<js>/resources/assets/libs/bootstrap/js/bootstrap-datepicker.js</js>
+		<js>/resources/assets/libs/bootstrap/js/bootstrap.min.js</js>
+	</group>	
+	<group name="font-awesome">
+		<css>/resources/assets/libs/FontAwesome/css/font-awesome.min.css</css>
+	</group>
+	
+	<group name="jquery">
+		<js>/resources/assets/libs/Jquery/jquery-1.10.2.min.js</js>
+	</group>
+	
+	<group name="jqueryUi">
+		<js>/resources/assets/libs/JqueryUi/js/jquery-ui.min.js</js>
+		<css>/resources/assets/libs/JqueryUi/css/jquery-ui.min.css</css>
+	</group>
+	
+</groups>
