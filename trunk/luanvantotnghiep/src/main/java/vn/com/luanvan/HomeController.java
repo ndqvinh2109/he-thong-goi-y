@@ -38,7 +38,7 @@ public class HomeController {
 	@Autowired
 	private NganhService nganhService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		Date date = new Date();
@@ -68,7 +68,7 @@ public class HomeController {
 		nganh.setBomon(boMon);
 		nganhService.updateNganh(nganh);
 				
-		return "home";
+		return "trangchu";
 	}
 	
 }

@@ -1,0 +1,1 @@
+<jsp:forward page="/service/homepage"></jsp:forward>
