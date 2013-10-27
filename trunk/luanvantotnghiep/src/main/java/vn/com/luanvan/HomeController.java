@@ -67,7 +67,7 @@ public class HomeController {
 		nganh.setTenNganh("information system 2");
 		nganh.setBomon(boMon);
 		nganhService.updateNganh(nganh);
-				
+	
 		return "trangchu";
 	}
 	
