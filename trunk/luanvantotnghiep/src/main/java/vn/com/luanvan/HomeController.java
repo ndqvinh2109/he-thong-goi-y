@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import vn.com.luanvan.model.BoMon;
 import vn.com.luanvan.model.KhoaChuQuan;
+import vn.com.luanvan.model.Nganh;
 import vn.com.luanvan.service.BoMonService;
 import vn.com.luanvan.service.KhoaChuQuanService;
+import vn.com.luanvan.service.NganhService;
 
 /**
  * Handles requests for the application home page.
@@ -32,6 +34,9 @@ public class HomeController {
 	private BoMonService boMonService;
 	@Autowired
 	private KhoaChuQuanService khoaChuQuanService;
+
+	@Autowired
+	private NganhService nganhService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -53,6 +58,15 @@ public class HomeController {
 		boMon.setTenBoMon("He thong thong tin");
 		boMon.setKhoaChuQuan(khoaChuQuan);
 		boMonService.saveBoMon(boMon);
+		
+		Nganh nganh = new Nganh();
+		nganh.setMaNganh("dihh");
+		nganh.setTenNganh("information system");
+		nganh.setBomon(boMon);
+		nganhService.saveNganh(nganh);
+		nganh.setTenNganh("information system 2");
+		nganh.setBomon(boMon);
+		nganhService.updateNganh(nganh);
 				
 		return "home";
 	}
