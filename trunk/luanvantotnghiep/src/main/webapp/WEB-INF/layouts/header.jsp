@@ -15,16 +15,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Hệ thống gợi ý</a>
+          <a class="navbar-brand" href="#"><i class="fa fa-home fa-fw"></i> Hệ thống gợi ý</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><i class='icon-folder-close icon-right-spacing'></i>Kế hoạch học tập</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/service/kehoachhoctap"><i class="fa fa-book fa-fw"></i> Kế hoạch học tập</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cập nhật <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil fa-fw"></i> Cập nhật <b class="caret"></b></a>
               <ul class="dropdown-menu" style="width: 200px">
             	  <li class="dropdown-header">Thông tin chung</li>
-                <li><a href="#"><i class='icon-folder-close icon-right-spacing'></i>Bộ Môn</a></li>
+                <li><a href="#">Bộ Môn</a></li>
                 <li><a href="#">Ngành</a></li>
                 <li><a href="#">Khoa chủ quản</a></li>
                 <li><a href="#">Lớp</a></li>
