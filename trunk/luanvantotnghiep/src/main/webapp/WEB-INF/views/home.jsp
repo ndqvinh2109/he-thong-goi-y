@@ -8,6 +8,7 @@
 <h1>
 	Hello world!  
 </h1>
+<i class='icon-folder-close icon-right-spacing'></i>
 
 <P>  The time on the server is ${serverTime}. </P>
 </body>

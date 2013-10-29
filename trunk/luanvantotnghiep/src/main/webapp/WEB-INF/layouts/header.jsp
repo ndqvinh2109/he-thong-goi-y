@@ -15,31 +15,28 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Hệ thống gợi ý</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li class="active"><a href="#"><i class='icon-folder-close icon-right-spacing'></i>Kế hoạch học tập</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cập nhật <b class="caret"></b></a>
+              <ul class="dropdown-menu" style="width: 200px">
+            	  <li class="dropdown-header">Thông tin chung</li>
+                <li><a href="#"><i class='icon-folder-close icon-right-spacing'></i>Bộ Môn</a></li>
+                <li><a href="#">Ngành</a></li>
+                <li><a href="#">Khoa chủ quản</a></li>
+                <li><a href="#">Lớp</a></li>
+                <li><a href="#">Sinh viên</a></li>
                 <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li class="dropdown-header">Thông tin kế hoạch học tập</li>
+                <li><a href="#">Học phần</a></li>
+                <li><a href="#">Chương trình đào tạo</a></li>
               </ul>
             </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="./">Default</a></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
-            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-          </ul>
+          
         </div><!--/.nav-collapse -->
         </div>
       </div>
