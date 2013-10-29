@@ -10,7 +10,6 @@ import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import vn.com.luanvan.model.BoMon;
 import vn.com.luanvan.model.KhoaChuQuan;
 
 @Repository
@@ -54,6 +53,7 @@ public class KhoaChuQuanDaoImpl implements KhoaChuQuanDao{
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<KhoaChuQuan> findAllKhoaChuQuan() {
 		try {
