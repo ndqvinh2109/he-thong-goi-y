@@ -10,15 +10,18 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/font-awesome.css"/>  
 </head>
 <body>
+<div id="wrapper">
 	<div id="wrap">
 		<tiles:insertAttribute name="header"/>
-		<div class="content container" id="body-div">
-			<tiles:insertAttribute name="body" />
-		</div>
+	</div>	
+	<div class="content container" id="body-div">
+		<tiles:insertAttribute name="body" />
 	</div>
+	
 	<div id="footer">
 		<tiles:insertAttribute name="footer" />
 	</div>
+</div>
 	<script src="${pageContext.request.contextPath}/bundles/jquery.js"></script>
 	<script src="${pageContext.request.contextPath}/bundles/bootstrap.js"></script>
 </body>

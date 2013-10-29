@@ -30,13 +30,6 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@Autowired
-	private BoMonService boMonService;
-	@Autowired
-	private KhoaChuQuanService khoaChuQuanService;
-
-	@Autowired
-	private NganhService nganhService;
 	
 	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -47,27 +40,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
-		KhoaChuQuan khoaChuQuan = new KhoaChuQuan();
-		khoaChuQuan.setMaKhoa("cntt");
-		khoaChuQuan.setTenKhoa("Cong nghe thong tin");
-		khoaChuQuanService.saveKhoaChuQuan(khoaChuQuan);
-		
-		BoMon boMon = new BoMon();
-		boMon.setMaBoMon("httt");
-		boMon.setTenBoMon("He thong thong tin");
-		boMon.setKhoaChuQuan(khoaChuQuan);
-		boMonService.saveBoMon(boMon);
-		
-		Nganh nganh = new Nganh();
-		nganh.setMaNganh("dihh");
-		nganh.setTenNganh("information system");
-		nganh.setBomon(boMon);
-		nganhService.saveNganh(nganh);
-		nganh.setTenNganh("information system 2");
-		nganh.setBomon(boMon);
-		nganhService.updateNganh(nganh);
-	
+			
 		return "trangchu";
 	}
 	
