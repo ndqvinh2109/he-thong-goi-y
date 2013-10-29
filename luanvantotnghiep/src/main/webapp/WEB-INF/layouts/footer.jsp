@@ -8,8 +8,7 @@
 </head>
 <body>
 	 <div class="container">
-            <p class="pull-right text-right copyright">© Copyright 2013. AXON
-                ACTIVE VIETNAM. All Rights Reserved.</p>
+            <p class="pull-right text-right copyright">© Copyright 2013. All Rights Reserved.</p>
      </div>
 </body>
 </html>
