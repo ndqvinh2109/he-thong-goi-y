@@ -14,7 +14,7 @@
 	</group>
 	
 	<group name="jquery">
-		<js>/resources/assets/libs/Jquery/jquery-1.10.2.min.js</js>
+		<js>/resources/assets/libs/Jquery/jquery-1.8.3.min.js</js>
 	</group>
 	
 	<group name="jqueryUi">
