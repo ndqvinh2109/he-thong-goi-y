@@ -40,10 +40,18 @@ public class HocPhan {
 	@JoinColumn(name="hocPhanId")
 	private List<ChuongTrinhDaoTao> chuongTrinhs;
 	
-	@ManyToOne
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="hocPhanId")
-	private HocPhan hocPhanTienQuyet;
-		
+	private List<HocPhanTienQuyet> hocPhanTienQuyets;
+	
+	public List<HocPhanTienQuyet> getHocPhanTienQuyets() {
+		return hocPhanTienQuyets;
+	}
+
+	public void setHocPhanTienQuyets(List<HocPhanTienQuyet> hocPhanTienQuyets) {
+		this.hocPhanTienQuyets = hocPhanTienQuyets;
+	}
+
 	public List<Diem> getDiems() {
 		return diems;
 	}
@@ -106,14 +114,6 @@ public class HocPhan {
 
 	public void setChuongTrinhs(List<ChuongTrinhDaoTao> chuongTrinhs) {
 		this.chuongTrinhs = chuongTrinhs;
-	}
-
-	public HocPhan getHocPhanTienQuyet() {
-		return hocPhanTienQuyet;
-	}
-
-	public void setHocPhanTienQuyet(HocPhan hocPhanTienQuyet) {
-		this.hocPhanTienQuyet = hocPhanTienQuyet;
 	}
 
 }
