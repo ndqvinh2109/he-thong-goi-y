@@ -8,20 +8,28 @@
 </head>
 <body>
 	<div class="container">
-	<form class="form-horizontal">
-	  <div class="form-group">
-	    <label class="sr-only col-lg-3 control-label" for="exampleInputEmail2">Email address</label>
-	  	<select class="form-control">
-	  		<option>1</option>
-	  	</select>
-  	  </div>
-	  <div class="form-group">
-	    <label class="sr-only col-lg-3 control-label" for="exampleInputPassword2">Password</label>
-	    <select class="form-control">
-	    	<option>1</option>
-	    </select>
-	  </div>
-	 </form>
+		<table>
+			<thead>
+				<tr>
+					<td class="col-lg-3">Ngành học</td>
+					<td class="col-lg-3">Khóa đào tạo</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><select class="col-lg-2 form-control">
+		  					<option>Example</option>
+		  				</select>
+		  			</td>
+					<td><select class="col-lg-2 form-control">
+		  					<option>Example</option>
+		  				</select>
+		  			</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
 	</div>	
 </body>
 </html>
