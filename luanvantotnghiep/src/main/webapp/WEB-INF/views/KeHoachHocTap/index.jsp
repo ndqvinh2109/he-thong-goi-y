@@ -13,6 +13,7 @@
 				<tr>
 					<td class="col-lg-3">Ngành học</td>
 					<td class="col-lg-3">Khóa đào tạo</td>
+					<td class="col-lg-3"></td>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,6 +26,7 @@
 		  					<option>Example</option>
 		  				</select>
 		  			</td>
+		  			<td><button class="btn btn-info">In kế hoạch học tập</button></td>
 				</tr>
 			</tbody>
 		</table>
