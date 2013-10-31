@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>
-	Tuyền Loan Vinh
+	Hệ thống hỗ trợ sinh viên lập kế hoạch học tập đối với những môn tự chọn
 </h1>
 <i class='icon-folder-close icon-right-spacing'></i>
 
