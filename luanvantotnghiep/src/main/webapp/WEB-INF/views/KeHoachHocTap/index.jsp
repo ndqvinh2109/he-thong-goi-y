@@ -31,12 +31,20 @@
 		  					</c:forEach>
 		  				</select>
 		  			</td>
-		  			<td><button class="btn btn-info">In kế hoạch học tập</button></td>
+		  			<td><button id="inKeHoach" class="btn btn-info">In kế hoạch học tập</button></td>
 				</tr>
 			</tbody>
 		</table>
 		
 		
 	</div>	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#inKeHoach').click(function(){
+				console.log("123");
+				
+			});
+		});
+	</script>
 </body>
 </html>
