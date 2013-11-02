@@ -20,6 +20,13 @@ public class KeHoachHocTapController {
     
 	@RequestMapping(value="kehoachhoctap", method = RequestMethod.GET)
 	public String loadPageKeHoachHocTap(Map<String,Object> map){
+		try {
+			map.put("nganhs", nganhService.findAllNganh());
+			map.put("khoaDaoTaos", khoaDaoTaoService.findAllKhoaDaoTao());
+			map.put("123", "helolo");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "kehoachhoctap";
 	}
 }
