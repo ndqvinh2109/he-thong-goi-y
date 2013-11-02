@@ -35,5 +35,35 @@
 		</property>
 	</bean>
 	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+			<property name="order" value="2" />
+			<property name="contentNegotiationManager">
+				 <bean class="org.springframework.web.accept.ContentNegotiationManager">
+				 	<constructor-arg>
+				 		<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+				 			<constructor-arg>
+				 				<map>
+				 					<entry key="json" value="application/json"/>
+                               	    <entry key="xml" value="application/xml"/>
+				 				</map>
+				 			</constructor-arg>
+				 		</bean>
+				 	</constructor-arg>
+				 </bean>
+			</property>
+			<property name="defaultViews">
+				<list>
+					<!-- JSON View -->
+						<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />				
+					<!--  XML View -->
+						<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+							<constructor-arg>
+								<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+							</constructor-arg>
+						</bean>	
+				</list>
+			</property>
+		</bean>
+	
 			
 </beans>

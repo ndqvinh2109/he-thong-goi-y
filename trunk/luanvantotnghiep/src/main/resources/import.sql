@@ -102,42 +102,42 @@ INSERT INTO hocphan (id, mahp, sotc, sotietlt, sotietth, tenhp) VALUES (72, 'CT3
 -- Dependencies: 166 1988
 -- Data for Name: hocphantienquyet; Type: TABLE DATA; Schema: luanvan; Owner: postgres
 --
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (1, 'CT801', 4);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (2, 'CT802', 5);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (3, 'XH004', 7);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (4, 'XH005', 8);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (5, 'ML009', 10);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (6, 'ML010', 11);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (7, 'ML006', 12);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (8, 'TN001', 14);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (9, 'CT101', 29);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (10, 'CT104', 31);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (11, 'CT107', 32);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (12, 'CT101', 34);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (13, 'CT103', 36);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (14, 'CT101', 37);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (15, 'CT101', 45);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (16, 'CT103', 46);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (17, 'CT106', 47);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (18, 'CT106', 48);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (19, 'CT106', 49);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (20, 'CT114', 49);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (21, 'CT114', 50);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (22, 'CT113', 52);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (23, 'CT165', 54);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (24, 'TN010', 55);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (25, 'CT106', 57);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (26, 'CT803', 58);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (27, 'XH006', 59);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (28, 'CT114', 60);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (29, 'CT114', 61);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (30, 'CT114', 62);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (31, 'CT109', 66);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (32, 'CT101', 68);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (33, 'CT349', 69);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (34, 'CT112', 70);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (35, 'CT106', 71);
 
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (1, '4', 3);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (2, '5', 4);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (3, '7', 6);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (4, '8', 7);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (5, '10', 9);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (6, '11', 10);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (7, '12', 11);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (8, '14', 13);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (10, '31', 30);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (11, '32', 31);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (9, '29', 20);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (12, '34', 20);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (13, '36', 29);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (14, '37', 20);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (15, '45', 20);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (16, '46', 29);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (17, '47', 46);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (18, '48', 46);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (19, '49', 46);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (20, '49', 34);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (21, '50', 34);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (22, '52', 33);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (23, '54', 38);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (24, '55', 15);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (25, '57', 46);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (26, '58', 5);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (27, '59', 8);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (28, '60', 34);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (29, '61', 34);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (30, '62', 34);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (31, '66', 47);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (32, '68', 20);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (33, '69', 63);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (34, '70', 32);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (35, '71', 46);
 
 
 --

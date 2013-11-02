@@ -1,6 +1,7 @@
 package vn.com.luanvan.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import vn.com.luanvan.model.Nganh;
 
@@ -15,5 +16,7 @@ public interface NganhDao {
 	public List<Nganh> findAllNganh();
 	
 	public Nganh findNganhById(long Id);
+	
+	public List<Map<String,Object>> findChuongTrinhDaoTaoByMaNganhAndMaKhoaDaoTao(long maNganh, long maKhoaDaoTao);
 	
 }
