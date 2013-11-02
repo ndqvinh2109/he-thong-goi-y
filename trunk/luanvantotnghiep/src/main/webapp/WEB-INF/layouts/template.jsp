@@ -8,6 +8,7 @@
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/font-awesome.css"/>  
+<script src="${pageContext.request.contextPath}/bundles/jquery.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -22,7 +23,6 @@
 		<tiles:insertAttribute name="footer" />
 	</div>
 </div>
-	<script src="${pageContext.request.contextPath}/bundles/jquery.js"></script>
 	<script src="${pageContext.request.contextPath}/bundles/bootstrap.js"></script>
 </body>
 </html>
