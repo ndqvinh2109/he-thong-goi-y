@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,11 +20,15 @@
 			<tbody>
 				<tr>
 					<td><select class="col-lg-2 form-control">
-		  					<option>Example</option>
+			  				<c:forEach var="nganh" items="${nganhs}">
+			  						<option value="${nganh.nganhId}">${nganh.tenNganh}</option>
+			  				</c:forEach>
 		  				</select>
 		  			</td>
 					<td><select class="col-lg-2 form-control">
-		  					<option>Example</option>
+		  					<c:forEach var="khoaDaoTao" items="${khoaDaoTaos}">
+		  						<option value="${khoaDaoTao.khoaDaoTaoId}">${khoaDaoTao.khoaDT}</option>
+		  					</c:forEach>
 		  				</select>
 		  			</td>
 		  			<td><button class="btn btn-info">In kế hoạch học tập</button></td>
