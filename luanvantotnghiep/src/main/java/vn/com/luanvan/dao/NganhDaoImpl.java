@@ -1,8 +1,10 @@
 package vn.com.luanvan.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -72,10 +74,18 @@ public class NganhDaoImpl implements NganhDao{
 	public Nganh findNganhById(long Id) {
 		try {
 			Nganh nganh = (Nganh) sessionFactory.getCurrentSession().load(Nganh.class, Id);
+			Hibernate.initialize(nganh);
 			return nganh;
 		} catch (HibernateException e) {
 			return null;
 		}
+	}
+
+	@Override
+	public List<Map<String, Object>> findChuongTrinhDaoTaoByMaNganhAndMaKhoaDaoTao(long maNganh, long maKhoaDaoTao) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "";
+		return null;
 	}
 	
 

@@ -34,6 +34,12 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-oxm</artifactId>
+	        <version>${org.springframework-version}</version>
+        </dependency>
 				
 		<!-- PostgreSQL JDBC Driver -->
 		<dependency>
@@ -169,7 +175,27 @@
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
 		</dependency>
+		<!-- Jackson  -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
 		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+        
+        <!-- Xstream -->    
+        
+        <dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.5</version>
+		</dependency>
+            
 		<!-- Wro4j -->
 		<dependency>
 			<groupId>ro.isdc.wro4j</groupId>

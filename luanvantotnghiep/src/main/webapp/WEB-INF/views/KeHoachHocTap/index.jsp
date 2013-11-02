@@ -19,13 +19,13 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><select class="col-lg-2 form-control">
+					<td><select id="selNganh" class="col-lg-2 form-control">
 			  				<c:forEach var="nganh" items="${nganhs}">
 			  						<option value="${nganh.nganhId}">${nganh.tenNganh}</option>
 			  				</c:forEach>
 		  				</select>
 		  			</td>
-					<td><select class="col-lg-2 form-control">
+					<td><select id="selKhoaDaoTao" class="col-lg-2 form-control">
 		  					<c:forEach var="khoaDaoTao" items="${khoaDaoTaos}">
 		  						<option value="${khoaDaoTao.khoaDaoTaoId}">${khoaDaoTao.khoaDT}</option>
 		  					</c:forEach>
@@ -40,8 +40,21 @@
 	</div>	
 	<script type="text/javascript">
 		$(document).ready(function(){
+			var nganhId = $('#selNganh').val();
+			var khoaDaoTaoId = $('#selKhoaDaoTao').val();
 			$('#inKeHoach').click(function(){
-				console.log("123");
+				$.ajax({
+					url: '${pageContext.request.contextPath}/service/loadChuongTrinhDaoTao',
+					type: 'GET',
+					dataType: "json",
+					data:{
+						nganhId: nganhId,
+						khoaDaoTaoId: khoaDaoTaoId
+					},
+					success: function(data){
+						console.log(data);
+					}
+				});
 				
 			});
 		});
