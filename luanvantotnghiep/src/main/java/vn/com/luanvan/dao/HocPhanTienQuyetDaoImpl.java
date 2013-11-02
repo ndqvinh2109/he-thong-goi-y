@@ -69,9 +69,12 @@ public class HocPhanTienQuyetDaoImpl implements HocPhanTienQuyetDao{
 
 	@Override
 	public HocPhanTienQuyet findHocPhanTienQuyetById(long Id) {
-		HocPhanTienQuyet hocPhanTienQuyet = (HocPhanTienQuyet) sessionFactory.getCurrentSession().load(HocPhanTienQuyet.class, Id);
-		return hocPhanTienQuyet;
-		
+		try {
+			HocPhanTienQuyet hocPhanTienQuyet = (HocPhanTienQuyet) sessionFactory.getCurrentSession().load(HocPhanTienQuyet.class, Id);
+			return hocPhanTienQuyet;
+		} catch (HibernateException e) {
+			return null;
+		}
 	}
 
 	
