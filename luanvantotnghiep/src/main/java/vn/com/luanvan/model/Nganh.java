@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
 @Table(name="nganh")
@@ -30,18 +29,16 @@ public class Nganh {
 	
 	private String tenNganh;
 
-	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="nganhId")
 	private List<ChuongTrinhDaoTao> chuongTrinhs;
 	
-	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="nganhId")
 	private List<Lop> lops;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="boMonId")
 	private BoMon bomon;
 		

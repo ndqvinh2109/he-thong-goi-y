@@ -83,19 +83,25 @@ public class HocPhanImpl implements HocPhanDao{
 	@Override
 	public List<HocPhan> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId,
 			long khoaDaoTaoId) {
-		Session session = sessionFactory.getCurrentSession();
-		String hql = "select hp "
-				+ "from ChuongTrinhDaoTao ctdt "
-				+ "inner join ctdt.khoaDaoTao kdt "
-				+ "inner join ctdt.nganh ng "
-				+ "inner join ctdt.hocPhan hp "
-				+ "where kdt.khoaDaoTaoId = :khoaDaoTaoId "
-				+ "and ng.nganhId = :nganhId";
-		Query query = session.createQuery(hql);
-		query.setLong("khoaDaoTaoId", khoaDaoTaoId);
-		query.setLong("nganhId", nganhId);
-		List<HocPhan> list = query.list();
-		return list;
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select hp "
+					+ "from ChuongTrinhDaoTao ctdt "
+					+ "inner join ctdt.khoaDaoTao kdt "
+					+ "inner join ctdt.nganh ng "
+					+ "inner join ctdt.hocPhan hp "
+					+ "where kdt.khoaDaoTaoId = :khoaDaoTaoId "
+					+ "and ng.nganhId = :nganhId";
+			Query query = session.createQuery(hql);
+			query.setLong("khoaDaoTaoId", khoaDaoTaoId);
+			query.setLong("nganhId", nganhId);
+			List<HocPhan> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		
+		}
 	}
 
 }

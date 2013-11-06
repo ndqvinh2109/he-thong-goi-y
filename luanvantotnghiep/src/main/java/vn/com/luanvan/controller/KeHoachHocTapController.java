@@ -42,18 +42,15 @@ public class KeHoachHocTapController {
 			@RequestParam(value="nganhId", required = false) long nganhId,
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("nganh", nganhService.findNganhById(nganhId));
+		map.put("nganh", "ok");
 		
-		try {
-			List<HocPhan> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
-			if(hps == null)
-				System.out.println("null roi");
-			for(HocPhan hp : hps){
-				System.out.println(hp.getTenHP());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+	
+		List<HocPhan> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
+		
+		for(HocPhan hp : hps){
+			System.out.println(hp.getTenHP());
 		}
+	
 		return map;
 	}
 }
