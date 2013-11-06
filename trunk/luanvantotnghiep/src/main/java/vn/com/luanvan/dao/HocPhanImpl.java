@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -76,6 +77,25 @@ public class HocPhanImpl implements HocPhanDao{
 		} catch (HibernateException e) {
 			return null;
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<HocPhan> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId,
+			long khoaDaoTaoId) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "select hp "
+				+ "from ChuongTrinhDaoTao ctdt "
+				+ "inner join ctdt.khoaDaoTao kdt "
+				+ "inner join ctdt.nganh ng "
+				+ "inner join ctdt.hocPhan hp "
+				+ "where kdt.khoaDaoTaoId = :khoaDaoTaoId "
+				+ "and ng.nganhId = :nganhId";
+		Query query = session.createQuery(hql);
+		query.setLong("khoaDaoTaoId", khoaDaoTaoId);
+		query.setLong("nganhId", nganhId);
+		List<HocPhan> list = query.list();
+		return list;
 	}
 
 }

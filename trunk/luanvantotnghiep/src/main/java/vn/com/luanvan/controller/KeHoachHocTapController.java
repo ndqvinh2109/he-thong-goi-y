@@ -1,6 +1,7 @@
 package vn.com.luanvan.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import vn.com.luanvan.model.HocPhan;
+import vn.com.luanvan.service.HocPhanService;
 import vn.com.luanvan.service.KhoaDaoTaoService;
 import vn.com.luanvan.service.NganhService;
 
@@ -20,6 +23,8 @@ public class KeHoachHocTapController {
 	private NganhService nganhService;
 	@Autowired
     private KhoaDaoTaoService khoaDaoTaoService;
+	@Autowired
+	private HocPhanService hocPhanService;
     
 	@RequestMapping(value="kehoachhoctap", method = RequestMethod.GET)
 	public String loadPageKeHoachHocTap(Map<String,Object> map){
@@ -38,7 +43,17 @@ public class KeHoachHocTapController {
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("nganh", nganhService.findNganhById(nganhId));
-		System.out.println(nganhId + khoaDaoTaoId);
+		
+		try {
+			List<HocPhan> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
+			if(hps == null)
+				System.out.println("null roi");
+			for(HocPhan hp : hps){
+				System.out.println(hp.getTenHP());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return map;
 	}
 }
