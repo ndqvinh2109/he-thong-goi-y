@@ -15,5 +15,7 @@ public interface HocPhanService {
 	public List<HocPhan> findAllHocPhan();
 	
 	public HocPhan findHocPhanById(long Id);
+	
+	public List<HocPhan> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId, long khoaDaoTaoId);
 
 }

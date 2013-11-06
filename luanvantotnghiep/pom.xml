@@ -203,14 +203,13 @@
 		  <artifactId>jackson-datatype-hibernate3</artifactId>
 		  <version>${jackson-2-version}</version>
 		</dependency>   
-        <!-- Xstream -->    
         
         <dependency>
-			<groupId>com.thoughtworks.xstream</groupId>
-			<artifactId>xstream</artifactId>
-			<version>1.4.5</version>
-		</dependency>
-            
+			<groupId>antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<version>2.7.7</version>
+		</dependency>    
+		
 		<!-- Wro4j -->
 		<dependency>
 			<groupId>ro.isdc.wro4j</groupId>
