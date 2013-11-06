@@ -11,16 +11,7 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<mvc:annotation-driven>
-        <mvc:message-converters>
-            <!-- Use the HibernateAware mapper instead of the default -->
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="objectMapper">
-                    <bean class="vn.com.luanvan.utils.HibernateAwareObjectMapper" />
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
+	<mvc:annotation-driven />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -43,5 +34,34 @@
 			</list>
 		</property>
 	</bean>
-
+	
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+			<property name="order" value="2" />
+			<property name="contentNegotiationManager">
+				 <bean class="org.springframework.web.accept.ContentNegotiationManager">
+				 	<constructor-arg>
+				 		<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+				 			<constructor-arg>
+				 				<map>
+				 					<entry key="json" value="application/json"/>
+                               	    <entry key="xml" value="application/xml"/>
+				 				</map>
+				 			</constructor-arg>
+				 		</bean>
+				 	</constructor-arg>
+				 </bean>
+			</property>
+			<property name="defaultViews">
+				<list>
+					<!-- JSON View -->
+						<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />				
+					<!--  XML View -->
+						<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+							<constructor-arg>
+								<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+							</constructor-arg>
+						</bean>	
+				</list>
+			</property>
+		</bean>
 </beans>

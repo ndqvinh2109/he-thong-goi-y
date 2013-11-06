@@ -14,7 +14,6 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<log4j.version>1.2.17</log4j.version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
-		<jackson-2-version>2.2.0</jackson-2-version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -58,10 +57,6 @@
 				<exclusion>
 					<groupId>org.slf4j</groupId>
 					<artifactId>slf4j-api</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>antlr</groupId>
-					<artifactId>antlr</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -178,38 +173,25 @@
 		</dependency>
 		<!-- Jackson  -->
 		<dependency>
-		   <groupId>com.fasterxml.jackson.core</groupId>
-		   <artifactId>jackson-core</artifactId>
-		   <version>${jackson-2-version}</version>
- 		</dependency>	
-
-		 <!-- Just the annotations; use this dependency if you want to attach annotations
-		      to classes without connecting them to the code. -->
-		 <dependency>
-		   <groupId>com.fasterxml.jackson.core</groupId>
-		   <artifactId>jackson-annotations</artifactId>
-		   <version>${jackson-2-version}</version>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
 		</dependency>
-
-		<!-- databinding; ObjectMapper, JsonNode and related classes are here -->
-		<dependency>
-		  <groupId>com.fasterxml.jackson.core</groupId>
-		  <artifactId>jackson-databind</artifactId>
-		  <version>${jackson-2-version}</version>
-		</dependency>
-        
-        <dependency>
-		  <groupId>com.fasterxml.jackson.datatype</groupId>
-		  <artifactId>jackson-datatype-hibernate3</artifactId>
-		  <version>${jackson-2-version}</version>
-		</dependency>   
-        
-        <dependency>
-			<groupId>antlr</groupId>
-			<artifactId>antlr</artifactId>
-			<version>2.7.7</version>
-		</dependency>    
 		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+        
+        <!-- Xstream -->    
+        
+        <dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.5</version>
+		</dependency>
+            
 		<!-- Wro4j -->
 		<dependency>
 			<groupId>ro.isdc.wro4j</groupId>
