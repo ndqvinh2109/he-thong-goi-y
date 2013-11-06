@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,6 +26,7 @@ public class KhoaDaoTao {
 	
 	private String namVao;
 
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="khoaDaoTaoId")
 	private List<ChuongTrinhDaoTao> chuongTrinhs;

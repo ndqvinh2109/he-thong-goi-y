@@ -37,7 +37,7 @@ public class KeHoachHocTapController {
 			@RequestParam(value="nganhId", required = false) long nganhId,
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("123", "123");
+		map.put("nganh", nganhService.findNganhById(nganhId));
 		System.out.println(nganhId + khoaDaoTaoId);
 		return map;
 	}
