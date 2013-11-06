@@ -100,7 +100,6 @@ public class HocPhanImpl implements HocPhanDao{
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			return null;
-		
 		}
 	}
 
