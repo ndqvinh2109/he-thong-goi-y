@@ -1,5 +1,6 @@
 package vn.com.luanvan.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import vn.com.luanvan.model.HocPhan;
 import vn.com.luanvan.service.HocPhanService;
 import vn.com.luanvan.service.KhoaDaoTaoService;
 import vn.com.luanvan.service.NganhService;
