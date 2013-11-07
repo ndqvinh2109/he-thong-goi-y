@@ -55,7 +55,7 @@
 					},
 					success: function(data){
 						console.log(data.danhSachHocPhan[0]);
-						var $tbody = $('<tbody class="table-striped"></tbody>');
+						var $tbody = $('<tbody></tbody>');
 				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td></tr>');
 				        var $table = $('<table class="table table-bordered"></table>');
 				    	var hocPhan = new Object();
@@ -78,10 +78,8 @@
 								  .append('<td>'+hocPhan.soTietTH+'</td>')
 								  .appendTo($tbody);
 						}
-						
-						$($table).appendTo('#chuongTrinhDaoTao');
-						$($thead).appendTo('#chuongTrinhDaoTao');
-						$($tbody).appendTo('#chuongTrinhDaoTao');
+						$('#chuongTrinhDaoTao').append($table);
+						$($table).append($thead).append($tbody);
 					}
 				});
 				
