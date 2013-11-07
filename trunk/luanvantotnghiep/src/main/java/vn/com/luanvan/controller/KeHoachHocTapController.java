@@ -41,10 +41,8 @@ public class KeHoachHocTapController {
 			@RequestParam(value="nganhId", required = false) long nganhId,
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
 		Map<String,Object> map = new HashMap<String,Object>();
-				
 		List<Object[]> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
 		map.put("danhSachHocPhan", hps);
-			
 		return map;
 	}
 }
