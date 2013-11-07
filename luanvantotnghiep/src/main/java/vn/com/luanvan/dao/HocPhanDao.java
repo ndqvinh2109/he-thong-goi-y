@@ -16,6 +16,6 @@ public interface HocPhanDao {
 	
 	public HocPhan findHocPhanById(long Id);
 	
-	public List<HocPhan> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId, long khoaDaoTaoId);
+	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId, long khoaDaoTaoId);
 
 }

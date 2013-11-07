@@ -81,11 +81,11 @@ public class HocPhanImpl implements HocPhanDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<HocPhan> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId,
+	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId,
 			long khoaDaoTaoId) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			String hql = "select hp "
+			String hql = "select hp, ctdt "
 					+ "from ChuongTrinhDaoTao ctdt "
 					+ "inner join ctdt.khoaDaoTao kdt "
 					+ "inner join ctdt.nganh ng "
@@ -95,7 +95,7 @@ public class HocPhanImpl implements HocPhanDao{
 			Query query = session.createQuery(hql);
 			query.setLong("khoaDaoTaoId", khoaDaoTaoId);
 			query.setLong("nganhId", nganhId);
-			List<HocPhan> list = query.list();
+			List<Object[]> list = query.list();
 			return list;
 		} catch (HibernateException e) {
 			e.printStackTrace();

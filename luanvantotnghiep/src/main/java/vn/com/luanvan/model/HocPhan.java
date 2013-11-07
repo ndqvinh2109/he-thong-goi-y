@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="hocphan")
 public class HocPhan {
@@ -31,14 +33,17 @@ public class HocPhan {
 	
 	private int soTietTH;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="hocPhanId")
 	private List<Diem> diems;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="hocPhanId")
 	private List<ChuongTrinhDaoTao> chuongTrinhs;
 	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="hocPhanId")
 	private List<HocPhanTienQuyet> hocPhanTienQuyets;
