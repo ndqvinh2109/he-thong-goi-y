@@ -36,6 +36,8 @@
 			</tbody>
 		</table>
 		
+		<div id="chuongTrinhDaoTao"></div>
+		
 		
 	</div>	
 	<script type="text/javascript">
@@ -52,7 +54,34 @@
 						khoaDaoTaoId: khoaDaoTaoId
 					},
 					success: function(data){
-						console.log(data);
+						console.log(data.danhSachHocPhan[0]);
+						var $tbody = $('<tbody class="table-striped"></tbody>');
+				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td></tr>');
+				        var $table = $('<table class="table table-bordered"></table>');
+				    	var hocPhan = new Object();
+				    	var chuongTrinhDaoTao = new Object();
+				    	
+				        for(var i = 0; i < data.danhSachHocPhan.length; i++){
+				      		hocPhan = data.danhSachHocPhan[i][0];
+				      		chuongTrinhDaoTao = data.danhSachHocPhan[i][1];
+				      		
+							console.log(data.danhSachHocPhan[i]);
+							
+							var $tr = $('<tr></tr>');
+							$($tr).append('<td>'+hocPhan.hocPhanId+'</td>')
+								  .append('<td>'+hocPhan.maHP+'</td>')
+								  .append('<td>'+hocPhan.tenHP+'</td>')
+								  .append('<td>'+hocPhan.soTC+'</td>')
+								  .append('<td>'+hocPhan.soTC+'</td>')
+								  .append('<td>'+chuongTrinhDaoTao.tuChon+'</td>')
+								  .append('<td>'+hocPhan.soTietLT+'</td>')
+								  .append('<td>'+hocPhan.soTietTH+'</td>')
+								  .appendTo($tbody);
+						}
+						
+						$($table).appendTo('#chuongTrinhDaoTao');
+						$($thead).appendTo('#chuongTrinhDaoTao');
+						$($tbody).appendTo('#chuongTrinhDaoTao');
 					}
 				});
 				
