@@ -42,7 +42,7 @@ public class HocPhanServiceImpl implements HocPhanService{
 	}
 
 	@Override
-	public List<HocPhan> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId,
+	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId,
 			long khoaDaoTaoId) {
 		return hocPhanDao.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
 	}

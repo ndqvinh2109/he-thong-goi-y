@@ -2,12 +2,15 @@ package vn.com.luanvan.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
 @Table(name="chuongtrinhdaotao")
@@ -24,14 +27,17 @@ public class ChuongTrinhDaoTao {
 	
 	private String khoiKienThuc;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="khoaDaoTaoId")
 	private KhoaDaoTao khoaDaoTao;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="nganhId")
 	private Nganh nganh;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="hocPhanId")
 	private HocPhan hocPhan;

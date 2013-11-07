@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import vn.com.luanvan.model.HocPhan;
 import vn.com.luanvan.service.HocPhanService;
 import vn.com.luanvan.service.KhoaDaoTaoService;
 import vn.com.luanvan.service.NganhService;
@@ -42,12 +41,10 @@ public class KeHoachHocTapController {
 			@RequestParam(value="nganhId", required = false) long nganhId,
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("nganh", "Parse JSON");
-		
-		List<HocPhan> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
-		for(HocPhan hp : hps){
-			System.out.println(hp.getTenHP());
-		}
+				
+		List<Object[]> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
+		map.put("danhSachHocPhan", hps);
+			
 		return map;
 	}
 }
