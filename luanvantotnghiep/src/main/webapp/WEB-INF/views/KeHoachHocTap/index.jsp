@@ -64,6 +64,7 @@
 						khoaDaoTaoId: khoaDaoTaoId
 					},
 					success: function(data){
+						console.log(data);
 						var $tbody = $('<tbody></tbody>');
 				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td></tr>');
 				        var $table = $('<table></table>',{
