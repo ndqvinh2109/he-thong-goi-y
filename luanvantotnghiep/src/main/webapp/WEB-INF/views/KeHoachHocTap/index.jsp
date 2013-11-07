@@ -54,19 +54,15 @@
 						khoaDaoTaoId: khoaDaoTaoId
 					},
 					success: function(data){
-						console.log(data.danhSachHocPhan[0]);
 						var $tbody = $('<tbody></tbody>');
 				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td></tr>');
-				        var $table = $('<table class="table table-bordered"></table>');
+				        var $table = $('<table class="table table-hover"></table>');
 				    	var hocPhan = new Object();
 				    	var chuongTrinhDaoTao = new Object();
 				    	
 				        for(var i = 0; i < data.danhSachHocPhan.length; i++){
 				      		hocPhan = data.danhSachHocPhan[i][0];
 				      		chuongTrinhDaoTao = data.danhSachHocPhan[i][1];
-				      		
-							console.log(data.danhSachHocPhan[i]);
-							
 							var $tr = $('<tr></tr>');
 							$($tr).append('<td>'+hocPhan.hocPhanId+'</td>')
 								  .append('<td>'+hocPhan.maHP+'</td>')
@@ -79,7 +75,8 @@
 								  .appendTo($tbody);
 						}
 						$('#chuongTrinhDaoTao').append($table);
-						$($table).append($thead).append($tbody);
+						$($thead).appendTo($table);
+						$($tbody).appendTo($table);
 					}
 				});
 				
