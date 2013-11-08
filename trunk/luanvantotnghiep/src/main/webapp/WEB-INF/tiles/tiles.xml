@@ -21,4 +21,9 @@
 	<put-attribute name="body" value="/WEB-INF/views/KeHoachHocTap/index.jsp" />
 </definition>
 
+<definition name="sinhvien" extends="base.definition">
+	<put-attribute name="title" value="Thông Tin Sinh Viên" />
+	<put-attribute name="body" value="/WEB-INF/views/SinhVien/index.jsp" />
+</definition>
+
 </tiles-definitions>
