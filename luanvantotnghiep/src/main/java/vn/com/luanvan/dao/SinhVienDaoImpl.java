@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -69,12 +71,15 @@ public class SinhVienDaoImpl implements SinhVienDao{
 
 	@Override
 	public SinhVien findSinhVienById(long Id) {
-		try {
-			SinhVien sinhVien = (SinhVien) sessionFactory.getCurrentSession().load(SinhVien.class, Id);
-			return sinhVien;
-		} catch (HibernateException e) {
-			return null;
-		}
+		Session session = sessionFactory.getCurrentSession();
+		String hql="select sv "
+				+ "from SinhVien sv "
+				+ "where sv.sinhVienId = :sinhVienId";
+		Query query = session.createQuery(hql);
+		query.setLong("sinhVienId", Id);		
+		Criteria crit = getSession(false).createCriteria(this.type);		  
+		SinhVien entity = (SinhVien)crit.uniqueResult();
+		return entity;		
 	}
 
 }

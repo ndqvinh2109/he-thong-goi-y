@@ -15,4 +15,5 @@ public interface SinhVienDao {
 	public List<SinhVien> findAllSinhVien();
 	
 	public SinhVien findSinhVienById(long Id);
+	
 }
