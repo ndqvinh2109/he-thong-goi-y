@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.luanvan.dao.HocPhanDao;
 import vn.com.luanvan.model.HocPhan;
+import vn.com.luanvan.model.HocPhanTienQuyet;
 
 @Service
 @Transactional
@@ -47,4 +48,23 @@ public class HocPhanServiceImpl implements HocPhanService{
 		return hocPhanDao.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
 	}
 
+	@Override
+	public List<Object[]> findHocPhanCoHocPhanTienQuyet(){
+		return hocPhanDao.findHocPhanCoHocPhanTienQuyet();
+	}
+	
+	@Override
+	public List<Object[]> findAllHocPhanHocPhanTienQuyet(){
+		return hocPhanDao.findAllHocPhanHocPhanTienQuyet();
+	}
+
+	@Override
+	public List<HocPhanTienQuyet> findHocPhanTienQuyetByHocPhanId(long hocPhanId) {
+		return hocPhanDao.findHocPhanTienQuyetByHocPhanId(hocPhanId);
+	}
+
+	@Override
+	public List<String> findNhomTuChonByHocPhanId(long hocPhanId) {
+		return hocPhanDao.findNhomTuChonByHocPhanId(hocPhanId);
+	}
 }

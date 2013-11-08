@@ -40,5 +40,10 @@ public class SinhVienServiceImpl implements SinhVienService{
 	public SinhVien findSinhVienById(long Id) {
 		return sinhVienDao.findSinhVienById(Id);
 	}
+	
+	@Autowired
+	public List<Object[]> findDiemCuaSinhVien(){
+		return sinhVienDao.findDiemCuaSinhVien();
+	}
 
 }

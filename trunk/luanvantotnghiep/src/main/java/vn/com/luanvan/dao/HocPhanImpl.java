@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import vn.com.luanvan.model.BoMon;
 import vn.com.luanvan.model.HocPhan;
+import vn.com.luanvan.model.HocPhanTienQuyet;
 
 @Repository
 public class HocPhanImpl implements HocPhanDao{
@@ -103,5 +104,81 @@ public class HocPhanImpl implements HocPhanDao{
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findHocPhanCoHocPhanTienQuyet() {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select hp, hptq "
+					+ "from HocPhan hp "
+					+ "inner join hp.hocPhanTienQuyets hptq "
+					+ "order by hp.hocPhanId asc";
+			Query query = session.createQuery(hql);
+			List<Object[]> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findAllHocPhanHocPhanTienQuyet() {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select hp, hptq "
+					+ "from HocPhan hp "
+					+ "left join hp.hocPhanTienQuyets hptq "
+					+ "order by hp.hocPhanId asc";
+			Query query = session.createQuery(hql);
+			List<Object[]> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<HocPhanTienQuyet> findHocPhanTienQuyetByHocPhanId(long hocPhanId) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select hptq "
+					+ "from HocPhan hp inner join "
+					+ "hp.hocPhanTienQuyets hptq "
+					+ "where hp.hocPhanId = :hocPhanId";
+			Query query = session.createQuery(hql);
+			query.setLong("hocPhanId", hocPhanId);
+			List<HocPhanTienQuyet> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> findNhomTuChonByHocPhanId(long hocPhanId) {
+		try {
+			Session session =  sessionFactory.getCurrentSession();
+			String hql = "select ctdt.nhomTuChon "
+					+ "from HocPhan hp inner join "
+					+ "hp.chuongTrinhs ctdt "
+					+ "where ctdt.nhomTuChon = ("
+													+ "select ctdt.nhomTuChon "
+													+ "from HocPhan hp inner join "
+													+ "hp.chuongTrinhs ctdt "
+													+ "where hp.hocPhanId = :hocPhanId)";
+			Query query = session.createQuery(hql);
+			query.setLong("hocPhanId", hocPhanId);
+			List<String> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

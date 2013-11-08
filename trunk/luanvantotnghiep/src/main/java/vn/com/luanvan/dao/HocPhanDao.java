@@ -3,6 +3,7 @@ package vn.com.luanvan.dao;
 import java.util.List;
 
 import vn.com.luanvan.model.HocPhan;
+import vn.com.luanvan.model.HocPhanTienQuyet;
 
 public interface HocPhanDao {
 	
@@ -17,5 +18,13 @@ public interface HocPhanDao {
 	public HocPhan findHocPhanById(long Id);
 	
 	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId, long khoaDaoTaoId);
+
+	public List<Object[]> findHocPhanCoHocPhanTienQuyet();
+
+	public List<Object[]> findAllHocPhanHocPhanTienQuyet();
+	
+	public List<HocPhanTienQuyet> findHocPhanTienQuyetByHocPhanId(long hocPhanId);
+	
+	public List<String> findNhomTuChonByHocPhanId(long hocPhanId);
 
 }
