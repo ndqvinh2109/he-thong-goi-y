@@ -7,7 +7,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -71,15 +70,32 @@ public class SinhVienDaoImpl implements SinhVienDao{
 
 	@Override
 	public SinhVien findSinhVienById(long Id) {
-		Session session = sessionFactory.getCurrentSession();
-		String hql="select sv "
-				+ "from SinhVien sv "
-				+ "where sv.sinhVienId = :sinhVienId";
-		Query query = session.createQuery(hql);
-		query.setLong("sinhVienId", Id);		
-		Criteria crit = getSession(false).createCriteria(this.type);		  
-		SinhVien entity = (SinhVien)crit.uniqueResult();
-		return entity;		
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql="select sv "
+					+ "from SinhVien sv "
+					+ "where sv.sinhVienId = :sinhVienId";
+			Query query = session.createQuery(hql);
+			query.setLong("sinhVienId", Id);		
+			SinhVien sinhVien = (SinhVien) query.uniqueResult();
+			return sinhVien;
+		} catch (HibernateException e) {
+			return null;
+		}		
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findDiemCuaSinhVien(){
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select";
+			Query query = session.createQuery(hql);
+			List<Object[]> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+			return null;
+		}
+	}
 }

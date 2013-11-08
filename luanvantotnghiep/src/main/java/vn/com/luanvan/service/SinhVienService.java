@@ -16,4 +16,5 @@ public interface SinhVienService {
 	
 	public SinhVien findSinhVienById(long Id);
 
+	public List<Object[]> findDiemCuaSinhVien();
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 	 <div class="container">
-            <p class="pull-right text-right copyright">© Copyright 2013. All Rights Reserved.</p>
+            <p class="pull-right text-right copyright">© Copyright 2013. Suggestions System.</p>
      </div>
 </body>
 </html>
