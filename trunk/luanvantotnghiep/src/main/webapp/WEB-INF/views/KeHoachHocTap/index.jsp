@@ -81,7 +81,7 @@
 						var $tbody = $('<tbody></tbody>');
 				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
 				        var $table = $('<table></table>',{
-				        	'class':'table table-hover'
+				        	'class':'table table-bordered table-hover'
 				        });
 				    	var hocPhan = new Object();
 				    	var chuongTrinhDaoTao = new Object();
