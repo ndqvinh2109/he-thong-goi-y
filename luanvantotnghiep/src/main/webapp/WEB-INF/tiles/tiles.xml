@@ -26,4 +26,9 @@
 	<put-attribute name="body" value="/WEB-INF/views/SinhVien/index.jsp" />
 </definition>
 
+<definition name="dudoandiemhocphan" extends="base.definition">
+	<put-attribute name="title" value="Kế hoạch học tập" />
+	<put-attribute name="body" value="/WEB-INF/views/DuDoanDiemHocPhan/index.jsp" />
+</definition>
+
 </tiles-definitions>

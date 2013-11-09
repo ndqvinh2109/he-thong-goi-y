@@ -50,6 +50,7 @@ public class KeHoachHocTapController {
 		for(String tt: list){
 			System.out.println(tt);
 		}
+		
 /*		List<Object[]> hptqs = hocPhanService.findHocPhanCoHocPhanTienQuyet();
 		for (Object[] hptq : hptqs){
 			HocPhan hocphan = (HocPhan) hptq[0];
