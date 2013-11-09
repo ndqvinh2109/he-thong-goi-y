@@ -148,8 +148,8 @@
 							}
 							else{
 								 while(j < rowCount){
-									  	$($tr).append('<td style="vertical-align: middle; text-align: center" rowspan="'+rowCount+'">'+chuongTrinhDaoTao.tuChon+'</td>');
-									  	break;
+								  	$($tr).append('<td style="vertical-align: middle; text-align: center" rowspan="'+rowCount+'">'+chuongTrinhDaoTao.tuChon+'</td>');
+								  	break;
 								 }
 							}
 							  
@@ -158,13 +158,11 @@
 						  .append('<td>'+strTemp+'</td>');
 						  
 						$($tr).appendTo($tbody);
-						
 						}
 					});		  
 				}
 				return $tbody;
 			}
-			
 			
 			$('#inKeHoach').click(function(){
 				$('#chuongTrinhDaoTao').empty();
