@@ -105,41 +105,6 @@ public class HocPhanImpl implements HocPhanDao{
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Object[]> findHocPhanCoHocPhanTienQuyet() {
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			String hql = "select hp, hptq "
-					+ "from HocPhan hp "
-					+ "inner join hp.hocPhanTienQuyets hptq "
-					+ "order by hp.hocPhanId asc";
-			Query query = session.createQuery(hql);
-			List<Object[]> list = query.list();
-			return list;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Object[]> findAllHocPhanHocPhanTienQuyet() {
-		try {
-			Session session = sessionFactory.getCurrentSession();
-			String hql = "select hp, hptq "
-					+ "from HocPhan hp "
-					+ "left join hp.hocPhanTienQuyets hptq "
-					+ "order by hp.hocPhanId asc";
-			Query query = session.createQuery(hql);
-			List<Object[]> list = query.list();
-			return list;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -180,5 +145,27 @@ public class HocPhanImpl implements HocPhanDao{
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findHocPhanBySinhVienIdAndNienKhoaId(long sinhVienId) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select hp, diem, nkhk "
+					+ "from Diem diem "
+					+ "inner join diem.nienKhoaHocKy nkhk "
+					+ "inner join diem.sinhvien sv "
+					+ "inner join diem.hocPhan hp "
+					+ "where sv.sinhVienId = :sinhVienId ";
+			Query query = session.createQuery(hql);
+			query.setLong("sinhVienId", sinhVienId);
+			List<Object[]> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+//			e.printStackTrace();
+			return null;
+		}
+		
 	}
 }

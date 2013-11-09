@@ -19,12 +19,14 @@ public interface HocPhanDao {
 	
 	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoId(long nganhId, long khoaDaoTaoId);
 
-	public List<Object[]> findHocPhanCoHocPhanTienQuyet();
-
-	public List<Object[]> findAllHocPhanHocPhanTienQuyet();
-	
+//	public List<Object[]> findHocPhanCoHocPhanTienQuyet();
+//
+//	public List<Object[]> findAllHocPhanHocPhanTienQuyet();
+//	
 	public List<HocPhanTienQuyet> findHocPhanTienQuyetByHocPhanId(long hocPhanId);
 	
 	public List<String> findNhomTuChonByHocPhanId(long hocPhanId);
+	
+	public List<Object[]> findHocPhanBySinhVienIdAndNienKhoaId(long sinhVienId);
 
 }

@@ -48,15 +48,6 @@ public class HocPhanServiceImpl implements HocPhanService{
 		return hocPhanDao.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
 	}
 
-	@Override
-	public List<Object[]> findHocPhanCoHocPhanTienQuyet(){
-		return hocPhanDao.findHocPhanCoHocPhanTienQuyet();
-	}
-	
-	@Override
-	public List<Object[]> findAllHocPhanHocPhanTienQuyet(){
-		return hocPhanDao.findAllHocPhanHocPhanTienQuyet();
-	}
 
 	@Override
 	public List<HocPhanTienQuyet> findHocPhanTienQuyetByHocPhanId(long hocPhanId) {
@@ -66,5 +57,10 @@ public class HocPhanServiceImpl implements HocPhanService{
 	@Override
 	public List<String> findNhomTuChonByHocPhanId(long hocPhanId) {
 		return hocPhanDao.findNhomTuChonByHocPhanId(hocPhanId);
+	}
+
+	@Override
+	public List<Object[]> findHocPhanBySinhVienIdAndNienKhoaId(long sinhVienId) {
+		return hocPhanDao.findHocPhanBySinhVienIdAndNienKhoaId(sinhVienId);
 	}
 }
