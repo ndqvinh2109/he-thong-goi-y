@@ -55,14 +55,116 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			function countItemInArray(item, array){
-				var counter = 0;
-				for(var i = 0; i < array.length; i++){
-					if(array[i][1].nhomTuChon == item){
-						counter ++;
+				if(item[0].hocPhanId == array[0][0].hocPhanId){
+					if(array.length == 1)
+						return 0;
+					else
+						return array.length;
+				}
+				else {
+					return 0;
+				}
+			}
+			
+			function getNhomTuChons(item,array,index){
+				var myArray = [];
+				if(item == '0'){
+					myArray.push(array[index]);
+					return myArray;
+				}
+				else{
+					for(var i = 0; i < array.length; i++){
+						if(item == array[i][1].nhomTuChon){
+							myArray.push(array[i]);
+						}
 					}
 				}
-				return counter;
+				return myArray;
 			}
+			
+			function getHocPhansByNhomKienThuc(array,group){
+				var myArray = [];
+				for(var i = 0; i < array.length; i++){
+					if(group == array[i][1].khoiKienThuc){
+						myArray.push(array[i]);
+					}
+				}
+				return myArray;
+			}
+			
+			function createTable(data,str){
+				var $tbody = $('<tbody></tbody>');
+		    	var hocPhan = new Object();
+		    	var chuongTrinhDaoTao = new Object();
+		    	var rowCount = 0;
+		    	var $tr = $('<tr></tr>');
+		    	$($tr).append('<td colspan="9" class="success text-center"><strong>'+str+'</strong></td>');
+		    	$($tr).appendTo($tbody);
+		    	for(var i = 0; i < data.length; i++){
+		        	hocPhan = data[i][0];
+		      		chuongTrinhDaoTao = data[i][1];
+		      		rowCount = countItemInArray(data[i], getNhomTuChons(chuongTrinhDaoTao.nhomTuChon, data, i));
+		      		$.ajax({
+						url: '${pageContext.request.contextPath}/service/loadHocPhanTienQuyetByHocPhanId',
+						type: 'GET',
+						dataType: "json",
+						data: {
+							hocPhanId: hocPhan.hocPhanId
+						},
+						async: false,
+						success: function(data){
+							var strTemp = '';
+							$tr = $('<tr></tr>');
+							var j = 0;
+							
+							for(var i = 0; i < data.hptq.length; i++){
+								var hptqTemp = data.hptq;
+								if(i + 1 == data.hptq.length){
+									strTemp += hptqTemp[i].maHocPhanTienQuyet;
+								}
+								else{
+									strTemp += hptqTemp[i].maHocPhanTienQuyet + ', ';
+								}
+							}
+							$($tr).append('<td>'+hocPhan.hocPhanId+'</td>')
+							  .append('<td>'+hocPhan.maHP+'</td>')
+							  .append('<td>'+hocPhan.tenHP+'</td>')
+							  .append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTC+'</td>');
+							
+							
+							if(chuongTrinhDaoTao.tuChon != '0'){
+								 $($tr).append('<td style="vertical-align: middle; text-align: center"></td>');
+							}	
+							else{
+								 $($tr).append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTC+'</td>');
+							}
+							 
+							
+							if(chuongTrinhDaoTao.nhomTuChon == '0' || hocPhan.maHP == 'TC100'){
+								if(chuongTrinhDaoTao.nhomTuChon == '0')
+									$($tr).append('<td></td>');
+								else
+									$($tr).append('<td style="vertical-align: middle; text-align: center">'+chuongTrinhDaoTao.tuChon+'</td>');
+							}
+							else{
+								 while(j < rowCount){
+									  	$($tr).append('<td style="vertical-align: middle; text-align: center" rowspan="'+rowCount+'">'+chuongTrinhDaoTao.tuChon+'</td>');
+									  	break;
+								 }
+							}
+							  
+						  $($tr).append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTietLT+'</td>')
+						  .append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTietTH+'</td>')
+						  .append('<td>'+strTemp+'</td>');
+						  
+						$($tr).appendTo($tbody);
+						
+						}
+					});		  
+				}
+				return $tbody;
+			}
+			
 			
 			$('#inKeHoach').click(function(){
 				$('#chuongTrinhDaoTao').empty();
@@ -77,57 +179,23 @@
 						khoaDaoTaoId: khoaDaoTaoId
 					},
 					success: function(data){
-						console.log(data.danhSachHocPhan);
-						var $tbody = $('<tbody></tbody>');
+						var str = 'Khối kiến thức giáo dục đại cương';
 				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
 				        var $table = $('<table></table>',{
 				        	'class':'table table-bordered table-hover'
 				        });
-				    	var hocPhan = new Object();
-				    	var chuongTrinhDaoTao = new Object();
-				    	
-				        for(var i = 0; i < data.danhSachHocPhan.length; i++){
-				        	hocPhan = data.danhSachHocPhan[i][0];
-				      		chuongTrinhDaoTao = data.danhSachHocPhan[i][1];
-				      		console.log(countItemInArray(chuongTrinhDaoTao.nhomTuChon,data.danhSachHocPhan));
-				      		$.ajax({
-								url: '${pageContext.request.contextPath}/service/loadHocPhanTienQuyetByHocPhanId',
-								type: 'GET',
-								dataType: "json",
-								data: {
-									hocPhanId: hocPhan.hocPhanId
-								},
-								async: false,
-								success: function(data){
-									var strTemp = '';
-									for(var i = 0; i < data.hptq.length; i++){
-										var hptqTemp = data.hptq;
-										if(i + 1 == data.hptq.length){
-											strTemp += hptqTemp[i].maHocPhanTienQuyet;
-										}
-										else{
-											strTemp += hptqTemp[i].maHocPhanTienQuyet + ', ';
-										}
-									}
-								
-									var $tr = $('<tr></tr>');
-									$($tr).append('<td>'+hocPhan.hocPhanId+'</td>')
-									  .append('<td>'+hocPhan.maHP+'</td>')
-									  .append('<td>'+hocPhan.tenHP+'</td>')
-									  .append('<td>'+hocPhan.soTC+'</td>')
-									  .append('<td>'+hocPhan.soTC+'</td>')
-									  .append('<td>'+chuongTrinhDaoTao.tuChon+'</td>')
-									  .append('<td>'+hocPhan.soTietLT+'</td>')
-									  .append('<td>'+hocPhan.soTietTH+'</td>')
-									  .append('<td>'+strTemp+'</td>');
-								$($tr).appendTo($tbody);
-								}
-							});		  
-						}
-				        $($thead).appendTo($table);
-						$($tbody).appendTo($table);
+				        
+				    	$($thead).appendTo($table);
+				        var $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'1'),str);
+				        $($tbody).appendTo($table);
+				        str = 'Khối kiến thức cơ sở ngành';
+				       	$tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'2'),str);
+				        $($tbody).appendTo($table);
+				        str = 'Khối kiến thức chuyên ngành';
+				        $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'3'),str);
+				        $($tbody).appendTo($table);
+										
 						$('#chuongTrinhDaoTao').append($table);
-						
 					}
 				});
 				
