@@ -20,8 +20,8 @@
             <authentication-manager>
                   <authentication-provider>
                       <user-service>
-                                <user name="vinh" password="123456" authorities="ROLE_USER" />
-                      			<user name="admin" password="admin" authorities="ROLE_ADMIN" />
+	                        <user name="loan" password="123456" authorities="ROLE_USER" />
+	                    	<user name="tuyen" password="123456" authorities="ROLE_USER" />
                       </user-service>
                   </authentication-provider>
             </authentication-manager>
