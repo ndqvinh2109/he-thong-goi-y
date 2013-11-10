@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,6 +35,7 @@
                 <li class="dropdown-header">Thông tin kế hoạch học tập</li>
                 <li><a href="#">Học phần</a></li>
                 <li><a href="#">Chương trình đào tạo</a></li>
+                <li><a href="<c:url value="${pageContext.request.contextPath}/j_spring_security_logout"/>">Đăng xuất</a></li>
               </ul>
             </li>
           </ul>
