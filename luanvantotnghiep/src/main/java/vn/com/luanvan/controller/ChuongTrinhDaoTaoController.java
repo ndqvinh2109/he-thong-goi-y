@@ -27,7 +27,7 @@ public class ChuongTrinhDaoTaoController {
 	private HocPhanService hocPhanService;
     
 	@RequestMapping(value="chuongtrinhdaotao", method = RequestMethod.GET)
-	public String loadPageKeHoachHocTap(Map<String,Object> map){
+	public String loadPageChuongTrinhDaoTao(Map<String,Object> map){
 		try {
 			map.put("nganhs", nganhService.findAllNganh());
 			map.put("khoaDaoTaos", khoaDaoTaoService.findAllKhoaDaoTao());

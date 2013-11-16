@@ -32,7 +32,7 @@
                 <li><a href="#">Ngành</a></li>
                 <li><a href="#">Khoa chủ quản</a></li>
                 <li><a href="#">Lớp</a></li>
-                <li><a href="${pageContext.request.contextPath}/service/sinhvien">Sinh viên</a></li>
+                <li><a href="#">Sinh viên</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">Thông tin kế hoạch học tập</li>
                 <li><a href="#">Học phần</a></li>
