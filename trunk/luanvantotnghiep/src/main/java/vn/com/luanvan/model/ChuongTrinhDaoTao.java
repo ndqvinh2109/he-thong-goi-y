@@ -25,6 +25,16 @@ public class ChuongTrinhDaoTao {
 	private String nhomTuChon;
 	
 	private String khoiKienThuc;
+	
+	private String hocKyMacDinh;
+	
+	public String getHocKyMacDinh() {
+		return hocKyMacDinh;
+	}
+
+	public void setHocKyMacDinh(String hocKyMacDinh) {
+		this.hocKyMacDinh = hocKyMacDinh;
+	}
 
 	@JsonIgnore
 	@ManyToOne
