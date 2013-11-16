@@ -17,7 +17,7 @@ import vn.com.luanvan.service.KhoaDaoTaoService;
 import vn.com.luanvan.service.NganhService;
 
 @Controller
-public class KeHoachHocTapController {
+public class ChuongTrinhDaoTaoController {
 	
 	@Autowired
 	private NganhService nganhService;
@@ -26,7 +26,7 @@ public class KeHoachHocTapController {
 	@Autowired
 	private HocPhanService hocPhanService;
     
-	@RequestMapping(value="kehoachhoctap", method = RequestMethod.GET)
+	@RequestMapping(value="chuongtrinhdaotao", method = RequestMethod.GET)
 	public String loadPageKeHoachHocTap(Map<String,Object> map){
 		try {
 			map.put("nganhs", nganhService.findAllNganh());
@@ -34,7 +34,7 @@ public class KeHoachHocTapController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "kehoachhoctap";
+		return "chuongtrinhdaotao";
 	}
 	
 	@RequestMapping(value="loadChuongTrinhDaoTao", method=RequestMethod.GET)

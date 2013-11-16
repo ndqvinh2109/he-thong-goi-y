@@ -20,6 +20,9 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
+            <li class="active"><a href="${pageContext.request.contextPath}/service/chuongtrinhdaotao"><i class="fa fa-book fa-fw"></i> Chương trình đào tạo</a></li>
+			<li><a href="${pageContext.request.contextPath}/service/kehoachhoctap">Dự đoán điểm học phần</i></a></li>
+
           	<li class="dropdown">
           		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil fa-fw"></i> Kế hoạch học tập <b class="caret"></b></a>
           		<ul class="dropdown-menu" style="width: 200px">
@@ -27,8 +30,7 @@
             		<li class="active"><a href="${pageContext.request.contextPath}/service/lapkehoachhoctap"><i class="fa fa-book fa-fw"></i> Lập Kế hoạch học tập</a></li>
             	</ul>
             </li>         
-            
-			<li><a href="${pageContext.request.contextPath}/service/dudoandiemhocphan">Dự đoán điểm học phần</i></a></li>
+            <li><a href="${pageContext.request.contextPath}/service/dudoandiemhocphan">Dự đoán điểm học phần</i></a></li>
 			
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil fa-fw"></i> Cập nhật <b class="caret"></b></a>

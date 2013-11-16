@@ -44,18 +44,6 @@ public class DuDoanDiemHocPhan {
 		Map<String,Object> map = new HashMap<String,Object>();
 		List<Object[]> hps = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhVienId);
 		map.put("danhSachDiemHocPhan", hps);
-		
-/*		List<String> list = hocPhanService.findNhomTuChonByHocPhanId(4L);
-		for(String tt: list){
-			System.out.println(tt);
-		}
-*/		
-/*		List<Object[]> hptqs = hocPhanService.findHocPhanCoHocPhanTienQuyet();
-		for (Object[] hptq : hptqs){
-			HocPhan hocphan = (HocPhan) hptq[0];
-			System.out.println(hocphan.getTenHP());
-		}
-*/		
 		return map;
 	}
 	
