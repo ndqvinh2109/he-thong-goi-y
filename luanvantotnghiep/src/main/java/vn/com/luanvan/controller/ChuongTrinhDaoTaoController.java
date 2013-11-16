@@ -41,22 +41,9 @@ public class ChuongTrinhDaoTaoController {
 	public @ResponseBody Map<String, Object> loadChuongTrinhDaoTao(
 			@RequestParam(value="nganhId", required = false) long nganhId,
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
-		System.out.println(nganhId + " " + khoaDaoTaoId);
 		Map<String,Object> map = new HashMap<String,Object>();
 		List<Object[]> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
 		map.put("danhSachHocPhan", hps);
-		
-		List<String> list = hocPhanService.findNhomTuChonByHocPhanId(4L);
-		for(String tt: list){
-			System.out.println(tt);
-		}
-		
-/*		List<Object[]> hptqs = hocPhanService.findHocPhanCoHocPhanTienQuyet();
-		for (Object[] hptq : hptqs){
-			HocPhan hocphan = (HocPhan) hptq[0];
-			System.out.println(hocphan.getTenHP());
-		}
-*/		
 		return map;
 	}
 	

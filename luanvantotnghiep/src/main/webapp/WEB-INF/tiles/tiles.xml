@@ -21,19 +21,9 @@
 	<put-attribute name="body" value="/WEB-INF/views/ChuongTrinhDaoTao/index.jsp" />
 </definition>
 
-<definition name="sinhvien" extends="base.definition">
-	<put-attribute name="title" value="Thông Tin Sinh Viên" />
-	<put-attribute name="body" value="/WEB-INF/views/SinhVien/index.jsp" />
-</definition>
-
 <definition name="dudoandiemhocphan" extends="base.definition">
 	<put-attribute name="title" value="Kế hoạch học tập" />
 	<put-attribute name="body" value="/WEB-INF/views/DuDoanDiemHocPhan/index.jsp" />
-</definition>
-
-<definition name="lapkehoachhoctap" extends="base.definition">
-	<put-attribute name="title" value="Lập Kế hoạch học tập" />
-	<put-attribute name="body" value="/WEB-INF/views/LapKeHoachHocTap/index.jsp" />
 </definition>
 
 </tiles-definitions>
