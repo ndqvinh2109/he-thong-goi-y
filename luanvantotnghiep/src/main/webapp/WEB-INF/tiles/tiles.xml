@@ -16,9 +16,9 @@
 	<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
 </definition>
 
-<definition name="kehoachhoctap" extends="base.definition">
+<definition name="chuongtrinhdaotao" extends="base.definition">
 	<put-attribute name="title" value="Kế hoạch học tập" />
-	<put-attribute name="body" value="/WEB-INF/views/KeHoachHocTap/index.jsp" />
+	<put-attribute name="body" value="/WEB-INF/views/ChuongTrinhDaoTao/index.jsp" />
 </definition>
 
 <definition name="sinhvien" extends="base.definition">
