@@ -168,4 +168,30 @@ public class HocPhanImpl implements HocPhanDao{
 		}
 		
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoKHHTId(long nganhId,
+			long khoaDaoTaoId) {
+		
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select hp, ctdt "
+					+ "from ChuongTrinhDaoTao ctdt "
+					+ "inner join ctdt.khoaDaoTao kdt "
+					+ "inner join ctdt.nganh ng "
+					+ "inner join ctdt.hocPhan hp "
+					+ "where kdt.khoaDaoTaoId = :khoaDaoTaoId "
+					+ "and ng.nganhId = :nganhId "
+					+ "order by cast(ctdt.hocKyMacDinh as integer) asc";
+			Query query = session.createQuery(hql);
+			query.setLong("khoaDaoTaoId", khoaDaoTaoId);
+			query.setLong("nganhId", nganhId);
+			List<Object[]> list = query.list();
+			return list;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

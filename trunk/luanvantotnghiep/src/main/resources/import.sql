@@ -261,7 +261,7 @@ INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tucho
 INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (48, '6','3', '0', '0', 48, 1, 1);
 INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (49, '7','3', '0', '0', 49, 1, 1);
 INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (50, '8','3', '0', '0', 50, 1, 1);
-INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (51, 'he','3', '0', '0', 51, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (51, '10','3', '0', '0', 51, 1, 1);
 INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (52, '7','3', '0', '0', 52, 1, 1);
 INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (53, '7','3', '0', '0', 53, 1, 1);
 INSERT INTO chuongtrinhdaotao (id, hockymacdinh, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (54, '7','3', '0', '0', 54, 1, 1);
