@@ -63,4 +63,10 @@ public class HocPhanServiceImpl implements HocPhanService{
 	public List<Object[]> findHocPhanBySinhVienIdAndNienKhoaId(long sinhVienId) {
 		return hocPhanDao.findHocPhanBySinhVienIdAndNienKhoaId(sinhVienId);
 	}
+
+	@Override
+	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoKHHTId(long nganhId,
+			long khoaDaoTaoId) {
+		return hocPhanDao.findHocPhanByNganhIdAndKhoaDaoTaoKHHTId(nganhId, khoaDaoTaoId);
+	}
 }

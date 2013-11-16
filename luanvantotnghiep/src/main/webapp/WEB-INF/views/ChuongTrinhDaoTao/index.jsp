@@ -43,7 +43,7 @@
 		  					</c:forEach>
 		  				</select>
 		  			</td>
-		  			<td><button id="inKeHoach" class="btn btn-info">In kế hoạch học tập</button></td>
+		  			<td><button id="inKeHoach" class="btn btn-info">In chương trình đào tạo</button></td>
 				</tr>
 			</tbody>
 		</table>
