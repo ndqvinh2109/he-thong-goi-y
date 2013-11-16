@@ -31,4 +31,9 @@
 	<put-attribute name="body" value="/WEB-INF/views/DuDoanDiemHocPhan/index.jsp" />
 </definition>
 
+<definition name="lapkehoachhoctap" extends="base.definition">
+	<put-attribute name="title" value="Lập Kế hoạch học tập" />
+	<put-attribute name="body" value="/WEB-INF/views/LapKeHoachHocTap/index.jsp" />
+</definition>
+
 </tiles-definitions>
