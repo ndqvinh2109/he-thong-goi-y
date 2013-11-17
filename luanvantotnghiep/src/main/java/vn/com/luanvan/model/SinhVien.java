@@ -1,6 +1,5 @@
 package vn.com.luanvan.model;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -29,9 +28,9 @@ public class SinhVien {
 	
 	private String hoTen;
 	
-	private int phai;
+	private String phai;
 	
-	private Date ngaySinh;
+	private String ngaySinh;
 	
 	private String diaChi;
 	
@@ -79,19 +78,19 @@ public class SinhVien {
 		this.hoTen = hoTen;
 	}
 
-	public int getPhai() {
+	public String getPhai() {
 		return phai;
 	}
 
-	public void setPhai(int phai) {
+	public void setPhai(String phai) {
 		this.phai = phai;
 	}
 
-	public Date getNgaySinh() {
+	public String getNgaySinh() {
 		return ngaySinh;
 	}
 
-	public void setNgaySinh(Date ngaySinh) {
+	public void setNgaySinh(String ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
 
