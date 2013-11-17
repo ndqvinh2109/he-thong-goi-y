@@ -12,6 +12,8 @@
 	<!-- Enable component scanning -->
 	<context:component-scan base-package="vn.com.luanvan" />
 	
+	<context:property-placeholder location="classpath:config.properties" />
+	
 	<!-- wro4j configuration -->
 	<bean name="wroFilter" id="wroFilter" class="ro.isdc.wro.http.ConfigurableWroFilter">
 		<property name="properties" ref="wroProperties" />
