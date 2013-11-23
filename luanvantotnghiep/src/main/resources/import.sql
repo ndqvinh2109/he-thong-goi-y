@@ -1758,52 +1758,6 @@ INSERT INTO hocphan (id, mahp, sotc, sotietlt, sotietth, tenhp) VALUES (1715,'DB
 INSERT INTO hocphan (id, mahp, sotc, sotietlt, sotietth, tenhp) VALUES (1716,'DB022', 2, 30, 0,'THE DUC 2');
 INSERT INTO hocphan (id, mahp, sotc, sotietlt, sotietth, tenhp) VALUES (1717,'DB023', 1, 15, 0,'GIAO DUC CONG DAN 1');
 
-
-
-
---
--- TOC entry 1980 (class 0 OID 72531)
--- Dependencies: 166 1988
--- Data for Name: hocphantienquyet; Type: TABLE DATA; Schema: luanvan; Owner: postgres
---
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (1, 'CT801', 1);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (2, 'CT802', 2);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (3, 'XH004', 3);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (4, 'XH005', 4);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (5, 'ML009', 5);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (6, 'ML010', 6);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (7, 'ML006', 7);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (8, 'TN001', 14);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (9, 'CT101', 15);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (10, 'CT104', 21);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (11, 'CT107', 22);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (12, 'CT101', 26);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (13, 'CT103', 38);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (14, 'CT101', 39);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (15, 'CT101', 46);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (16, 'CT103', 46);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (17, 'CT106', 47);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (18, 'CT106', 48);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (19, 'CT106', 49);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (20, 'CT114', 49);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (21, 'CT114', 50);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (22, 'CT113', 52);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (23, 'CT165', 54);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (24, 'TN010', 55);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (25, 'CT106', 57);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (26, 'CT803', 58);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (27, 'XH006', 59);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (28, 'CT114', 60);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (29, 'CT114', 61);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (30, 'CT114', 62);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (31, 'CT109', 66);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (32, 'CT101', 68);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (33, 'CT349', 69);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (34, 'CT112', 70);
-INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (35, 'CT106', 71);
-
-
-
 --
 -- TOC entry 1981 (class 0 OID 72536)
 -- Dependencies: 167 1988
@@ -1853,6 +1807,125 @@ INSERT INTO lop (id, malop, siso, tenlop, khoadaotaoid, nganhid) VALUES (4, 'DT0
 INSERT INTO lop (id, malop, siso, tenlop, khoadaotaoid, nganhid) VALUES (5, 'DI0156A1', 85, 'Tin học K27', 3, 2);
 INSERT INTO lop (id, malop, siso, tenlop, khoadaotaoid, nganhid) VALUES (6, 'DI0158A1', 85, 'Điện tử K27', 3, 3);
 INSERT INTO lop (id, malop, siso, tenlop, khoadaotaoid, nganhid) VALUES (7, 'DT0156C1', 85, 'Cao đẳng tin học K27', 3, 2);
+
+
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (1, '1', '0', '0', 1, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (2, '1', '11', '2', 2, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (3, '1', '12', '10', 3, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (4, '1', '12', '10', 4, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (5, '1', '12', '10', 5, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (6, '1', '12', '10', 6, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (7, '1', '12', '10', 7, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (8, '1', '12', '10', 8, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (9, '1', '0', '0', 9, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (10, '1', '0', '0', 10, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (11, '1', '0', '0', 11, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (12, '1', '0', '0', 12, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (13, '1', '0', '0', 13, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (14, '1', '0', '0', 14, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (15, '1', '0', '0', 15, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (16, '1', '0', '0', 16, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (17, '1', '0', '0', 17, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (18, '1', '0', '0', 18, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (19, '1', '0', '0', 19, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (20, '1', '0', '0', 20, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (21, '1', '13', '2', 21, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (22, '1', '13', '2', 22, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (23, '1', '13', '2', 23, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (24, '1', '13', '2', 24, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (25, '1', '13', '2', 25, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (26, '1', '13', '2', 26, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (27, '1', '13', '2', 27, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (28, '2', '0', '0', 28, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (29, '2', '0', '0', 29, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (30, '2', '0', '0', 30, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (31, '2', '0', '0', 31, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (32, '2', '0', '0', 32, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (33, '2', '0', '0', 33, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (34, '2', '0', '0', 34, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (35, '2', '0', '0', 35, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (36, '2', '0', '0', 36, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (37, '2', '0', '0', 37, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (38, '2', '0', '0', 38, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (39, '2', '21', '2', 39, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (40, '2', '21', '2', 40, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (41, '2', '21', '2', 41, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (42, '2', '21', '2', 42, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (43, '2', '21', '2', 43, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (44, '2', '22', '2', 44, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (45, '2', '22', '2', 45, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (46, '3', '0', '0', 46, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (47, '3', '0', '0', 47, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (48, '3', '0', '0', 48, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (49, '3', '0', '0', 49, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (50, '3', '0', '0', 50, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (51, '3', '0', '0', 51, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (52, '3', '0', '0', 52, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (53, '3', '0', '0', 53, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (54, '3', '0', '0', 54, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (55, '3', '0', '0', 55, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (56, '3', '0', '0', 56, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (57, '3', '0', '0', 57, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (58, '3', '31', '2', 58, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (59, '3', '31', '2', 59, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (60, '3', '32', '2', 60, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (61, '3', '32', '2', 61, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (62, '3', '32', '2', 62, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (63, '3', '33', '2', 63, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (64, '3', '33', '2', 64, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (65, '3', '33', '2', 65, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (66, '3', '34', '10', 66, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (67, '3', '34', '10', 67, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (68, '3', '34', '10', 68, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (69, '3', '34', '10', 69, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (70, '3', '34', '10', 70, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (71, '3', '34', '10', 71, 1, 1);
+INSERT INTO chuongtrinhdaotao (id, khoikienthuc, nhomtuchon, tuchon, hocphanid, khoadaotaoid, nganhid) VALUES (72, '3', '34', '10', 72, 1, 1);
+
+
+
+
+
+--
+-- TOC entry 1980 (class 0 OID 72531)
+-- Dependencies: 166 1988
+-- Data for Name: hocphantienquyet; Type: TABLE DATA; Schema: luanvan; Owner: postgres
+--
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (1, 'CT801', 1);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (2, 'CT802', 2);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (3, 'XH004', 3);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (4, 'XH005', 4);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (5, 'ML009', 5);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (6, 'ML010', 6);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (7, 'ML006', 7);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (8, 'TN001', 14);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (9, 'CT101', 15);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (10, 'CT104', 21);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (11, 'CT107', 22);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (12, 'CT101', 26);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (13, 'CT103', 38);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (14, 'CT101', 39);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (15, 'CT101', 46);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (16, 'CT103', 46);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (17, 'CT106', 47);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (18, 'CT106', 48);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (19, 'CT106', 49);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (20, 'CT114', 49);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (21, 'CT114', 50);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (22, 'CT113', 52);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (23, 'CT165', 54);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (24, 'TN010', 55);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (25, 'CT106', 57);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (26, 'CT803', 58);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (27, 'XH006', 59);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (28, 'CT114', 60);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (29, 'CT114', 61);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (30, 'CT114', 62);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (31, 'CT109', 66);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (32, 'CT101', 68);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (33, 'CT349', 69);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (34, 'CT112', 70);
+INSERT INTO hocphantienquyet (id, mahocphantienquyet, hocphanid) VALUES (35, 'CT106', 71);
 
 
 --
