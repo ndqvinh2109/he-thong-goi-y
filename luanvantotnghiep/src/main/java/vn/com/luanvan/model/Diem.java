@@ -56,6 +56,4 @@ public class Diem {
 	public void setSinhvien(SinhVien sinhvien) {
 		this.sinhvien = sinhvien;
 	}
-	
-	
 }
