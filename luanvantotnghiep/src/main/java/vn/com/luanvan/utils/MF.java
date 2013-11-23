@@ -1,4 +1,4 @@
-package vn.com.luanvan.mf;
+package vn.com.luanvan.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
