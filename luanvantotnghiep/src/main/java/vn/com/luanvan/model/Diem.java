@@ -19,6 +19,8 @@ public class Diem {
 	private long diemId;
 	
 	private String diem;
+	
+	private String diemDuDoan;
 
 	@ManyToOne
 	@JoinColumn(name="sinhVienId")
@@ -55,5 +57,13 @@ public class Diem {
 
 	public void setSinhvien(SinhVien sinhvien) {
 		this.sinhvien = sinhvien;
+	}
+
+	public String getDiemDuDoan() {
+		return diemDuDoan;
+	}
+
+	public void setDiemDuDoan(String diemDuDoan) {
+		this.diemDuDoan = diemDuDoan;
 	}
 }
