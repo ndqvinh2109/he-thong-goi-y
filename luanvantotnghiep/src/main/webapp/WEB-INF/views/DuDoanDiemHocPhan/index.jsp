@@ -22,8 +22,10 @@
 		<table>
 			<thead>
 				<tr>
-					<td class="col-lg-3">Sinh viên</td>
-					<td class="col-lg-3"></td>
+					<td>Sinh viên</td>
+					<td class="pull-left"></td>
+					<td class="pull-left"></td>
+					<td class="pull-left"></td>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,6 +38,8 @@
 		  				</select>
 		  			</td>
 		  			<td><button id="inKeHoachHocTap" class="btn btn-info">In kế hoạch học tập</button></td>
+		  			<td><button id="ghiFile" class="btn btn-info">Ghi File</button></td>
+		  			<td><button id="duDoanDiem" class="btn btn-info">Dự đoán điểm</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -85,6 +89,31 @@
 						$('#keHoachHocTap').append($table);
 					}
 				});
+		});
+		
+		$('#ghiFile').click(function(){
+			$.ajax({
+				url: '${pageContext.request.contextPath}/service/ghiFile',
+				type: 'GET',
+				data: null,
+				success: function(data){
+					console.log(data);
+				}
+			});
+			
+		});
+		
+		
+		$('#duDoanDiem').click(function(){
+			$.ajax({
+				url: '${pageContext.request.contextPath}/service/duDoanDiem',
+				type: 'GET',
+				data: null,
+				success: function(data){
+					console.log(data);
+				}
+			});
+			
 		});
 	});
 		

@@ -66,8 +66,6 @@ public class MF{
     	initialize();
     	train();
     	test();
-    	
-    	System.out.println("\npress enter to exit..."); System.in.read();
     }
     
     //////////////////////////

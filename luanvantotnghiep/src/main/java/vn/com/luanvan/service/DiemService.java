@@ -18,6 +18,6 @@ public interface DiemService {
 	
 	public int updateDiemByDiemIdAndHocPhanIdAndSinhVienId(long diemId, String diemDuDoan);
 	
-	public void ghiFile();
+	public boolean ghiFile();
 
 }
