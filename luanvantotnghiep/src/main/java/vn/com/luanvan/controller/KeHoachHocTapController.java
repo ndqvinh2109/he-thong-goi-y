@@ -32,7 +32,6 @@ public class KeHoachHocTapController {
 			map.put("nganhs", nganhService.findAllNganh());
 			map.put("khoaDaoTaos", khoaDaoTaoService.findAllKhoaDaoTao());
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return "kehoachhoctap";
 	}
