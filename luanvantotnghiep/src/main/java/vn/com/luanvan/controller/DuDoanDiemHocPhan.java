@@ -28,7 +28,6 @@ public class DuDoanDiemHocPhan {
 	public String loadPageDuDoanKetQuaHocPhan(Map<String,Object> map){
 		map.put("sinhViens", sinhVienService.findAllSinhVien());
 		long sinhvienid = 2L;
-		List<Object[]> dsdiemhp = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhvienid);
 		return "dudoandiemhocphan";
 	}
 	
