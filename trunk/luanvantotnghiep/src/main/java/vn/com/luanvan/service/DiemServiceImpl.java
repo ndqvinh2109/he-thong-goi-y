@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +54,7 @@ public class DiemServiceImpl implements DiemService{
 	}
 
 	@Override
-	public void ghiFile() {
+	public boolean ghiFile() {
 		String currentDir = Utils.getConfigParam("luanvan.data.root.location");
 		String fnPredictor = currentDir + "/assistment_predictors_kc.txt"; // studentID as user, SkillID as item, correct as rating
     	String fnTarget = currentDir + "/assistment_target.txt";
@@ -173,8 +172,11 @@ public class DiemServiceImpl implements DiemService{
 			}
 			
 			bw.close();
+			
+			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
 		 
 	}
