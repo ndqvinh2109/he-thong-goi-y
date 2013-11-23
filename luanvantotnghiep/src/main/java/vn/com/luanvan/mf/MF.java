@@ -32,14 +32,13 @@ public class MF{
 
     public static float learnRate = 0.01f;
     public static float regularization = 0.015f;
-    public static int num_factors = 16;
-    public static int num_iterations = 10;
+    public static int num_factors = 64;
+    public static int num_iterations = 80;
 
 	//////////////////////////
     
     public static void main(String[] args) throws Exception{
     	String currentDir = Utils.getConfigParam("luanvan.data.root.location");
-        System.out.println(currentDir);
     	fnPredictor = currentDir + "/assistment_predictors_kc.txt"; // studentID as user, SkillID as item, correct as rating
     	fnTarget = currentDir + "/assistment_target.txt";
     	fnSplit = currentDir + "/assistment_split.txt";
@@ -138,6 +137,7 @@ public class MF{
     	// Initialize the latent factors: Draw randomly from -0.01 to 0.01
     	
     	fStudent = new float[maxStudentID+1][num_factors];
+    	System.out.println("fStudent.length: " + fStudent.length);
     	for (int sID=0; sID < fStudent.length; sID++)
     		for (int k=0; k < num_factors; k++)
     			fStudent[sID][k] = (float) ((Math.random()*0.02)-0.01);
@@ -254,6 +254,7 @@ public class MF{
     			
     			//set the prediction value
     			predictedPerformance[predRow++] = performancePred;
+    			System.out.println("student: " + student + "; hp: " + task + "; performancePred: " + performancePred);
     	    }
     	}
     	    	
