@@ -58,6 +58,17 @@
 					data:{
 						sinhVienId: sinhVienId
 					},
+					beforeSend: function(){
+						$.blockUI({ css: { 
+				            border: 'none', 
+				            padding: '15px', 
+				            backgroundColor: '#000', 
+				            '-webkit-border-radius': '10px', 
+				            '-moz-border-radius': '10px', 
+				            opacity: .5, 
+				            color: '#fff' 
+				        } }); 
+					},
 					success: function(data){
 						console.log(data.danhSachDiemHocPhan);
 						var $tbody = $('<tbody></tbody>');
@@ -87,6 +98,7 @@
 				        $($thead).appendTo($table);
 						$($tbody).appendTo($table);
 						$('#keHoachHocTap').append($table);
+						$.unblockUI();
 					}
 				});
 		});
@@ -96,8 +108,13 @@
 				url: '${pageContext.request.contextPath}/service/ghiFile',
 				type: 'GET',
 				data: null,
+				beforeSend: function(){
+					$.blockUI({ 
+						message: '<h4><img src="${pageContext.request.contextPath}/resources/assets/images/ajax-loader.gif" /> Loading...</h4>'
+			        }); 
+				},
 				success: function(data){
-					console.log(data);
+					$.unblockUI();
 				}
 			});
 			
@@ -109,14 +126,20 @@
 				url: '${pageContext.request.contextPath}/service/duDoanDiem',
 				type: 'GET',
 				data: null,
+				beforeSend: function(){
+					$.blockUI({ 
+						message: '<h4><img src="${pageContext.request.contextPath}/resources/assets/images/ajax-loader.gif" /> Loading...</h4>'
+			        }); 
+				},
 				success: function(data){
-					console.log(data);
-				}
+					$.unblockUI();
+				},
 			});
 			
 		});
 	});
 		
 	</script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.blockUI.js"></script>
 </body>
 </html>
