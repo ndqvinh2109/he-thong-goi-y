@@ -29,18 +29,12 @@ public class DuDoanDiemHocPhan {
 		map.put("sinhViens", sinhVienService.findAllSinhVien());
 		long sinhvienid = 2L;
 		List<Object[]> dsdiemhp = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhvienid);
-		for (Object[] diemhp : dsdiemhp){
-			HocPhan hocphan = (HocPhan) diemhp[0];
-			Diem diem = (Diem) diemhp[1];
-			System.out.println(hocphan.getTenHP()+" "+diem.getDiem());
-		}
 		return "dudoandiemhocphan";
 	}
 	
 	@RequestMapping(value="loadDuDoanDiemHocPhan", method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> loadDuDoanDiemHocPhan(
 			@RequestParam(value="sinhVienId", required = false) long sinhVienId){
-		System.out.println(sinhVienId);
 		Map<String,Object> map = new HashMap<String,Object>();
 		List<Object[]> hps = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhVienId);
 		map.put("danhSachDiemHocPhan", hps);
