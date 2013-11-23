@@ -30,6 +30,8 @@ public class Diem {
 	@JoinColumn(name="nienkhoaId")
 	private NienKhoaHocKy nienKhoaHocKy;
 	
+	
+
 	@ManyToOne
 	@JoinColumn(name="hocPhanId")
 	private HocPhan hocPhan;
@@ -65,5 +67,21 @@ public class Diem {
 
 	public void setDiemDuDoan(String diemDuDoan) {
 		this.diemDuDoan = diemDuDoan;
+	}
+	
+	public NienKhoaHocKy getNienKhoaHocKy() {
+		return nienKhoaHocKy;
+	}
+
+	public void setNienKhoaHocKy(NienKhoaHocKy nienKhoaHocKy) {
+		this.nienKhoaHocKy = nienKhoaHocKy;
+	}
+
+	public HocPhan getHocPhan() {
+		return hocPhan;
+	}
+
+	public void setHocPhan(HocPhan hocPhan) {
+		this.hocPhan = hocPhan;
 	}
 }

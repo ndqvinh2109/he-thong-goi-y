@@ -2,51 +2,67 @@ package vn.com.luanvan.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.DecimalFormat;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import vn.com.luanvan.service.DiemService;
+
+@Component
 public class MF{
-    public static final int COL_STUDENT = 0;
-    public static final int COL_TASK = 1;
-    public static final int TRAIN_SPLIT_VALUE = 0;
-    public static final int NEW_STUDENT_TASK = 1;
+	
+	@Autowired
+	private DiemService diemService;
+	
+    public final int COL_STUDENT = 0;
+    public final int COL_TASK = 1;
     
-    public static int[][] predictors;
-    public static int[] split; // (train=0) and (test=1)
-    public static float[] target;
-    static String fnPredictor;
-    static String fnTarget;
-    static String fnSplit;
+    public final int TRAIN_SPLIT_VALUE = 0;
+    public final int NEW_STUDENT_TASK = 1;
     
-    public static float[] predictedPerformance;
-    public static float[] truePerformance;
+    public int[][] predictors;
+    public int[] split; // (train=0) and (test=1)
+    public float[] target;
+    public int[] diem;
     
-    public static float[][] fStudent; // student latent factors
-    public static float[][] fTask; // task latent factors
+    String fnPredictor;
+    String fnTarget;
+    String fnSplit;
+    String fnDiem;
     
-    public static int[] newStudentID; // used for cold-start problem
-    public static int[] newTaskID; // used for cold-start problem
+    public float[] predictedPerformance;
+    public float[] truePerformance;
     
-    public static float globalAverage;
+    public float[][] fStudent; // student latent factors
+    public float[][] fTask; // task latent factors
+    
+    public int[] newStudentID; // used for cold-start problem
+    public int[] newTaskID; // used for cold-start problem
+    
+    public float globalAverage;
 
-    public static float minTarget = Float.MAX_VALUE, maxTarget = Float.MIN_VALUE;    
+    public float minTarget = Float.MAX_VALUE, maxTarget = Float.MIN_VALUE;    
 
-    public static float learnRate = 0.01f;
-    public static float regularization = 0.015f;
-    public static int num_factors = 64;
-    public static int num_iterations = 80;
+    public float learnRate = 0.01f;
+    public float regularization = 0.015f;
+    public int num_factors = 64;
+    public int num_iterations = 80;
 
-	//////////////////////////
     
-    public static void main(String[] args) throws Exception{
-    	String currentDir = Utils.getConfigParam("luanvan.data.root.location");
+    //////////////////////////
+    
+    public void mainMF() throws Exception{
+       	String currentDir = Utils.getConfigParam("luanvan.data.root.location");
     	fnPredictor = currentDir + "/assistment_predictors_kc.txt"; // studentID as user, SkillID as item, correct as rating
     	fnTarget = currentDir + "/assistment_target.txt";
     	fnSplit = currentDir + "/assistment_split.txt";
+    	fnDiem = currentDir + "/assistment_diemid.txt";
     	
     	//use the following line for running on the console
     	//parse_command_line(args);
     	
-    	readData(fnPredictor, fnTarget, fnSplit);    	
+    	readData(fnPredictor, fnTarget, fnSplit, fnDiem);    	
     	initialize();
     	train();
     	test();
@@ -56,7 +72,7 @@ public class MF{
     
     //////////////////////////
     
-    public static void readData(String fnPred, String fnTarget, String fnSplit) throws Exception{
+    public void readData(String fnPred, String fnTarget, String fnSplit, String fnDiem) throws Exception{
     	
     	// read predictors
     	System.out.print("reading predictors...");    	
@@ -104,13 +120,32 @@ public class MF{
     		split[row] = splitValue;
     		row++;
     	}
+    	
     	System.out.print("done.\t\t");
     	System.out.println("#splitRows \t= " + numSplitRows + " = " + row);    	    	
+    	
+    	//read diemId
+    	
+    	System.out.print("reading Diem...");
+    	
+    	BufferedReader brDiem= new BufferedReader(new FileReader(fnDiem));     	
+    	line = brDiem.readLine(); // header row has only 1 value: #rows
+    	int numDiemRows = Integer.parseInt(line);    	
+    	diem = new int[numDiemRows];
+    	row = 0;
+    	while ((line = brDiem.readLine())!=null){
+    		int diemValue = Integer.parseInt(line);
+    		diem[row] = diemValue;
+    		row++;
+    	}
+    	
+    	System.out.print("done.\t\t");
+    	System.out.println("#diemRows \t= " + numDiemRows + " = " + row);    	   
     }
     
     /////////////////////////////////////////
     
-    public static void initialize() {
+    public void initialize() {
     	
     	// first initializing all students are new, then updating them during training (this is used to check the cold-start problem)
     	int maxStudentID = 0;
@@ -176,7 +211,7 @@ public class MF{
     
     /////////////////////////////////////////
     
-    public static void train(){
+    public void train(){
     	long startTime = System.currentTimeMillis(); 
     	System.out.println("\ntraining...");    	
     	int numRows = predictors.length;
@@ -226,7 +261,7 @@ public class MF{
     
     //////////////////////////////////////
     
-    public static void test(){
+    public void test(){
     	int numRows = predictors.length;
     	int predRow = 0;
     	predictedPerformance = new float[truePerformance.length];
@@ -235,6 +270,7 @@ public class MF{
     		if (split[row] != TRAIN_SPLIT_VALUE) { //this is a test example
     			int student = predictors[row][COL_STUDENT];
         		int task = predictors[row][COL_TASK];
+    			int diemId = diem[row];
     			
     			// compute the predictions:
         		float performancePred = 0;
@@ -254,7 +290,12 @@ public class MF{
     			
     			//set the prediction value
     			predictedPerformance[predRow++] = performancePred;
-    			System.out.println("student: " + student + "; hp: " + task + "; performancePred: " + performancePred);
+    			
+    			System.out.println("student: " + student + "; hp: " + task + "; performancePred: " + performancePred + "; diemId: " + diemId);
+    			// Update diem sinh vien vao database
+    			DecimalFormat df = new DecimalFormat("#.#");
+    			String tt = df.format(Double.parseDouble(String.valueOf(performancePred)));
+    			diemService.updateDiemByDiemIdAndHocPhanIdAndSinhVienId(Long.parseLong(String.valueOf(diemId)), tt);
     	    }
     	}
     	    	
@@ -264,7 +305,7 @@ public class MF{
     
     /////////////////////////////////////////////
     
-    public static void RMSE() {
+    public void RMSE() {
     	float ss = 0;    
     	for (int i = 0; i < truePerformance.length; i++){
     		float dif = predictedPerformance[i] - truePerformance[i];
@@ -276,7 +317,7 @@ public class MF{
 
     /////////////////////////////////////////////
     
-    public static void MAE() {
+    public void MAE() {
     	float sum = 0;    
     	for (int i = 0; i < truePerformance.length; i++){
     		sum += Math.abs(predictedPerformance[i] - truePerformance[i]);    		
@@ -287,7 +328,7 @@ public class MF{
 
     /////////////////////////////////////////////
     
-    public static void parse_command_line(String[] args){
+    public void parse_command_line(String[] args){
     	int argi = 0;    	
     	while (argi < args.length && args[argi].startsWith("-")) {
     		if (args[argi].equals("-f") && argi+1 < args.length) {

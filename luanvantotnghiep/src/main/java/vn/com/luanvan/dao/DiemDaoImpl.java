@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -76,5 +77,17 @@ public class DiemDaoImpl implements DiemDao{
 		} catch (HibernateException e) {
 			return null;
 		}
+	}
+
+	@Override
+	public int updateDiemByDiemIdAndHocPhanIdAndSinhVienId(long diemId, String diemDuDoan) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "update Diem d set d.diemDuDoan = :diemDuDoan " +
+						"where d.diemId = :diemId";
+		Query query = session.createQuery(hql);
+		query.setParameter("diemId", diemId);
+		query.setParameter("diemDuDoan", diemDuDoan);
+		int result = query.executeUpdate();
+		return result;
 	}
 }
