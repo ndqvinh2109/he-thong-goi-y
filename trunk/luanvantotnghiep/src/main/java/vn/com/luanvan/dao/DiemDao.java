@@ -15,5 +15,7 @@ public interface DiemDao {
 	public List<Diem> findAllDiem();
 	
 	public Diem findDiemById(long Id);
+	
+	public int updateDiemByDiemIdAndHocPhanIdAndSinhVienId(long diemId, String diemDuDoan);
 
 }

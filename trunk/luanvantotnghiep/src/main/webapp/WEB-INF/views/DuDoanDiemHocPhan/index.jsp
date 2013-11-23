@@ -57,7 +57,7 @@
 					success: function(data){
 						console.log(data.danhSachDiemHocPhan);
 						var $tbody = $('<tbody></tbody>');
-				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Điểm</td><td>Học kỳ</td><td>Năm học</td></tr>');
+				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Điểm</td><td>Điểm dự đoán</td><td>Học kỳ</td><td>Năm học</td></tr>');
 				        var $table = $('<table></table>',{
 				        	'class':'table table-hover'
 			    		});
@@ -75,6 +75,7 @@
 									  .append('<td>'+hocPhan.tenHP+'</td>')
 									  .append('<td>'+hocPhan.soTC+'</td>')
 									  .append('<td>'+diem.diem+'</td>')
+									  .append('<td>'+diem.diemDuDoan+'</td>')
 									  .append('<td>'+nienKhoaHocKy.hocKy+'</td>')
 									  .append('<td>'+nienKhoaHocKy.namHoc+'</td>');
 								$($tr).appendTo($tbody);
