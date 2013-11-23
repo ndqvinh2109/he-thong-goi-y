@@ -27,7 +27,6 @@ public class DuDoanDiemHocPhan {
 	@RequestMapping(value="dudoandiemhocphan", method = RequestMethod.GET)
 	public String loadPageDuDoanKetQuaHocPhan(Map<String,Object> map){
 		map.put("sinhViens", sinhVienService.findAllSinhVien());
-		long sinhvienid = 2L;
 		return "dudoandiemhocphan";
 	}
 	
