@@ -35,6 +35,8 @@ public class SinhVien {
 	private String diaChi;
 	
 	private String email;
+	
+	private String diem;
 
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
@@ -118,6 +120,12 @@ public class SinhVien {
 		this.diems = diems;
 	}
 	
-	
+	public String getDiem() {
+		return diem;
+	}
+
+	public void setDiem(String diem) {
+		this.diem = diem;
+	}
 	
 }
