@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,14 +21,14 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="${pageContext.request.contextPath}/service/chuongtrinhdaotao"><i class="fa fa-book fa-fw"></i> Chương trình đào tạo</a></li>
-			<li><a href="${pageContext.request.contextPath}/service/kehoachhoctap">Kế hoạch học tập</i></a></li>
-            <li><a href="${pageContext.request.contextPath}/service/dudoandiemhocphan">Dự đoán điểm học phần</i></a></li>
+            <li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/chuongtrinhdaotao')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/chuongtrinhdaotao"><i class="fa fa-book fa-fw"></i> Chương trình đào tạo</a></li>
+			<li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/kehoachhoctap')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/kehoachhoctap"><i class="fa fa-clipboard fa-fw"></i>Kế hoạch học tập</i></a></li>
+            <li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/dudoandiemhocphan')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/dudoandiemhocphan"><i class="fa fa-file-text fa-fw"></i>Dự đoán điểm học phần</i></a></li>
 			
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil fa-fw"></i> Cập nhật <b class="caret"></b></a>
               <ul class="dropdown-menu" style="width: 200px">
-            	  <li class="dropdown-header">Thông tin chung</li>
+            	<li class="dropdown-header">Thông tin chung</li>
                 <li><a href="#">Bộ Môn</a></li>
                 <li><a href="#">Ngành</a></li>
                 <li><a href="#">Khoa chủ quản</a></li>
@@ -41,7 +42,9 @@
               </ul>
             </li>
           </ul>
-          
+          <ul class="nav pull-right navbar-nav">
+          	<li><a href="<c:url value="${pageContext.request.contextPath}/j_spring_security_logout"/>"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a></li>
+          </ul>
         </div><!--/.nav-collapse -->
         </div>
       </div>
