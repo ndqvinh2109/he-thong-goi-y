@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><i class="fa fa-home fa-fw"></i> Hệ thống gợi ý</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/service/homepage"><i class="fa fa-home fa-fw"></i> Hệ thống gợi ý</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
