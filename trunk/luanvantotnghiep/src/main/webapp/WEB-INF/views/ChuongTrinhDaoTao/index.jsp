@@ -91,7 +91,7 @@
 		               	<input type="text" class="form-control" placeholder="Nhập mã học phần"/>
 		            </div>
        			</div>
-       			<div class='col-sm-3'>    
+       			<div class='col-sm-2'>    
        			 <label>Tự chọn</label>
 		           <div class="checkbox">
 					  <label>
@@ -99,6 +99,12 @@
 					    Học phần tự chọn
 					  </label>
 				   </div>
+       			</div>
+       			<div class='col-sm-4'>    
+		            <div class='form-group hkmd pull-left' style="display: none">
+		                <label>Nhóm học phần</label>
+		               	<input type="number" class="form-control">
+		            </div>
        			</div>
 			</div>
 			
@@ -112,18 +118,20 @@
 		               	<input type="text" class="form-control" placeholder="Nhập tên học phần"/>
 		            </div>
        			</div>
-       			<div class='col-sm-3'>    
-		            <div class='form-group'>
-		                <label>Nhóm học phần</label>
-		               	<input id="spinner" name="value" class="form-control">
-		            </div>
+       			<div class='col-sm-2'>    
+		           
        			</div>
        			
+       			<div class='col-sm-4'>    
+		            <div class='form-group hkmd pull-left' style="display: none">
+		                <label>Học kỳ mặc định</label>
+		               	<input type="number" class="form-control">
+		            </div>
+       			</div>
 			</div>
-			
-		
-			
-		
+			<div class="col-sm-12">
+				<button type="button" class="btn btn-primary">Thêm học phần</button>
+			</div>
 		</fieldset>
 		<div id="chuongTrinhDaoTao"></div>
 		
@@ -133,18 +141,13 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function(){
-			$("#spinner").spinner({
-			      spin: function( event, ui ) {
-			        if ( ui.value > 10 ) {
-			          $( this ).spinner( "value", -10 );
-			          return false;
-			        } else if ( ui.value < -10 ) {
-			          $( this ).spinner( "value", 10 );
-			          return false;
-			        }
-			      }
-			    });
-			
+			$('.checkbox').click(function(){ 
+				if($(':checkbox').prop("checked")){
+			    	$('.hkmd').css({"display": "inline"});
+			    }else{
+			    	$('.hkmd').css("display", "none");
+			    }
+			});
 			
 			function countItemInArray(item, array){
 				if(item[0].hocPhanId == array[0][0].hocPhanId){
