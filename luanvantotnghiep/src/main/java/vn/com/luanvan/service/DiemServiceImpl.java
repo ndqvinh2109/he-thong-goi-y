@@ -96,7 +96,11 @@ public class DiemServiceImpl implements DiemService{
 			
 			for(Diem diem : listDiem){
 				if(diem.getDiem().equals("")){
-					bw.write("-1");
+					bw.write("0");
+					bw.newLine();
+				}
+				else if(diem.getDiem().equals("HT  ")){
+					bw.write("0");
 					bw.newLine();
 				}
 				else{
@@ -144,12 +148,17 @@ public class DiemServiceImpl implements DiemService{
 			bw.write(String.valueOf(listDiem.size()));
 			bw.newLine();
 			for(Diem diem : listDiem){
-				if(diem.getDiem().equals("")){
+				if(diem.getNienKhoaHocKy().getNienkhoaId()<31){
+					if(diem.getDiem().equals("")){
+						bw.write("1");
+						bw.newLine();
+					}
+					else{
+						bw.write("0");
+						bw.newLine();
+					}
+				}else{
 					bw.write("1");
-					bw.newLine();
-				}
-				else{
-					bw.write("0");
 					bw.newLine();
 				}
 			}
