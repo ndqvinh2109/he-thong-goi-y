@@ -44,7 +44,7 @@ public class MF{
 
     public float minTarget = Float.MAX_VALUE, maxTarget = Float.MIN_VALUE;    
 
-    public float learnRate = 0.01f;
+    public float learnRate = 0.005f;
     public float regularization = 0.015f;
     public int num_factors = 64;
     public int num_iterations = 80;
