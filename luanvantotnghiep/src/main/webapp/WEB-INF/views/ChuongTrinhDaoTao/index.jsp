@@ -15,39 +15,106 @@
 	#chuongTrinhDaoTao table{
 		margin-top: 15px;
 	}
+	
+	.bs-example {
+	  position: relative;
+	  padding: 45px 15px 15px;
+	  margin: 15px -15px 15px;
+	  background-color: #ffffff;
+	  border-color: #e5e5e5 #eee #eee;
+	  border-style: solid;
+	  border-width: 1px 0;
+	}
+	.bs-example-label{
+	  position: absolute;
+	  top:  15px;
+	  left: 15px;
+	  font-size: 12px;
+	  font-weight: bold;
+	  color: #bbb;
+	  text-transform: uppercase;
+	  letter-spacing: 1px;
+	}
+	
 </style>
 </head>
 <body>
 	<div class="container" style="padding-bottom: 80px">
-		<table>
-			<thead>
-				<tr>
-					<td class="col-lg-3">Ngành học</td>
-					<td class="col-lg-3">Khóa đào tạo</td>
-					<td class="col-lg-3"></td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><select id="selNganh" class="col-lg-2 form-control">
-							<option value="0">Chọn ngành</option>
-			  				<c:forEach var="nganh" items="${nganhs}">
-			  						<option value="${nganh.nganhId}">${nganh.tenNganh}</option>
-			  				</c:forEach>
-		  				</select>
-		  			</td>
-					<td><select id="selKhoaDaoTao" class="col-lg-2 form-control">
-							<option value="0">Chọn khóa đào tạo</option>
-		  					<c:forEach var="khoaDaoTao" items="${khoaDaoTaos}">
-		  						<option value="${khoaDaoTao.khoaDaoTaoId}">${khoaDaoTao.khoaDT}</option>
-		  					</c:forEach>
-		  				</select>
-		  			</td>
-		  			<td><button id="inKeHoach" class="btn btn-info">In chương trình đào tạo</button></td>
-				</tr>
-			</tbody>
-		</table>
+		<fieldset class="bs-example">
+		<label class="bs-example-label">Chọn ngành học và khóa đào tạo</label>
+			<table>
+				<thead>
+					<tr>
+						<td class="col-lg-3">Ngành học</td>
+						<td class="col-lg-3">Khóa đào tạo</td>
+						<td class="col-lg-3"></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><select id="selNganh" class="col-lg-2 form-control">
+								<option value="0">Chọn ngành</option>
+				  				<c:forEach var="nganh" items="${nganhs}">
+				  						<option value="${nganh.nganhId}">${nganh.tenNganh}</option>
+				  				</c:forEach>
+			  				</select>
+			  			</td>
+						<td><select id="selKhoaDaoTao" class="col-lg-2 form-control">
+								<option value="0">Chọn khóa đào tạo</option>
+			  					<c:forEach var="khoaDaoTao" items="${khoaDaoTaos}">
+			  						<option value="${khoaDaoTao.khoaDaoTaoId}">${khoaDaoTao.khoaDT}</option>
+			  					</c:forEach>
+			  				</select>
+			  			</td>
+			  			<td><button id="inKeHoach" class="btn btn-info">In chương trình đào tạo</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</fieldset>
+		<fieldset class="bs-example">
+			<label class="bs-example-label">Nhập học phần</label>
+			<div class="row">
+				<div class='col-sm-4'>
+					<div class='form-group'>
+						 <label>Chọn khối kiến thức</label>
+						 <input type="text" class="form-control" placeholder="Nhập mã học phần"/>
+					</div>
+				</div>
+			
+				<div class='col-sm-4'>    
+		            <div class='form-group'>
+		                <label>Nhập mã học phần</label>
+		               	<input type="text" class="form-control" placeholder="Nhập mã học phần"/>
+		            </div>
+       			</div>
+       			<div class='col-sm-4'>    
+       			 <label>Tự chọn</label>
+		           <div class="checkbox">
+					  <label>
+					    <input type="checkbox" value="">
+					    Học phần tự chọn
+					  </label>
+				   </div>
+       			</div>
+			</div>
+			
+			<div class="row">
+				<div class='col-sm-4'>    
+		           
+       			</div>
+       			<div class='col-sm-4'>    
+		            <div class='form-group'>
+		                <label>Nhập tên học phần</label>
+		               	<input type="text" class="form-control" placeholder="Nhập tên học phần"/>
+		            </div>
+       			</div>
+       			
+			</div>
+			
 		
+			
+		
+		</fieldset>
 		<div id="chuongTrinhDaoTao"></div>
 		
 		
