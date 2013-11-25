@@ -8,6 +8,7 @@
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/font-awesome.css"/>  
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/jqueryUi.css"/>
 <script src="${pageContext.request.contextPath}/bundles/jquery.js"></script>
 </head>
 <body>
@@ -24,5 +25,6 @@
 	</div>
 </div>
 	<script src="${pageContext.request.contextPath}/bundles/bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/bundles/jqueryUi.js"></script>
 </body>
 </html>
