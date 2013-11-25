@@ -74,20 +74,24 @@
 		<fieldset class="bs-example">
 			<label class="bs-example-label">Nhập học phần</label>
 			<div class="row">
-				<div class='col-sm-4'>
+				<div class='col-sm-3'>
 					<div class='form-group'>
 						 <label>Chọn khối kiến thức</label>
-						 <input type="text" class="form-control" placeholder="Nhập mã học phần"/>
+						<select id="selNganh" class="col-lg-2 form-control">
+								<option value="1">Khối kiến thức đại cương</option>
+				  				<option value="2">Khối kiến thức cơ sở ngành</option>
+				  				<option value="3">Khối kiến thức chuyên ngành</option>
+			  			</select>
 					</div>
 				</div>
 			
-				<div class='col-sm-4'>    
+				<div class='col-sm-3'>    
 		            <div class='form-group'>
 		                <label>Nhập mã học phần</label>
 		               	<input type="text" class="form-control" placeholder="Nhập mã học phần"/>
 		            </div>
        			</div>
-       			<div class='col-sm-4'>    
+       			<div class='col-sm-3'>    
        			 <label>Tự chọn</label>
 		           <div class="checkbox">
 					  <label>
@@ -99,13 +103,19 @@
 			</div>
 			
 			<div class="row">
-				<div class='col-sm-4'>    
+				<div class='col-sm-3'>    
 		           
        			</div>
-       			<div class='col-sm-4'>    
+       			<div class='col-sm-3'>    
 		            <div class='form-group'>
 		                <label>Nhập tên học phần</label>
 		               	<input type="text" class="form-control" placeholder="Nhập tên học phần"/>
+		            </div>
+       			</div>
+       			<div class='col-sm-3'>    
+		            <div class='form-group'>
+		                <label>Nhóm học phần</label>
+		               	<input id="spinner" name="value" class="form-control">
 		            </div>
        			</div>
        			
@@ -121,7 +131,21 @@
 	</div>	
 	<script src="${pageContext.request.contextPath}/resources/assets/js/chuongtrinhdaotao.js"></script>
 	<script type="text/javascript">
+	
 		$(document).ready(function(){
+			$("#spinner").spinner({
+			      spin: function( event, ui ) {
+			        if ( ui.value > 10 ) {
+			          $( this ).spinner( "value", -10 );
+			          return false;
+			        } else if ( ui.value < -10 ) {
+			          $( this ).spinner( "value", 10 );
+			          return false;
+			        }
+			      }
+			    });
+			
+			
 			function countItemInArray(item, array){
 				if(item[0].hocPhanId == array[0][0].hocPhanId){
 					if(array.length == 1)
