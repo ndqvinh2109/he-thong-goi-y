@@ -77,7 +77,7 @@
 				<div class='col-sm-3'>
 					<div class='form-group'>
 						 <label>Chọn khối kiến thức</label>
-						<select id="selNganh" class="col-lg-2 form-control">
+						<select id="selKhoiKienThuc" class="col-lg-2 form-control">
 								<option value="1">Khối kiến thức đại cương</option>
 				  				<option value="2">Khối kiến thức cơ sở ngành</option>
 				  				<option value="3">Khối kiến thức chuyên ngành</option>
@@ -88,7 +88,7 @@
 				<div class='col-sm-3'>    
 		            <div class='form-group'>
 		                <label>Nhập mã học phần</label>
-		               	<input type="text" class="form-control" placeholder="Nhập mã học phần"/>
+		               	<input id="maHocPhan" type="text" class="form-control" placeholder="Nhập mã học phần"/>
 		            </div>
        			</div>
        			<div class='col-sm-2'>    
@@ -103,7 +103,7 @@
        			<div class='col-sm-4'>    
 		            <div class='form-group hkmd pull-left' style="display: none">
 		                <label>Nhóm học phần</label>
-		               	<input type="number" class="form-control">
+		               	<input type="number" class="form-control" id="nhomHocPhan">
 		            </div>
        			</div>
 			</div>
@@ -125,12 +125,12 @@
        			<div class='col-sm-4'>    
 		            <div class='form-group hkmd pull-left' style="display: none">
 		                <label>Học kỳ mặc định</label>
-		               	<input type="number" class="form-control">
+		               	<input type="number" class="form-control" id="hocKyMacDinh">
 		            </div>
        			</div>
 			</div>
 			<div class="col-sm-12">
-				<button type="button" class="btn btn-primary">Thêm học phần</button>
+				<button type="button" class="btn btn-primary" id="themHocPhan">Thêm học phần</button>
 			</div>
 		</fieldset>
 		<div id="chuongTrinhDaoTao"></div>
@@ -141,6 +141,22 @@
 	<script type="text/javascript">
 	
 		$(document).ready(function(){
+			$('#themHocPhan').click(function(){
+				var nganhId = $('#selNganh').val();
+				var khoaDaoTaoId = $('#selKhoaDaoTao').val();
+				var khoiKienThucId = $('#selKhoiKienThuc').val();
+				var maHocPhanId = $('#maHocPhan').val();
+				var nhomHocPhanId = $('#nhomHocPhan').val();
+				var hocKyMacDinhId = $('#hocKyMacDinh').val();
+				
+				$.ajax({
+					url: '${pageContext.request.contextPath}/service/themHocPhan',
+					type: 'GET',
+					dataType: "json",
+					
+				});
+			});
+			
 			$('.checkbox').click(function(){ 
 				if($(':checkbox').prop("checked")){
 			    	$('.hkmd').css({"display": "inline"});
@@ -294,6 +310,7 @@
 				});
 				
 			});
+			
 		});
 	</script>
 </body>
