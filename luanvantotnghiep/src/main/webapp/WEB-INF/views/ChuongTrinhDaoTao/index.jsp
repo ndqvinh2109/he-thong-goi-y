@@ -144,16 +144,26 @@
 			$('#themHocPhan').click(function(){
 				var nganhId = $('#selNganh').val();
 				var khoaDaoTaoId = $('#selKhoaDaoTao').val();
-				var khoiKienThucId = $('#selKhoiKienThuc').val();
-				var maHocPhanId = $('#maHocPhan').val();
-				var nhomHocPhanId = $('#nhomHocPhan').val();
-				var hocKyMacDinhId = $('#hocKyMacDinh').val();
-				
+				var khoiKienThuc = $('#selKhoiKienThuc').val();
+				var maHocPhan = $('#maHocPhan').val();
+				var nhomHocPhan = $('#nhomHocPhan').val();
+				var hocKyMacDinh = $('#hocKyMacDinh').val();
+								
 				$.ajax({
 					url: '${pageContext.request.contextPath}/service/themHocPhan',
 					type: 'GET',
 					dataType: "json",
-					
+					data : {
+						nganhId: nganhId,
+						khoaDaoTaoId: khoaDaoTaoId,
+						khoiKienThuc: khoiKienThuc,
+						maHocPhan: maHocPhan,
+						nhomHocPhan: nhomHocPhan,
+						hocKyMacDinh: hocKyMacDinh
+					},
+					success: function(data){
+						console.log(data);
+					}
 				});
 			});
 			
