@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -191,6 +192,18 @@ public class HocPhanImpl implements HocPhanDao{
 			return list;
 		} catch (HibernateException e) {
 			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public HocPhan findHocPhanByMaHocPhan(String maHocPhan) {
+		try {
+			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(HocPhan.class);
+			criteria.add(Restrictions.eq("maHP", maHocPhan));
+			HocPhan hocphan = (HocPhan) criteria.uniqueResult();
+			return hocphan;
+		} catch (HibernateException e) {
 			return null;
 		}
 	}

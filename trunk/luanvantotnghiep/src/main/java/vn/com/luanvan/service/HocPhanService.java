@@ -26,4 +26,6 @@ public interface HocPhanService {
 	public List<Object[]> findHocPhanBySinhVienIdAndNienKhoaId(long sinhVienId);
 	
 	public List<Object[]> findHocPhanByNganhIdAndKhoaDaoTaoKHHTId(long nganhId, long khoaDaoTaoId);
+	
+	public HocPhan findHocPhanByMaHocPhan(String maHocPhan);
 }
