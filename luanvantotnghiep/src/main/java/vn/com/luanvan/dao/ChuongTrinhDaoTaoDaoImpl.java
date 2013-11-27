@@ -24,6 +24,7 @@ public class ChuongTrinhDaoTaoDaoImpl implements ChuongTrinhDaoTaoDao{
 			session.save(chuongTrinhDaoTao);
 			return true;
 		} catch (HibernateException e) {
+			e.printStackTrace();
 			return false;
 		}
 		

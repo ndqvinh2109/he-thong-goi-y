@@ -72,20 +72,21 @@ public class ChuongTrinhDaoTaoController {
 			@RequestParam(value="nhomHocPhan", required = false) String nhomHocPhan,
 			@RequestParam(value="hocKyMacDinh", required = false) String hocKyMacDinh){
 		
-		HocPhan hocphan = hocPhanService.findHocPhanByMaHocPhan(maHocPhan);
-		KhoaDaoTao khoaDaoTao = khoaDaoTaoService.findKhoaDaoTaoById(khoaDaoTaoId);
-		Nganh nganh = nganhService.findNganhById(nganhId);
-		
-		ChuongTrinhDaoTao chuongTrinhDaoTao = new ChuongTrinhDaoTao();
-		chuongTrinhDaoTao.setTuChon(String.valueOf(hocphan.getSoTC()));
-		chuongTrinhDaoTao.setHocKyMacDinh(hocKyMacDinh);
-		chuongTrinhDaoTao.setHocPhan(hocphan);
-		chuongTrinhDaoTao.setKhoaDaoTao(khoaDaoTao);
-		chuongTrinhDaoTao.setNganh(nganh);
-		chuongTrinhDaoTao.setNhomTuChon(khoiKienThuc + nhomHocPhan);
-		chuongTrinhDaoTao.setKhoiKienThuc(khoiKienThuc);
-		
-		
+			HocPhan hocphan = hocPhanService.findHocPhanByMaHocPhan(maHocPhan);
+			KhoaDaoTao khoaDaoTao = khoaDaoTaoService.findKhoaDaoTaoById(khoaDaoTaoId);
+			Nganh nganh = nganhService.findNganhById(nganhId);
+			
+			ChuongTrinhDaoTao chuongTrinhDaoTao = new ChuongTrinhDaoTao();
+			chuongTrinhDaoTao.setTuChon(String.valueOf(hocphan.getSoTC()));
+			chuongTrinhDaoTao.setHocKyMacDinh(hocKyMacDinh);
+			chuongTrinhDaoTao.setHocPhan(hocphan);
+			chuongTrinhDaoTao.setKhoaDaoTao(khoaDaoTao);
+			chuongTrinhDaoTao.setNganh(nganh);
+			chuongTrinhDaoTao.setNhomTuChon(khoiKienThuc + nhomHocPhan);
+			chuongTrinhDaoTao.setKhoiKienThuc(khoiKienThuc);
+			
+			chuongTrinhDaoTaoService.saveChuongTrinhDaoTao(chuongTrinhDaoTao);
+			
 		return true;
 	}
 }
