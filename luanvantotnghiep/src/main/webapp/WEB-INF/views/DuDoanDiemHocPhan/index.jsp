@@ -15,12 +15,25 @@
 	#keHoachHocTap table{
 		margin-top: 15px;
 	}
+	
+	.title-field{
+		background: url(../resources/assets/images/titlebg.jpg) center left repeat-x;
+		color: white;
+		font-size: 14px;
+		font-weight: bold;
+		padding: 10px 20px;
+		margin: 0px auto 0px;
+		position: absolute;
+		width:100%;
+		top: 0;
+		left: 0;
+	}
 </style>
 </head>
 <body>
 <div class="container" style="padding-bottom: 80px">
 		<fieldset class="bs-example">
-			<label class="bs-example-label">Chọn sinh viên</label>
+			<h3 class="title-field">Chọn sinh viên</h3>
 				<div class="row">
 				<div class="col-sm-3">
 						<div class='form-group'>
@@ -47,8 +60,11 @@
 				</div>
 			
 		</fieldset>
-
+		<fieldset class="bs-example">
+			<h3 class="title-field">Dự đoán điểm học phần</h3>
 		<div id="keHoachHocTap"></div>
+		</fieldset>
+		
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
