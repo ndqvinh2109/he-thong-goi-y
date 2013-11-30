@@ -15,11 +15,26 @@
 	#keHoachHocTap table{
 		margin-top: 15px;
 	}
+	
+	.title-field{
+		background: url(../resources/assets/images/titlebg.jpg) center left repeat-x;
+		color: white;
+		font-size: 14px;
+		font-weight: bold;
+		padding: 10px 20px;
+		margin: 0px auto 0px;
+		position: absolute;
+		width:100%;
+		top: 0;
+		left: 0;
+	}
 </style>
 </head>
 <body>
 	<div class="container" style="padding-bottom: 80px">
-		<table>
+		<fieldset class="bs-example">
+			<h3 class="title-field">Kế hoạch học tập</h3>
+			<table>
 			<thead>
 				<tr>
 					<td class="col-lg-3">Ngành học</td>
@@ -47,8 +62,13 @@
 				</tr>
 			</tbody>
 		</table>
-		
+		</fieldset>
+		<fieldset class="bs-example">
+			<h3 class="title-field">Thông tin kế hoạch học tập</h3>
 		<div id="keHoachHocTap"></div>
+		</fieldset>
+		
+		
 	</div>	
 	<script type="text/javascript">
 	$(document).ready(function(){

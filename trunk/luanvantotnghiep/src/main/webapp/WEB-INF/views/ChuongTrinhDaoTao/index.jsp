@@ -25,14 +25,24 @@
 		margin-top:40px;
 		padding:10px
 	}
-	
+	.title-field{
+		background: url(../resources/assets/images/titlebg.jpg) center left repeat-x;
+		color: white;
+		font-size: 14px;
+		font-weight: bold;
+		padding: 10px 20px;
+		margin: 0px auto 0px;
+		position: absolute;
+		width:100%;
+		top: 0;
+		left: 0;
+	}
 </style>
 </head>
 <body>
 	<div class="container" style="padding-bottom: 80px">
 		<fieldset class="bs-example">
-		<label class="bs-example-label">Chọn ngành học và khóa đào tạo</label>
-		
+		<h3 class="title-field">Chọn ngành học và khóa đào tạo</h3>
 		<div class="row">
 			<div class="col-sm-3">
 				<div class='form-group'>
@@ -66,10 +76,10 @@
 				</div>
 			</div>
 		</div>
-		<button id="inKeHoach" class="btn btn-info" style="margin-top: 30px">In chương trình đào tạo</button></td>
+		<button id="inKeHoach" class="btn btn-primary" style="margin-top: 30px">In chương trình đào tạo</button></td>
 		</fieldset>
 		<fieldset class="bs-example">
-			<label class="bs-example-label">Nhập học phần</label>
+			<h3 class="title-field">Nhập học phần</h3>
 			<div class="row">
 				<div class='col-sm-3'>
 					<div class='form-group'>
@@ -154,7 +164,13 @@
 				<button type="button" class="btn btn-primary" id="test">test</button>
 			</div>
 		</fieldset>
+		<fieldset class="bs-example">
+		<h3 class="title-field">Chương trình đào tạo</h3>
+		<div id="thongTinChung"></div>			
+					
 		<div id="chuongTrinhDaoTao"></div>
+		</fieldset>
+		
 		
 		
 	</div>
@@ -269,6 +285,7 @@
 						},
 						success: function(data){
 							$('#chuongTrinhDaoTao').empty();
+							$('#thongTinChung').empty();
 							var nganhId = $('#selNganh').val();
 							var khoaDaoTaoId = $('#selKhoaDaoTao').val();
 							$.ajax({
@@ -280,24 +297,63 @@
 									khoaDaoTaoId: khoaDaoTaoId
 								},
 								success: function(data){
-									console.log(data);
-									var str = 'Khối kiến thức giáo dục đại cương';
-							        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
-							        var $table = $('<table></table>',{
-							        	'class':'table table-bordered table-hover'
-							        });
-							        
-							    	$($thead).appendTo($table);
-							        var $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'1'),str);
-							        $($tbody).appendTo($table);
-							        str = 'Khối kiến thức cơ sở ngành';
-							       	$tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'2'),str);
-							        $($tbody).appendTo($table);
-							        str = 'Khối kiến thức chuyên ngành';
-							        $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'3'),str);
-							        $($tbody).appendTo($table);
-													
-									$('#chuongTrinhDaoTao').append($table);
+									$('#chuongTrinhDaoTao').empty();
+									$('#thongTinChung').empty();
+									var nganhId = $('#selNganh').val();
+									var khoaDaoTaoId = $('#selKhoaDaoTao').val();
+									$.ajax({
+										url: '${pageContext.request.contextPath}/service/loadChuongTrinhDaoTao',
+										type: 'GET',
+										dataType: "json",
+										data:{
+											nganhId: nganhId,
+											khoaDaoTaoId: khoaDaoTaoId
+										},
+										success: function(data){
+											console.log(data);
+											var $tr = $('<tr></tr>');
+											var $table1 = $('<table class="table" style="margin: 0 auto; width: 600px"></table>');
+											$('<td><strong>Ngành học:</strong> '+data.tenNganh+'</td>').appendTo($tr);
+											$('<td><strong>Hệ đào tạo:</strong> Chính quy</td>').appendTo($tr);
+											$($tr).appendTo($table1);
+											
+											$tr = $('<tr></tr>');
+											$('<td><strong>Mã ngành:</strong> '+data.maNganh+'</td>').appendTo($tr);
+											$('<td><strong>Bộ môn:</strong> '+data.tenNganh+'</td>').appendTo($tr);
+											$($tr).appendTo($table1);
+											$tr = $('<tr></tr>');
+											$('<td><strong>Đơn vị quản lý:</strong> Khoa Công nghệ Thông tin & TT</td>').appendTo($tr);
+											$('<td></td>').appendTo($tr);
+											$($tr).appendTo($table1);
+											
+											$('#thongTinChung').append($table1);
+											
+											 
+											var str = 'Khối kiến thức giáo dục đại cương';
+									        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
+									        var $table = $('<table></table>',{
+									        	'class':'table table-bordered table-hover'
+									        });
+									        
+									    	$($thead).appendTo($table);
+									        var $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'1'),str);
+									        $($tbody).appendTo($table);
+									        str = 'Khối kiến thức cơ sở ngành';
+									       	$tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'2'),str);
+									        $($tbody).appendTo($table);
+									        str = 'Khối kiến thức chuyên ngành';
+									        $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'3'),str);
+									        $($tbody).appendTo($table);
+															
+											$('#chuongTrinhDaoTao').append($table);
+											$('#chuongTrinhDaoTao').fadeIn(800,function(){
+												$('html, body').animate({
+													scrollTop: $("#chuongTrinhDaoTao").offset().top
+												}, 800);
+											});
+										
+										}
+									});
 								}
 							});
 						}
@@ -430,9 +486,10 @@
 				}
 				return $tbody;
 			}
-			
+			// Test
 			$('#inKeHoach').click(function(){
 				$('#chuongTrinhDaoTao').empty();
+				$('#thongTinChung').empty();
 				var nganhId = $('#selNganh').val();
 				var khoaDaoTaoId = $('#selKhoaDaoTao').val();
 				$.ajax({
@@ -445,6 +502,24 @@
 					},
 					success: function(data){
 						console.log(data);
+						var $tr = $('<tr></tr>');
+						var $table1 = $('<table class="table" style="margin: 0 auto; width: 600px"></table>');
+						$('<td><strong>Ngành học:</strong> '+data.tenNganh+'</td>').appendTo($tr);
+						$('<td><strong>Hệ đào tạo:</strong> Chính quy</td>').appendTo($tr);
+						$($tr).appendTo($table1);
+						
+						$tr = $('<tr></tr>');
+						$('<td><strong>Mã ngành:</strong> '+data.maNganh+'</td>').appendTo($tr);
+						$('<td><strong>Bộ môn:</strong> '+data.tenNganh+'</td>').appendTo($tr);
+						$($tr).appendTo($table1);
+						$tr = $('<tr></tr>');
+						$('<td><strong>Đơn vị quản lý:</strong> Khoa Công nghệ Thông tin & TT</td>').appendTo($tr);
+						$('<td></td>').appendTo($tr);
+						$($tr).appendTo($table1);
+						
+						$('#thongTinChung').append($table1);
+						
+						 
 						var str = 'Khối kiến thức giáo dục đại cương';
 				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
 				        var $table = $('<table></table>',{
@@ -462,6 +537,12 @@
 				        $($tbody).appendTo($table);
 										
 						$('#chuongTrinhDaoTao').append($table);
+						$('#chuongTrinhDaoTao').fadeIn(800,function(){
+							$('html, body').animate({
+								scrollTop: $("#chuongTrinhDaoTao").offset().top
+							}, 800);
+						});
+					
 					}
 				});
 				

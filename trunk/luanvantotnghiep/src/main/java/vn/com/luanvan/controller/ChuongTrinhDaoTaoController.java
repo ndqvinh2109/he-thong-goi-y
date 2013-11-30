@@ -50,7 +50,10 @@ public class ChuongTrinhDaoTaoController {
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
 		Map<String,Object> map = new HashMap<String,Object>();
 		List<Object[]> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoId(nganhId, khoaDaoTaoId);
+		Nganh nganh = nganhService.findNganhById(nganhId);
 		map.put("danhSachHocPhan", hps);
+		map.put("maNganh", nganh.getMaNganh());
+		map.put("tenNganh", nganh.getTenNganh());
 		return map;
 	}
 	
