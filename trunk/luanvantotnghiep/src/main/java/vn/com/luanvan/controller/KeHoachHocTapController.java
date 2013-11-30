@@ -54,4 +54,10 @@ public class KeHoachHocTapController {
 		map.put("hptq", hptqs);
 		return map;
 	}
+	
+	@RequestMapping(value="test",method=RequestMethod.POST)
+	public @ResponseBody String test(@RequestParam("value") String value){
+		System.out.println(value);
+		return "ttt";
+	}
 }

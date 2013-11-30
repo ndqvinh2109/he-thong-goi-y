@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/font-awesome.css"/>  
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/jqueryUi.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap-editable.css"/>
 <script src="${pageContext.request.contextPath}/bundles/jquery.js"></script>
 </head>
 <body>
@@ -25,5 +26,6 @@
 	</div>
 </div>
 	<script src="${pageContext.request.contextPath}/bundles/bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/bundles/bootstrap-editable.js"></script>
 </body>
 </html>
