@@ -79,6 +79,34 @@
 			return myArray;
 		}
 		
+		function arrayUnique(array) {
+		    var a = array.concat();
+		    for(var i=0; i<a.length; ++i) {
+		        for(var j=i+1; j<a.length; ++j) {
+		            if(a[i] === a[j])
+		                a.splice(j--, 1);
+		        }
+		    }
+
+		    return a;
+		};
+		
+		function getHocKiMacDinhBySTT(array, item){
+			var arrVarI = [];
+			var arrVarJ = [];
+			for(var i = 0; i < array.length; i++){
+				var j = i + 1;
+				if(i == array.length - 1){
+					break;
+				}
+				
+				if(array[i][1].hocKyMacDinh != array[j][1].hocKyMacDinh){
+					arrVarI.push(array[i][1].hocKyMacDinh);
+					arrVarJ.push(array[j][1].hocKyMacDinh);
+				}
+			}
+			return arrayUnique(arrVarI.concat(arrVarJ));
+		}
 		
 		function createTable(data,str){
 			var $tbody = $('<tbody></tbody>');
@@ -182,11 +210,12 @@
 			        	'class':'table table-bordered table-hover'
 			        });
 			        $($thead).appendTo($table);
-			        
+			        console.log(countHocKyMacDinh(data.danhSachHocPhan));
+			        console.log(getHocKiMacDinhBySTT(data.danhSachHocPhan));
 			        for(var i = 0; i < countHocKyMacDinh(data.danhSachHocPhan); i++){
-			        	var hk = i + 1;
-			        	var str = 'Học kì ' + hk;
-			        	var $tbody = createTable(getHocPhansByHocKy(data.danhSachHocPhan,i + 1),str);
+			        	var hkMD = getHocKiMacDinhBySTT(data.danhSachHocPhan)[i]
+			        	var str = 'Học kì ' + hkMD;
+			        	var $tbody = createTable(getHocPhansByHocKy(data.danhSachHocPhan,hkMD),str);
 					    $($tbody).appendTo($table);
 			        }
 			        $('#keHoachHocTap').append($table);

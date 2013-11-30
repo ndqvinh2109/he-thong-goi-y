@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import vn.com.luanvan.model.ChuongTrinhDaoTao;
 
 @Repository
@@ -73,6 +75,27 @@ public class ChuongTrinhDaoTaoDaoImpl implements ChuongTrinhDaoTaoDao{
 		try {
 			ChuongTrinhDaoTao chuongTrinhDaoTao = (ChuongTrinhDaoTao) sessionFactory.getCurrentSession().load(ChuongTrinhDaoTao.class, Id);
 			return chuongTrinhDaoTao;
+		} catch (HibernateException e) {
+			return null;
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public String findSoTinChiTuChonByNhomTuChon(String nhomTuChon) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select ctdt.tuChon "
+					+ "from ChuongTrinhDaoTao ctdt "
+					+ "where ctdt.nhomTuChon = :nhomTuChon";
+			Query query = session.createQuery(hql);
+			query.setString("nhomTuChon", nhomTuChon);
+			List<String> list = query.list();
+			System.out.println(list);
+			if(list != null && list.size() != 0)
+				return list.get(0);
+			else
+				return "0";
 		} catch (HibernateException e) {
 			return null;
 		}

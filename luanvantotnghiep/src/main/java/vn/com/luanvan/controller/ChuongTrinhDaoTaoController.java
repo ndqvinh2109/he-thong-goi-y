@@ -70,23 +70,52 @@ public class ChuongTrinhDaoTaoController {
 			@RequestParam(value="khoiKienThuc", required = false) String khoiKienThuc,
 			@RequestParam(value="maHocPhan", required = false) String maHocPhan,
 			@RequestParam(value="nhomHocPhan", required = false) String nhomHocPhan,
-			@RequestParam(value="hocKyMacDinh", required = false) String hocKyMacDinh){
+			@RequestParam(value="hocKyMacDinh", required = false) String hocKyMacDinh,
+			@RequestParam(value="tuChon", required = false) boolean tuChon,
+			@RequestParam(value="tinChiTuChon", required = false) String tinChiTuChon){
 		
+			String appendStr = "";
+			String tinChiTC = "";
 			HocPhan hocphan = hocPhanService.findHocPhanByMaHocPhan(maHocPhan);
 			KhoaDaoTao khoaDaoTao = khoaDaoTaoService.findKhoaDaoTaoById(khoaDaoTaoId);
 			Nganh nganh = nganhService.findNganhById(nganhId);
 			
 			ChuongTrinhDaoTao chuongTrinhDaoTao = new ChuongTrinhDaoTao();
-			chuongTrinhDaoTao.setTuChon(String.valueOf(hocphan.getSoTC()));
+			
 			chuongTrinhDaoTao.setHocKyMacDinh(hocKyMacDinh);
 			chuongTrinhDaoTao.setHocPhan(hocphan);
 			chuongTrinhDaoTao.setKhoaDaoTao(khoaDaoTao);
 			chuongTrinhDaoTao.setNganh(nganh);
-			chuongTrinhDaoTao.setNhomTuChon(khoiKienThuc + nhomHocPhan);
+			if(tuChon){
+				appendStr = khoiKienThuc + nhomHocPhan;
+				tinChiTC = tinChiTuChon;
+			}else{
+				appendStr = nhomHocPhan;
+				tinChiTC = "0";
+			}
+			chuongTrinhDaoTao.setTuChon(tinChiTC);
+			chuongTrinhDaoTao.setNhomTuChon(appendStr);
 			chuongTrinhDaoTao.setKhoiKienThuc(khoiKienThuc);
-			
-			chuongTrinhDaoTaoService.saveChuongTrinhDaoTao(chuongTrinhDaoTao);
-			
-		return true;
+						
+		return chuongTrinhDaoTaoService.saveChuongTrinhDaoTao(chuongTrinhDaoTao);
+	}
+	
+	
+	@RequestMapping(value="loadHocPhanByMaHocPhan",method=RequestMethod.GET)
+	public @ResponseBody Map<String, Object> loadHocPhanByMaHocPhan(
+			@RequestParam(value="maHocPhan", required=false) String maHocPhan){
+		Map<String,Object> map = new HashMap<String,Object>();
+		HocPhan hocPhan = hocPhanService.findHocPhanByMaHocPhan(maHocPhan);
+		map.put("hocPhan", hocPhan);
+		return map;
+	}
+	
+	
+	@RequestMapping(value="loadSoTinChiTuChon",method=RequestMethod.GET)
+	public @ResponseBody String loadHocPhanByMaHocPhan(
+			@RequestParam(value="nhomHocPhan", required=false) String nhomHocPhan,
+			@RequestParam(value="khoiKienThuc", required=false) String khoiKienThuc){
+		String strTinChi = chuongTrinhDaoTaoService.findSoTinChiTuChonByNhomTuChon(khoiKienThuc + nhomHocPhan);
+		return strTinChi;
 	}
 }

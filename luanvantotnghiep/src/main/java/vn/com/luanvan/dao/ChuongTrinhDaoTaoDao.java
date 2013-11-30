@@ -16,5 +16,7 @@ public interface ChuongTrinhDaoTaoDao {
 	public List<ChuongTrinhDaoTao> findAllChuongTrinhDaoTao();
 	
 	public ChuongTrinhDaoTao findChuongTrinhDaoTaoById(long Id);
+	
+	public String findSoTinChiTuChonByNhomTuChon(String nhomTuChon);
 
 }

@@ -46,4 +46,9 @@ public class SinhVienServiceImpl implements SinhVienService{
 		return sinhVienDao.findDiemCuaSinhVien();
 	}
 
+	@Override
+	public SinhVien findSinhVienByMaSinhVien(String maSinhVien) {
+		return sinhVienDao.findSinhVienByMaSinhVien(maSinhVien);
+	}
+
 }

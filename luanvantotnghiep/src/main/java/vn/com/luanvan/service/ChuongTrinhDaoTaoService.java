@@ -16,4 +16,5 @@ public interface ChuongTrinhDaoTaoService {
 	
 	public ChuongTrinhDaoTao findChuongTrinhDaoTaoById(long Id);
 
+	public String findSoTinChiTuChonByNhomTuChon(String nhomTuChon);
 }

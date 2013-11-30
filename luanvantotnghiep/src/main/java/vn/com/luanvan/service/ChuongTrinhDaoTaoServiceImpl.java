@@ -47,4 +47,9 @@ public class ChuongTrinhDaoTaoServiceImpl implements ChuongTrinhDaoTaoService{
 		return chuongTrinhDaoTaoDao.findChuongTrinhDaoTaoById(Id);
 	}
 
+	@Override
+	public String findSoTinChiTuChonByNhomTuChon(String nhomTuChon) {
+		return chuongTrinhDaoTaoDao.findSoTinChiTuChonByNhomTuChon(nhomTuChon);
+	}
+
 }

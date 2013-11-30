@@ -98,4 +98,22 @@ public class SinhVienDaoImpl implements SinhVienDao{
 			return null;
 		}
 	}
+
+	@Override
+	public SinhVien findSinhVienByMaSinhVien(String maSinhVien) {
+		try {
+			String maSV = maSinhVien.trim();
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select sv "
+					+ "from SinhVien sv "
+					+ "where trim(sv.maSoSinhVien) = :maSinhVien";
+			Query query = session.createQuery(hql);
+			query.setString("maSinhVien", maSV);
+			SinhVien sinhVien = (SinhVien) query.uniqueResult();
+			return sinhVien;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

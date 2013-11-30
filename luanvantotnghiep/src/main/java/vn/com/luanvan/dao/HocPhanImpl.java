@@ -94,7 +94,7 @@ public class HocPhanImpl implements HocPhanDao{
 					+ "inner join ctdt.hocPhan hp "
 					+ "where kdt.khoaDaoTaoId = :khoaDaoTaoId "
 					+ "and ng.nganhId = :nganhId "
-					+ "order by hp.hocPhanId asc";
+					+ "order by cast(ctdt.nhomTuChon as integer) asc";
 			Query query = session.createQuery(hql);
 			query.setLong("khoaDaoTaoId", khoaDaoTaoId);
 			query.setLong("nganhId", nganhId);
@@ -164,7 +164,6 @@ public class HocPhanImpl implements HocPhanDao{
 			List<Object[]> list = query.list();
 			return list;
 		} catch (HibernateException e) {
-//			e.printStackTrace();
 			return null;
 		}
 		
@@ -199,8 +198,9 @@ public class HocPhanImpl implements HocPhanDao{
 	@Override
 	public HocPhan findHocPhanByMaHocPhan(String maHocPhan) {
 		try {
+			String maHP = maHocPhan.toUpperCase().trim();
 			Criteria criteria = sessionFactory.getCurrentSession().createCriteria(HocPhan.class);
-			criteria.add(Restrictions.eq("maHP", maHocPhan));
+			criteria.add(Restrictions.eq("maHP", maHP));
 			HocPhan hocphan = (HocPhan) criteria.uniqueResult();
 			return hocphan;
 		} catch (HibernateException e) {

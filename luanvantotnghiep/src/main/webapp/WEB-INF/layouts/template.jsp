@@ -25,6 +25,5 @@
 	</div>
 </div>
 	<script src="${pageContext.request.contextPath}/bundles/bootstrap.js"></script>
-	<script src="${pageContext.request.contextPath}/bundles/jqueryUi.js"></script>
 </body>
 </html>
