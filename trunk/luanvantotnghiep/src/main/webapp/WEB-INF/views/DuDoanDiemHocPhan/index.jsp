@@ -19,35 +19,60 @@
 </head>
 <body>
 <div class="container" style="padding-bottom: 80px">
-		<table>
-			<thead>
-				<tr>
-					<td>Sinh viên</td>
-					<td class="pull-left"></td>
-					<td class="pull-left"></td>
-					<td class="pull-left"></td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><select id="selSinhVien" class="col-lg-2 form-control">
+		<fieldset class="bs-example">
+			<label class="bs-example-label">Chọn sinh viên</label>
+				<div class="row">
+				<div class="col-sm-3">
+						<div class='form-group'>
+							<label>Tìm kiếm sinh viên</label>
+							<input title="Nhập mã số sinh viên" id="maSinhVien" type="text" class="form-control" placeholder="Nhập mã sinh viên"/>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class='form-group'>
+							<label>Sinh viên</label>
+							<select id="selSinhVien" class="col-lg-2 form-control">
 							<option value="0">Chọn Sinh Viên</option>
 			  				<c:forEach var="sinhVien" items="${sinhViens}">
 			  						<option value="${sinhVien.sinhVienId}">${sinhVien.hoTen}</option>
 			  				</c:forEach>
 		  				</select>
-		  			</td>
-		  			<td><button id="inKeHoachHocTap" class="btn btn-info">In kế hoạch học tập</button></td>
-		  			<td><button id="ghiFile" class="btn btn-info">Ghi File</button></td>
-		  			<td><button id="duDoanDiem" class="btn btn-info">Dự đoán điểm</button></td>
-				</tr>
-			</tbody>
-		</table>
-		
+						</div>
+					</div>
+					<div class="col-sm-5" style="margin-top: 24px">
+						<button id="inKeHoachHocTap" class="btn btn-info">In kế hoạch học tập</button>
+			  			<button id="ghiFile" class="btn btn-info">Ghi File</button>
+			  			<button id="duDoanDiem" class="btn btn-info">Dự đoán điểm</button>
+					</div>
+				</div>
+			
+		</fieldset>
+
 		<div id="keHoachHocTap"></div>
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('.form-control').tooltip();
+		
+		$('#maSinhVien').keyup(function(event){
+			var maSinhVien = $('#maSinhVien').val();
+			
+				$.ajax({
+					url: '${pageContext.request.contextPath}/service/loadSinhVienByMaSinhVien',
+					type: 'GET',
+					dataType: "json",
+					data : {
+						maSinhVien: maSinhVien,
+					},
+					success: function(data){
+						if(data.sinhVien != null)
+							$('#selSinhVien').val(data.sinhVien.sinhVienId);
+					}
+				});
+			
+		});
+		
+		
 		$('#inKeHoachHocTap').click(function(){
 				$('#keHoachHocTap').empty();
 				var sinhVienId = $('#selSinhVien').val();
@@ -59,22 +84,19 @@
 						sinhVienId: sinhVienId
 					},
 					beforeSend: function(){
-						$.blockUI({ css: { 
-				            border: 'none', 
-				            padding: '15px', 
-				            backgroundColor: '#000', 
-				            '-webkit-border-radius': '10px', 
-				            '-moz-border-radius': '10px', 
-				            opacity: .5, 
-				            color: '#fff' 
-				        } }); 
+						$.blockUI({ 
+							message: '<h4><img src="${pageContext.request.contextPath}/resources/assets/images/ajax-loader.gif" /> Loading...</h4>'
+				        });
+					},
+					complete: function(){
+						$.unblockUI();
 					},
 					success: function(data){
 						console.log(data.danhSachDiemHocPhan);
 						var $tbody = $('<tbody></tbody>');
 				        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Điểm</td><td>Điểm dự đoán</td><td>Học kỳ</td><td>Năm học</td></tr>');
 				        var $table = $('<table></table>',{
-				        	'class':'table table-hover'
+				        	'class':'table table-bordered table-hover'
 			    		});
 				        var hocPhan = new Object();
 				    	var diem = new Object();
@@ -84,21 +106,78 @@
 				        	hocPhan = data.danhSachDiemHocPhan[i][0];
 				      		diem = data.danhSachDiemHocPhan[i][1];
 				      		nienKhoaHocKy = data.danhSachDiemHocPhan[i][2];
-									var $tr = $('<tr></tr>');
-									$($tr).append('<td>'+hocPhan.hocPhanId+'</td>')
-									  .append('<td>'+hocPhan.maHP+'</td>')
-									  .append('<td>'+hocPhan.tenHP+'</td>')
-									  .append('<td>'+hocPhan.soTC+'</td>')
-									  .append('<td>'+diem.diem+'</td>')
-									  .append('<td>'+diem.diemDuDoan+'</td>')
-									  .append('<td>'+nienKhoaHocKy.hocKy+'</td>')
-									  .append('<td>'+nienKhoaHocKy.namHoc+'</td>');
-								$($tr).appendTo($tbody);
+				      		
+				      		var diemDuDoanFloat = parseFloat(diem.diemDuDoan);
+				      		var diemFloat = parseFloat(diem.diem);
+				      		var diemDuDoanChu = "";
+				      		var diemChu = "";
+				      		if(diem.diemDuDoan != ""){
+				      			if(diemDuDoanFloat == 4){
+				      				diemDuDoanChu = "A";
+								}
+								else if(diemDuDoanFloat >= 3.5 && diemDuDoanFloat <= 3.9){
+									diemDuDoanChu = "B+";
+								}
+								else if(diemDuDoanFloat >= 3 &diemDuDoanFloat <= 3.4){
+									diemDuDoanChu = "B";
+								}
+								else if(diemDuDoanFloat >= 2.5 &diemDuDoanFloat <= 2.9){
+									diemDuDoanChu = "C+";
+								}
+								else if(diemDuDoanFloat >= 2 && diemDuDoanFloat <= 2.4){
+									diemDuDoanChu = "C";
+								}
+								else if(diemDuDoanFloat >= 1.5 && diemDuDoanFloat <= 1.9){
+									diemDuDoanChu = "D+";
+								}	
+								else if(diemDuDoanFloat >= 1 && diemDuDoanFloat <= 1.4){
+									diemDuDoanChu = "D";
+								}
+								else{
+									diemDuDoanChu = "F";
+								}
+				      		}
+				      				
+				      		if(diem.diem != ""){
+					      		if(diemFloat >= 8.5){
+					      			diemChu = "A";
+								}
+								else if(diemFloat >= 8 && diemFloat <= 8.4){
+									diemChu = "B+";
+								}
+								else if(diemFloat >= 7 && diemFloat <= 7.9){
+									diemChu = "B";
+								}
+								else if(diemFloat >= 6.5 && diemFloat <= 6.9){
+									diemChu = "C+";
+								}
+								else if(diemFloat >= 5.5 && diemFloat <= 6.4){
+									diemChu = "C";
+								}
+								else if(diemFloat >= 5 && diemFloat <= 5.4){
+									diemChu = "D";
+								}	
+								else{
+									diemChu = "F";
+								}
+				      		}
+				      		
+				      		var stt = i + 1;
+							var $tr = $('<tr></tr>');
+							$($tr).append('<td>'+stt+'</td>')
+							  .append('<td>'+hocPhan.maHP+'</td>')
+							  .append('<td>'+hocPhan.tenHP+'</td>')
+							  .append('<td style="vertical-align: middle; text-align: center;">'+hocPhan.soTC+'</td>')
+							  .append('<td style="vertical-align: middle; text-align: center;">'+diemChu+'</td>')
+							  .append('<td style="vertical-align: middle; text-align: center; color: red">'+diemDuDoanChu+'</td>')
+							  .append('<td>'+nienKhoaHocKy.hocKy+'</td>')
+							  .append('<td>'+nienKhoaHocKy.namHoc+'</td>');
+						$($tr).appendTo($tbody);
+						
 				        }
 				        $($thead).appendTo($table);
 						$($tbody).appendTo($table);
 						$('#keHoachHocTap').append($table);
-						$.unblockUI();
 					}
 				});
 		});

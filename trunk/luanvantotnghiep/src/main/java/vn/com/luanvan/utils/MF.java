@@ -88,6 +88,7 @@ public class MF{
     		predictors[row][COL_TASK] = taskID;
     		row++;
     	}
+    	brPred.close();
     	System.out.print("done.\t");
     	System.out.println("#predRows \t= " + numPredRows + " = " + row);
     
@@ -103,6 +104,7 @@ public class MF{
     		target[row] = targetValue;    		
     		row++;
     	}
+    	brTarget.close();
     	System.out.print("done.\t\t");
     	System.out.println("#targetRows \t= " + numTargetRows + " = " + row);
     	    	
@@ -118,7 +120,7 @@ public class MF{
     		split[row] = splitValue;
     		row++;
     	}
-    	
+    	brSplit.close();
     	System.out.print("done.\t\t");
     	System.out.println("#splitRows \t= " + numSplitRows + " = " + row);    	    	
     	
@@ -136,7 +138,7 @@ public class MF{
     		diem[row] = diemValue;
     		row++;
     	}
-    	
+    	brDiem.close();
     	System.out.print("done.\t\t");
     	System.out.println("#diemRows \t= " + numDiemRows + " = " + row);    	   
     }
@@ -285,15 +287,17 @@ public class MF{
     				if (performancePred < minTarget) performancePred = minTarget;
     				else if (performancePred > maxTarget) performancePred = maxTarget;
     			}
+    			System.out.println("globalAverage: " + globalAverage);
     			
     			//set the prediction value
+    			float temp = performancePred / truePerformance.length;
     			predictedPerformance[predRow++] = performancePred;
     			
-    			System.out.println("student: " + student + "; hp: " + task + "; performancePred: " + performancePred + "; diemId: " + diemId);
+    			System.out.println("student: " + student + "; hp: " + task + "; performancePred: " + performancePred + "; diemId: " + diemId + "; temp: " + temp);
     			// Update diem sinh vien vao database
     			DecimalFormat df = new DecimalFormat("#.#");
-    			String tt = df.format(Double.parseDouble(String.valueOf(performancePred)));
-    			diemService.updateDiemByDiemIdAndHocPhanIdAndSinhVienId(Long.parseLong(String.valueOf(diemId)), tt);
+    			String diemDuDoan = df.format(Double.parseDouble(String.valueOf(performancePred)));
+    			diemService.updateDiemByDiemIdAndHocPhanIdAndSinhVienId(Long.parseLong(String.valueOf(diemId)), diemDuDoan);
     	    }
     	}
     	    	

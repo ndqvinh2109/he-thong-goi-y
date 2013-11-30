@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import vn.com.luanvan.model.SinhVien;
 import vn.com.luanvan.service.DiemService;
 import vn.com.luanvan.service.HocPhanService;
 import vn.com.luanvan.service.SinhVienService;
@@ -54,10 +55,19 @@ public class DuDoanDiemHocPhan {
 			mf.mainMF();
 			return true;
 		} catch (Exception e) {
-			e.printStackTrace();
 			return false;
 		}
 		
 	}
+	
+	@RequestMapping(value="loadSinhVienByMaSinhVien", method=RequestMethod.GET)
+	public @ResponseBody Map<String, Object> loadSinhVienByMaSinhVien(
+			@RequestParam(value="maSinhVien", required = false) String maSinhVien){
+		Map<String,Object> map = new HashMap<String,Object>();
+		SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(maSinhVien);
+		map.put("sinhVien", sinhVien);
+		return map;
+	}
+	
 	
 }
