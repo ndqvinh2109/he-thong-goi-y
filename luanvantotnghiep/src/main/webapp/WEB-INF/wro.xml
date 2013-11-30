@@ -22,4 +22,9 @@
 		<css>/resources/assets/libs/JqueryUi/css/jquery-ui.min.css</css>
 	</group>
 	
+	<group name="bootstrap-editable">
+		<js>/resources/assets/libs/bootstrap3-editable/js/bootstrap-editable.min.js</js>
+		<css>/resources/assets/libs/bootstrap3-editable/css/bootstrap-editable.css</css>
+	</group>
+	
 </groups>

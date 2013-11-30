@@ -161,7 +161,6 @@
 			</div>
 			<div class="col-sm-12">
 				<button type="button" class="btn btn-primary" id="themHocPhan">Thêm học phần</button>
-				<button type="button" class="btn btn-primary" id="test">test</button>
 			</div>
 		</fieldset>
 		<fieldset class="bs-example">
@@ -209,10 +208,6 @@
 		});
 	}
 		$(document).ready(function(){
-			$('#test').click(function(){
-				validate();
-			});
-			
 			$('.form-control').tooltip();
 			$('#maHocPhan').keyup(function(event){
 				var maHocPhan = $('#maHocPhan').val();

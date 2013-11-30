@@ -29,11 +29,20 @@
 		left: 0;
 	}
 </style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.moo').editable();
+	});
+			
+</script>
 </head>
 <body>
 	<div class="container" style="padding-bottom: 80px">
 		<fieldset class="bs-example">
 			<h3 class="title-field">Kế hoạch học tập</h3>
+			<a class="moo" href="#" name="name" id="1" data-type="text" data-pk="1" data-url="${pageContext.request.contextPath}/service/test">test</a>
+			
 			<table>
 			<thead>
 				<tr>
@@ -133,7 +142,7 @@
 	    	var hocPhan = new Object();
 	    	var chuongTrinhDaoTao = new Object();
 	    	var $tr = $('<tr></tr>');
-	    	$($tr).append('<td colspan="9" class="danger"><strong>'+str+'</strong></td>');
+	    	$($tr).append('<td colspan="10" class="danger"><strong>'+str+'</strong></td>');
 	    	$($tr).appendTo($tbody);
 	    	for(var i = 0; i < data.length; i++){
 	        	hocPhan = data[i][0];
@@ -183,7 +192,6 @@
 					  $($tr).append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTietLT+'</td>')
 					  .append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTietTH+'</td>')
 					  .append('<td>'+strTemp+'</td>');
-					
 					$($tr).appendTo($tbody);
 					
 					}
