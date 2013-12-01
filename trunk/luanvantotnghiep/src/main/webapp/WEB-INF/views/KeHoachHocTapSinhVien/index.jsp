@@ -40,7 +40,6 @@
 					<td class="col-lg-3">Ngành học</td>
 					<td class="col-lg-3">Khóa đào tạo</td>
 					<td class="col-lg-3"></td>
-					<td class="col-lg-3"></td>
 				</tr>
 			</thead>
 			<tbody>
@@ -53,7 +52,6 @@
 							<option value="${khoaDaoTao.khoaDaoTaoId }">${khoaDaoTao.khoaDT}</option>
 						</select>
 		  			</td>
-		  			<td><button id="inKeHoach" class="btn btn-info">In kế hoạch học tập</button></td>
 					<td><button id="duDoanDiem" class="btn btn-info">Dự đoán điểm</button></td>
 				</tr>
 			</tbody>
