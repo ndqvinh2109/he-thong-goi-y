@@ -48,8 +48,8 @@ public class KeHoachHocTapSinhVienController {
 		
 		String loggedInMember = utils.getLoggedInMember();
 		SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(loggedInMember);
-		Nganh nganh = null;
-		KhoaDaoTao khoaDaoTao = null;
+		Nganh nganh = new Nganh();
+		KhoaDaoTao khoaDaoTao = new KhoaDaoTao();
 		if(sinhVien != null){
 			long sinhVienId = sinhVien.getSinhVienId();
 			nganh = nganhService.findNganhBySinhVienId(sinhVienId);
