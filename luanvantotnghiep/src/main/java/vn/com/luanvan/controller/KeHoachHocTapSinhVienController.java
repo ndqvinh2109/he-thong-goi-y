@@ -1,5 +1,6 @@
 package vn.com.luanvan.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,7 +65,9 @@ public class KeHoachHocTapSinhVienController {
 		Map<String,Object> map = new HashMap<String,Object>();
 		String loggedMember = utils.getLoggedInMember();
 		SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(loggedMember);
-		List<Object[]> hps = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhVien.getSinhVienId());
+		List<Object[]> hps = new ArrayList<Object[]>();
+		if(sinhVien != null)
+			hps = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhVien.getSinhVienId());
 		map.put("danhSachDiemHocPhan", hps);
 		return map;
 	}
