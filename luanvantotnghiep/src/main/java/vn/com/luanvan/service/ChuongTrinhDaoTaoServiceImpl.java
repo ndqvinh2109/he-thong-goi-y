@@ -52,4 +52,10 @@ public class ChuongTrinhDaoTaoServiceImpl implements ChuongTrinhDaoTaoService{
 		return chuongTrinhDaoTaoDao.findSoTinChiTuChonByNhomTuChon(nhomTuChon);
 	}
 
+	@Override
+	public boolean checkHocPhanExistInChuongTrinhDaoTao(String maHocPhan,
+			long nganhId, long khoaDaoTaoId) {
+		return chuongTrinhDaoTaoDao.checkHocPhanExistInChuongTrinhDaoTao(maHocPhan, nganhId, khoaDaoTaoId);
+	}
+
 }

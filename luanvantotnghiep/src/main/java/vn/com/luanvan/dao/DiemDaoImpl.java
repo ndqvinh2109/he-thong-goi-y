@@ -3,6 +3,7 @@ package vn.com.luanvan.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -73,8 +74,10 @@ public class DiemDaoImpl implements DiemDao{
 	public Diem findDiemById(long Id) {
 		try {
 			Diem diem = (Diem) sessionFactory.getCurrentSession().load(Diem.class, Id);
+			Hibernate.initialize(diem);
 			return diem;
 		} catch (HibernateException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -40,5 +40,10 @@ public class KhoaDaoTaoServiceImpl implements KhoaDaoTaoService{
 	public KhoaDaoTao findKhoaDaoTaoById(long id) {
 		return khoaDaoTaoDao.findKhoaDaoTaoById(id);
 	}
+
+	@Override
+	public KhoaDaoTao findKhoaDaoTaoBySinhVienId(long sinhVienId) {
+		return khoaDaoTaoDao.findKhoaDaoTaoBySinhVienId(sinhVienId);
+	}
 	
 }

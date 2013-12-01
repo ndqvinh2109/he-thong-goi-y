@@ -30,19 +30,11 @@
 	}
 </style>
 
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('.moo').editable();
-	});
-			
-</script>
 </head>
 <body>
 	<div class="container" style="padding-bottom: 80px">
 		<fieldset class="bs-example">
 			<h3 class="title-field">Kế hoạch học tập</h3>
-			<a class="moo" href="#" name="name" id="1" data-type="text" data-pk="1" data-url="${pageContext.request.contextPath}/service/test">test</a>
-			
 			<table>
 			<thead>
 				<tr>
@@ -231,6 +223,14 @@
 					nganhId: nganhId,
 					khoaDaoTaoId: khoaDaoTaoId
 				},
+				beforeSend: function(){
+					$.blockUI({ 
+						message: '<h4><img src="${pageContext.request.contextPath}/resources/assets/images/ajax-loader.gif" /> Loading...</h4>'
+			        });
+				},
+				complete: function(){
+					$.unblockUI();
+				},
 				success: function(data){
 					console.log(data);
 			        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
@@ -247,6 +247,12 @@
 					    $($tbody).appendTo($table);
 			        }
 			        $('#keHoachHocTap').append($table);
+			        
+			        $('#keHoachHocTap').fadeIn(800,function(){
+						$('html, body').animate({
+							scrollTop: $("#keHoachHocTap").offset().top
+						}, 800);
+					});
 					
 				}
 			});
@@ -254,5 +260,6 @@
 		});
 	});
 	</script>
+	<script src="${pageContext.request.contextPath}/resources/assets/js/jquery.blockUI.js"></script>
 </body>
 </html>

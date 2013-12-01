@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import vn.com.luanvan.model.KhoaDaoTao;
+import vn.com.luanvan.model.Nganh;
 
 @Repository
 public class KhoaDaoTaoDaoImpl implements KhoaDaoTaoDao{
@@ -71,6 +73,25 @@ public class KhoaDaoTaoDaoImpl implements KhoaDaoTaoDao{
 		try {
 			KhoaDaoTao khoaDaoTao = (KhoaDaoTao) sessionFactory.getCurrentSession().load(KhoaDaoTao.class, id);
 			return khoaDaoTao;
+		} catch (HibernateException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public KhoaDaoTao findKhoaDaoTaoBySinhVienId(long sinhVienId) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select kdt "
+					+ "from SinhVien sv "
+					+ "inner join sv.lop l "
+					+ "inner join l.khoaDaoTao kdt "
+					+ "where sv.sinhVienId = :sinhVienId";
+			Query query = session.createQuery(hql);
+			query.setLong("sinhVienId", sinhVienId);
+			KhoaDaoTao khoaDaoTao = (KhoaDaoTao) query.uniqueResult();
+			return khoaDaoTao;
+			
 		} catch (HibernateException e) {
 			return null;
 		}

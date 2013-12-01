@@ -121,4 +121,13 @@ public class ChuongTrinhDaoTaoController {
 		String strTinChi = chuongTrinhDaoTaoService.findSoTinChiTuChonByNhomTuChon(khoiKienThuc + nhomHocPhan);
 		return strTinChi;
 	}
+	
+	
+	@RequestMapping(value="checkExistHocPhan",method=RequestMethod.GET)
+	public @ResponseBody boolean checkExistHocPhan(
+			@RequestParam(value="nganhId", required = false) long nganhId,
+			@RequestParam(value="khoaDaoTaoId", required = false) long khoaDaoTaoId,
+			@RequestParam(value="maHocPhan", required = false) String maHocPhan){
+		return chuongTrinhDaoTaoService.checkHocPhanExistInChuongTrinhDaoTao(maHocPhan, nganhId, khoaDaoTaoId);
+	}
 }

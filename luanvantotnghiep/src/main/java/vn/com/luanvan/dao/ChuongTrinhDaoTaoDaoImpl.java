@@ -91,7 +91,6 @@ public class ChuongTrinhDaoTaoDaoImpl implements ChuongTrinhDaoTaoDao{
 			Query query = session.createQuery(hql);
 			query.setString("nhomTuChon", nhomTuChon);
 			List<String> list = query.list();
-			System.out.println(list);
 			if(list != null && list.size() != 0)
 				return list.get(0);
 			else
@@ -100,6 +99,37 @@ public class ChuongTrinhDaoTaoDaoImpl implements ChuongTrinhDaoTaoDao{
 			return null;
 		}
 	}
-	
-	
+
+	@Override
+	public boolean checkHocPhanExistInChuongTrinhDaoTao(String maHocPhan,
+			long nganhId, long khoaDaoTaoId) {
+		try {
+			String mahp = maHocPhan.toUpperCase();
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select ctdt "
+					+ "from ChuongTrinhDaoTao ctdt "
+					+ "inner join ctdt.khoaDaoTao kdt "
+					+ "inner join ctdt.nganh ng "
+					+ "inner join ctdt.hocPhan hp "
+					+ "where kdt.khoaDaoTaoId = :khoaDaoTaoId and "
+					+ "ng.nganhId = :nganhId and "
+					+ "trim(hp.maHP) = :maHocPhan";
+			
+			Query query = session.createQuery(hql);
+			
+			query.setLong("khoaDaoTaoId", khoaDaoTaoId);
+			query.setLong("nganhId", nganhId);
+			query.setString("maHocPhan", mahp);
+			
+			ChuongTrinhDaoTao ctdt = (ChuongTrinhDaoTao) query.uniqueResult();
+			if(ctdt == null){
+				return true;
+			}else{
+				return false;
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

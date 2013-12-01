@@ -41,4 +41,10 @@ public class NienKhoaHocKyServiceImpl implements NienKhoaHocKyService{
 		return nienKhoaHocKyDao.findNienKhoaHocKyById(Id);
 	}
 
+	@Override
+	public NienKhoaHocKy findNienKhoaHocKyByHocKyAndNienKhoa(String hocKy,
+			String nienKhoa) {
+		return nienKhoaHocKyDao.findNienKhoaHocKyByHocKyAndNienKhoa(hocKy, nienKhoa);
+	}
+
 }

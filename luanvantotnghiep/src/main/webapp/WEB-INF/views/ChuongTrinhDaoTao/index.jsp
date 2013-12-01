@@ -76,7 +76,7 @@
 				</div>
 			</div>
 		</div>
-		<button id="inKeHoach" class="btn btn-primary" style="margin-top: 30px">In chương trình đào tạo</button></td>
+		<button id="inKeHoach" class="btn btn-primary" style="margin-top: 30px">In chương trình đào tạo</button>
 		</fieldset>
 		<fieldset class="bs-example">
 			<h3 class="title-field">Nhập học phần</h3>
@@ -160,6 +160,7 @@
        			</div>
 			</div>
 			<div class="col-sm-12">
+				<div class="alert-exist" style="display: none"></div>
 				<button type="button" class="btn btn-primary" id="themHocPhan">Thêm học phần</button>
 			</div>
 		</fieldset>
@@ -207,6 +208,34 @@
 			}
 		});
 	}
+	
+	function checkExistHocPhan(){
+		var nganhId = $('#selNganh').val();
+		var khoaDaoTaoId = $('#selKhoaDaoTao').val();
+		var maHocPhan = $('#maHocPhan').val();
+		$.ajax({
+			url: '${pageContext.request.contextPath}/service/checkExistHocPhan',
+			type: 'GET',
+			dataType: "json",
+			data : {
+				nganhId: nganhId,
+				khoaDaoTaoId: khoaDaoTaoId,
+				maHocPhan: maHocPhan
+			},
+			success: function(data){
+				if(!data){
+					var html = $("<span><strong>Bạn đã thêm học phần này vào chương trình đào tạo</strong></span>");
+					$('.alert-exist').css({"display":"block", "padding": "10px", "margin-bottom": "10px"}).addClass("alert-danger text-center").html(html);
+				}
+				else{
+					$('.alert-exist').css("display","none").removeClass('alert-danger');
+				}
+				
+			}
+		});	
+		
+	}
+		
 		$(document).ready(function(){
 			$('.form-control').tooltip();
 			$('#maHocPhan').keyup(function(event){
@@ -247,6 +276,7 @@
 			
 			$('#themHocPhan').click(function(){
 				validate();
+				checkExistHocPhan();
 				var nganhId = $('#selNganh').val();
 				var khoaDaoTaoId = $('#selKhoaDaoTao').val();
 				var khoiKienThuc = $('#selKhoiKienThuc').val();
@@ -255,7 +285,8 @@
 				var hocKyMacDinh = $('#hocKyMacDinh').val();
 				var tuChon = $(':checkbox').prop("checked");
 				var tinChiTuChon = $('#tinChiTuChon').val();
-				if(!$('.alert').hasClass("alert-danger")){
+							
+				if(!$('.alert').hasClass("alert-danger") && !$('.alert-exist').hasClass("alert-danger")){
 					$.ajax({
 						url: '${pageContext.request.contextPath}/service/themHocPhan',
 						type: 'GET',
@@ -494,6 +525,14 @@
 					data:{
 						nganhId: nganhId,
 						khoaDaoTaoId: khoaDaoTaoId
+					},
+					beforeSend: function(){
+						$.blockUI({ 
+							message: '<h4><img src="${pageContext.request.contextPath}/resources/assets/images/ajax-loader.gif" /> Loading...</h4>'
+				        });
+					},
+					complete: function(){
+						$.unblockUI();
 					},
 					success: function(data){
 						console.log(data);

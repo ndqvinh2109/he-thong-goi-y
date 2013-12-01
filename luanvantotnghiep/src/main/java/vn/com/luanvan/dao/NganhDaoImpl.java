@@ -1,11 +1,11 @@
 package vn.com.luanvan.dao;
 
 import java.util.List;
-import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -82,11 +82,22 @@ public class NganhDaoImpl implements NganhDao{
 	}
 
 	@Override
-	public List<Map<String, Object>> findChuongTrinhDaoTaoByMaNganhAndMaKhoaDaoTao(long maNganh, long maKhoaDaoTao) {
-		Session session = sessionFactory.getCurrentSession();
-		String hql = "";
-		return null;
+	public Nganh findNganhBySinhVienId(long sinhVienId) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select ng "
+					+ "from SinhVien sv "
+					+ "inner join sv.lop l "
+					+ "inner join l.nganh ng "
+					+ "where sv.sinhVienId = :sinhVienId";
+			Query query = session.createQuery(hql);
+			query.setLong("sinhVienId", sinhVienId);
+			Nganh nganh = (Nganh) query.uniqueResult();
+			return nganh;
+			
+		} catch (HibernateException e) {
+			return null;
+		}
 	}
-	
 
 }
