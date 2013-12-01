@@ -22,13 +22,13 @@
                       <user-service>
 	                        <user name="loan" password="123456" authorities="ROLE_USER" />
 	                    	<user name="tuyen" password="123456" authorities="ROLE_USER" />
-	                    	<user name="1940479" password="1940479" authorities="ROLE_USER" />
-	                    	<user name="1940485" password="1940485" authorities="ROLE_USER" />
-	                    	<user name="1940481" password="1940481" authorities="ROLE_USER" />
-	                    	<user name="140585" password="140585" authorities="ROLE_USER" />
-	                    	<user name="1032688" password="1032688" authorities="ROLE_USER" />
-	                    	<user name="1032713" password="1032713" authorities="ROLE_USER" />
-	                    	<user name="1032720" password="1032720" authorities="ROLE_USER" />
+	                    	<user name="1940479" password="1" authorities="ROLE_USER" />
+	                    	<user name="1940485" password="1" authorities="ROLE_USER" />
+	                    	<user name="1940481" password="1" authorities="ROLE_USER" />
+	                    	<user name="140585" password="1" authorities="ROLE_USER" />
+	                    	<user name="1032688" password="1" authorities="ROLE_USER" />
+	                    	<user name="1032713" password="1" authorities="ROLE_USER" />
+	                    	<user name="1032720" password="1" authorities="ROLE_USER" />
                       </user-service>
                   </authentication-provider>
             </authentication-manager>

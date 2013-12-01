@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
@@ -72,6 +73,25 @@ public class NienKhoaHocKyDaoImpl implements NienKhoaHocKyDao{
 		try {
 			NienKhoaHocKy nienKhoaHocKy = (NienKhoaHocKy) sessionFactory.getCurrentSession().load(NienKhoaHocKy.class, Id);
 			return nienKhoaHocKy;
+		} catch (HibernateException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public NienKhoaHocKy findNienKhoaHocKyByHocKyAndNienKhoa(String hocKy,
+			String nienKhoa) {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			String hql = "select nkhk "
+					+ "from NienKhoaHocKy nkhk "
+					+ "where trim(nkhk.hocKy) = :hocKy and "
+					+ "trim(nkhk.namHoc) = :nienKhoa";
+			Query query = session.createQuery(hql);
+			query.setString("hocKy", hocKy);
+			query.setString("nienKhoa", nienKhoa);
+			NienKhoaHocKy nkhk = (NienKhoaHocKy) query.uniqueResult();
+			return nkhk;
 		} catch (HibernateException e) {
 			return null;
 		}

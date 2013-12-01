@@ -15,5 +15,7 @@ public interface NienKhoaHocKyDao {
 	public List<NienKhoaHocKy> findAllNienKhoaHocKy();
 	
 	public NienKhoaHocKy findNienKhoaHocKyById(long Id);
+	
+	public NienKhoaHocKy findNienKhoaHocKyByHocKyAndNienKhoa(String hocKy, String nienKhoa);
 
 }

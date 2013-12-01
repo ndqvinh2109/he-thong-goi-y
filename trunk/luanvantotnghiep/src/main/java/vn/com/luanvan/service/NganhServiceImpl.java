@@ -41,4 +41,9 @@ public class NganhServiceImpl implements NganhService{
 		return nganhDao.findNganhById(Id);
 	}
 
+	@Override
+	public Nganh findNganhBySinhVienId(long sinhVienId) {
+		return nganhDao.findNganhBySinhVienId(sinhVienId);
+	}
+
 }

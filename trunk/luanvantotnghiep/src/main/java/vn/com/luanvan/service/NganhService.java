@@ -15,4 +15,6 @@ public interface NganhService {
 	public List<Nganh> findAllNganh();
 	
 	public Nganh findNganhById(long Id);	
+	
+	public Nganh findNganhBySinhVienId(long sinhVienId);
 }

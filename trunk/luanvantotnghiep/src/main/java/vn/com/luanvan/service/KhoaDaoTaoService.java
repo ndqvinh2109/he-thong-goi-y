@@ -14,4 +14,6 @@ public interface KhoaDaoTaoService {
 	public List<KhoaDaoTao> findAllKhoaDaoTao();
 	
 	public KhoaDaoTao findKhoaDaoTaoById(long id);
+	
+	public KhoaDaoTao findKhoaDaoTaoBySinhVienId(long sinhVienId);
 }

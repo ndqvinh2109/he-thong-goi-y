@@ -153,7 +153,7 @@ public class HocPhanImpl implements HocPhanDao{
 	public List<Object[]> findHocPhanBySinhVienIdAndNienKhoaId(long sinhVienId) {
 		try {
 			Session session = sessionFactory.getCurrentSession();
-			String hql = "select hp, diem, nkhk "
+			String hql = "select distinct hp, diem, nkhk "
 					+ "from Diem diem "
 					+ "inner join diem.nienKhoaHocKy nkhk "
 					+ "inner join diem.sinhvien sv "

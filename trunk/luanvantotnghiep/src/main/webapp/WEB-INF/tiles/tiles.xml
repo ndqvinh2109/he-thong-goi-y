@@ -31,4 +31,9 @@
 	<put-attribute name="body" value="/WEB-INF/views/KeHoachHocTap/index.jsp" />
 </definition>
 
+<definition name="kehoachhoctapsinhvien" extends="base.definition">
+	<put-attribute name="title" value="Kế hoạch học tập cho sinh viên" />
+	<put-attribute name="body" value="/WEB-INF/views/KeHoachHocTapSinhVien/index.jsp" />
+</definition>
+
 </tiles-definitions>

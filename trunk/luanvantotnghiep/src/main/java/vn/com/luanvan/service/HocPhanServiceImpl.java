@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import vn.com.luanvan.dao.HocPhanDao;
+import vn.com.luanvan.dao.KhoaDaoTaoDao;
+import vn.com.luanvan.dao.NganhDao;
 import vn.com.luanvan.model.HocPhan;
 import vn.com.luanvan.model.HocPhanTienQuyet;
+import vn.com.luanvan.model.KhoaDaoTao;
+import vn.com.luanvan.model.Nganh;
 
 @Service
 @Transactional
@@ -16,6 +20,10 @@ public class HocPhanServiceImpl implements HocPhanService{
 	
 	@Autowired
 	private HocPhanDao hocPhanDao;
+	@Autowired
+	private NganhDao nganhDao;
+	@Autowired
+	private KhoaDaoTaoDao khoaDaoTaoDao;
 
 	@Override
 	public boolean saveHocPhan(HocPhan hocPhan) {
@@ -73,5 +81,12 @@ public class HocPhanServiceImpl implements HocPhanService{
 	@Override
 	public HocPhan findHocPhanByMaHocPhan(String maHocPhan) {
 		return hocPhanDao.findHocPhanByMaHocPhan(maHocPhan);
+	}
+
+	@Override
+	public List<Object[]> findChuongTrinhDaoTaoSinhVienBySinhVienId(long sinhVienId) {
+		Nganh nganh = nganhDao.findNganhBySinhVienId(sinhVienId);
+		KhoaDaoTao khoaDaoTao = khoaDaoTaoDao.findKhoaDaoTaoBySinhVienId(sinhVienId);
+		return hocPhanDao.findHocPhanByNganhIdAndKhoaDaoTaoId(nganh.getNganhId(), khoaDaoTao.getKhoaDaoTaoId());
 	}
 }

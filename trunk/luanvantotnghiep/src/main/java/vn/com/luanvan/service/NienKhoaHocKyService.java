@@ -16,5 +16,5 @@ public interface NienKhoaHocKyService {
 	
 	public NienKhoaHocKy findNienKhoaHocKyById(long Id);
 
-
+	public NienKhoaHocKy findNienKhoaHocKyByHocKyAndNienKhoa(String hocKy, String nienKhoa);
 }

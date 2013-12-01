@@ -17,4 +17,6 @@ public interface ChuongTrinhDaoTaoService {
 	public ChuongTrinhDaoTao findChuongTrinhDaoTaoById(long Id);
 
 	public String findSoTinChiTuChonByNhomTuChon(String nhomTuChon);
+	
+	public boolean checkHocPhanExistInChuongTrinhDaoTao(String maHocPhan, long nganhId, long khoaDaoTaoId);
 }

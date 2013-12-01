@@ -22,25 +22,10 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/chuongtrinhdaotao')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/chuongtrinhdaotao"><i class="fa fa-book fa-fw"></i> Chương trình đào tạo</a></li>
-			<li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/kehoachhoctap')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/kehoachhoctap"><i class="fa fa-clipboard fa-fw"></i>Kế hoạch học tập</i></a></li>
+			<li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/kehoachhoctap')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/kehoachhoctap"><i class="fa fa-clipboard fa-fw"></i>Kế hoạch học tập mẫu</i></a></li>
             <li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/dudoandiemhocphan')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/dudoandiemhocphan"><i class="fa fa-file-text fa-fw"></i>Dự đoán điểm học phần</i></a></li>
+			<li class="${fn:contains(requestScope['javax.servlet.forward.request_uri'],'/khhtsinhvien')? 'active' : ''}"><a href="${pageContext.request.contextPath}/service/khhtsinhvien"><i class="fa fa-archive fa-fw"></i>Kế hoạch học tập sinh viên</i></a></li>
 			
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-pencil fa-fw"></i> Cập nhật <b class="caret"></b></a>
-              <ul class="dropdown-menu" style="width: 200px">
-            	<li class="dropdown-header">Thông tin chung</li>
-                <li><a href="#">Bộ Môn</a></li>
-                <li><a href="#">Ngành</a></li>
-                <li><a href="#">Khoa chủ quản</a></li>
-                <li><a href="#">Lớp</a></li>
-                <li><a href="#">Sinh viên</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Thông tin kế hoạch học tập</li>
-                <li><a href="#">Học phần</a></li>
-                <li><a href="#">Chương trình đào tạo</a></li>
-                <li><a href="<c:url value="${pageContext.request.contextPath}/j_spring_security_logout"/>">Đăng xuất</a></li>
-              </ul>
-            </li>
           </ul>
           <ul class="nav pull-right navbar-nav">
           	<li><a href="<c:url value="${pageContext.request.contextPath}/j_spring_security_logout"/>"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a></li>
