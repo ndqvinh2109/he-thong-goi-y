@@ -151,6 +151,7 @@
 		});
 		
 		$('#duDoanDiem').click(function(){
+			$('#keHoachHocTap').empty();
 			$.ajax({
 				url: '${pageContext.request.contextPath}/service/loadDuDoanDiemChoSinhVien',
 				type: 'GET',
