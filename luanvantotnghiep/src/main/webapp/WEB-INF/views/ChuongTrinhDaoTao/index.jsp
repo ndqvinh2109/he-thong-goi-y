@@ -167,7 +167,7 @@
 		<fieldset class="bs-example">
 		<h3 class="title-field">Chương trình đào tạo</h3>
 		<div id="thongTinChung"></div>			
-					
+		<div class="alert-success" style="display: none"><strong>Thêm học phần thành công</strong></div>			
 		<div id="chuongTrinhDaoTao"></div>
 		</fieldset>
 		
@@ -310,6 +310,10 @@
 							$.unblockUI();
 						},
 						success: function(data){
+							if(data){
+								$('.alert-success').css({"display":"block", "padding": "10px", "margin-bottom": "10px"}).addClass("alert-info text-center").fadeOut(3000);
+							}	
+							
 							$('#chuongTrinhDaoTao').empty();
 							$('#thongTinChung').empty();
 							var nganhId = $('#selNganh').val();
