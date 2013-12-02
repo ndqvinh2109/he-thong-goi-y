@@ -217,6 +217,7 @@
 			url: '${pageContext.request.contextPath}/service/checkExistHocPhan',
 			type: 'GET',
 			dataType: "json",
+			async: false,
 			data : {
 				nganhId: nganhId,
 				khoaDaoTaoId: khoaDaoTaoId,
@@ -285,8 +286,9 @@
 				var hocKyMacDinh = $('#hocKyMacDinh').val();
 				var tuChon = $(':checkbox').prop("checked");
 				var tinChiTuChon = $('#tinChiTuChon').val();
-							
-				if(!$('.alert').hasClass("alert-danger") && !$('.alert-exist').hasClass("alert-danger")){
+				
+				if(!$('.alert').hasClass("alert-danger")){
+					if(!$('.alert-exist').hasClass("alert-danger")){
 					$.ajax({
 						url: '${pageContext.request.contextPath}/service/themHocPhan',
 						type: 'GET',
@@ -389,7 +391,7 @@
 						}
 					});
 				}
-				
+			}
 			});
 			
 			$('.checkbox').click(function(){ 
