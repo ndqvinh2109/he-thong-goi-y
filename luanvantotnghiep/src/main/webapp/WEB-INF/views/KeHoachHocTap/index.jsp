@@ -112,15 +112,19 @@
 		    return a;
 		};
 		
-		function getHocKiMacDinhBySTT(array, item){
+		function getHocKiMacDinhBySTT(array){
 			var arrVarI = [];
 			var arrVarJ = [];
+			if(countHocKyMacDinh(array) == 1){
+				if(array.length != 0)
+					return array[0][1].hocKyMacDinh;
+			}
+			
 			for(var i = 0; i < array.length; i++){
 				var j = i + 1;
 				if(i == array.length - 1){
 					break;
 				}
-				
 				if(array[i][1].hocKyMacDinh != array[j][1].hocKyMacDinh){
 					arrVarI.push(array[i][1].hocKyMacDinh);
 					arrVarJ.push(array[j][1].hocKyMacDinh);
@@ -240,20 +244,23 @@
 			        $($thead).appendTo($table);
 			        console.log(countHocKyMacDinh(data.danhSachHocPhan));
 			        console.log(getHocKiMacDinhBySTT(data.danhSachHocPhan));
-			        for(var i = 0; i < countHocKyMacDinh(data.danhSachHocPhan); i++){
-			        	var hkMD = getHocKiMacDinhBySTT(data.danhSachHocPhan)[i]
-			        	var str = 'Học kì ' + hkMD;
-			        	var $tbody = createTable(getHocPhansByHocKy(data.danhSachHocPhan,hkMD),str);
-					    $($tbody).appendTo($table);
-			        }
-			        $('#keHoachHocTap').append($table);
 			        
-			        $('#keHoachHocTap').fadeIn(800,function(){
-						$('html, body').animate({
-							scrollTop: $("#keHoachHocTap").offset().top
-						}, 800);
-					});
-					
+			        if(getHocKiMacDinhBySTT(data.danhSachHocPhan).length != 0){
+					    for(var i = 0; i < countHocKyMacDinh(data.danhSachHocPhan); i++){
+					        	var hkMD = getHocKiMacDinhBySTT(data.danhSachHocPhan)[i];
+					        	var str = 'Học kì ' + hkMD;
+					        	var $tbody = createTable(getHocPhansByHocKy(data.danhSachHocPhan,hkMD),str);
+							    $($tbody).appendTo($table);
+					        }
+				        
+				        $('#keHoachHocTap').append($table);
+				        
+				        $('#keHoachHocTap').fadeIn(800,function(){
+							$('html, body').animate({
+								scrollTop: $("#keHoachHocTap").offset().top
+							}, 800);
+						});
+			        }
 				}
 			});
 			
