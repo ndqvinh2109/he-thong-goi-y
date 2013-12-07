@@ -171,10 +171,10 @@
 	    	$($tr).append('<td colspan="10" class="danger"><strong>'+str+'</strong></td>');
 	    	$($tr).appendTo($tbody);
 	    	for(var i = 0; i < data.length; i++){
-	        	hocPhan = data[i][0];
+	    		var stt = i + 1;
+	    		hocPhan = data[i][0];
 	      		chuongTrinhDaoTao = data[i][1];
 	      		rowCount = countItemInArray(data[i], getNhomTuChons(chuongTrinhDaoTao.nhomTuChon, data, i));
-	      		console.log(rowCount);
 	      		$.ajax({
 					url: '${pageContext.request.contextPath}/service/loadHocPhanTienQuyetKHHTByHocPhanId',
 					type: 'GET',
@@ -197,11 +197,10 @@
 								strTemp += hptqTemp[i].maHocPhanTienQuyet + ', ';
 							}
 						}
-						$($tr).append('<td>'+hocPhan.hocPhanId+'</td>')
+						$($tr).append('<td>'+stt+'</td>')
 						  .append('<td>'+hocPhan.maHP+'</td>')
 						  .append('<td>'+hocPhan.tenHP+'</td>')
 						  .append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTC+'</td>');
-						
 						
 						if(chuongTrinhDaoTao.tuChon != '0'){
 							 $($tr).append('<td style="vertical-align: middle; text-align: center"></td>');
@@ -209,7 +208,6 @@
 						else{
 							 $($tr).append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTC+'</td>');
 						}
-						
 						var arrTemp = getNhomTuChons(chuongTrinhDaoTao.nhomTuChon, dataTemp, i);
 					
 						if(chuongTrinhDaoTao.tuChon != '0'){
@@ -238,10 +236,13 @@
 					
 					}
 				});		  
+	      			
 			}
+	    	
 	    	/* Function total point */
 	    	
 	    	var totalPoint = 0;
+	    	var totalPointTuChon = 0;
 	    	for(var i = 0; i < data.length; i++){
 	    		hocPhan = data[i][0];
 	    		chuongTrinhDaoTao = data[i][1];
@@ -250,11 +251,31 @@
 	    		}
 	    	}
 	    	
+	    	for(var i = 0; i < data.length; i++){
+	    		var temp = 0;
+	    		temp = i + 1;
+	    		
+	    		if(i == data.length - 1){
+	    			break;
+	    		}
+	    		if(data[i][1].tuChon != '0'){
+	    			if(totalPointTuChon == 0){
+	    				totalPointTuChon += parseInt(data[i][1].tuChon);
+		    		}
+	    			
+	    			if(parseInt(data[i][1].tuChon) != parseInt(data[temp][1].tuChon)){
+	    				console.log("i: " + i);
+	    				totalPointTuChon += parseInt(data[temp][1].tuChon);
+	    			}
+	    		}
+	    	}
+	    	
 	    	var $tr = $('<tr></tr>');
 	    	$($tr).append('<td colspan="3" class="success text-right" style="color: red"><strong>Tổng: </strong></td>');
 	    	$($tr).append('<td></td>');
 	    	$($tr).append('<td class="success text-center" style="color: red"><strong>'+totalPoint+'</strong></td>');
-	    	for(var i = 0; i < 4 ; i++){
+	    	$($tr).append('<td class="success text-center" style="color: red"><strong>'+totalPointTuChon+'</strong></td>');
+	    	for(var i = 0; i < 3 ; i++){
 	    		$($tr).append('<td></td>');
 	    	}
 	    	$($tr).appendTo($tbody);
