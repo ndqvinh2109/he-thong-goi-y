@@ -16,6 +16,7 @@ import vn.com.luanvan.service.DiemService;
 import vn.com.luanvan.service.HocPhanService;
 import vn.com.luanvan.service.SinhVienService;
 import vn.com.luanvan.utils.MF;
+import vn.com.luanvan.utils.Utils;
 
 @Controller
 public class DuDoanDiemHocPhan {
@@ -28,9 +29,18 @@ public class DuDoanDiemHocPhan {
 	private MF mf;
 	@Autowired
 	private DiemService diemService;
+	@Autowired
+	private Utils utils;
 	
 	@RequestMapping(value="dudoandiemhocphan", method = RequestMethod.GET)
 	public String loadPageDuDoanKetQuaHocPhan(Map<String,Object> map){
+		String maSinhVien = utils.getLoggedInMember();
+		SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(maSinhVien);
+		String result = maSinhVien;
+		if(sinhVien != null){
+			result = sinhVien.getHoTen();
+		}
+		map.put("tenSinhVien", result);
 		map.put("sinhViens", sinhVienService.findAllSinhVien());
 		return "dudoandiemhocphan";
 	}

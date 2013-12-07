@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -78,6 +79,7 @@
 		</div>
 		<button id="inKeHoach" class="btn btn-primary" style="margin-top: 30px">In chương trình đào tạo</button>
 		</fieldset>
+		<sec:authorize ifAnyGranted="ROLE_ADMIN">
 		<fieldset class="bs-example">
 			<h3 class="title-field">Nhập học phần</h3>
 			<div class="row">
@@ -164,12 +166,14 @@
 				<button type="button" class="btn btn-primary" id="themHocPhan">Thêm học phần</button>
 			</div>
 		</fieldset>
+		</sec:authorize>
 		<fieldset class="bs-example">
 		<h3 class="title-field">Chương trình đào tạo</h3>
 		<div id="thongTinChung"></div>			
 		<div class="alert-success" style="display: none"><strong>Thêm học phần thành công</strong></div>			
 		<div id="chuongTrinhDaoTao"></div>
 		</fieldset>
+		
 		
 		
 		
@@ -507,8 +511,9 @@
 										
 						$('#chuongTrinhDaoTao').append($table);
 						$('#chuongTrinhDaoTao').fadeIn(800,function(){
+							var pos = $("#chuongTrinhDaoTao").offset().top - 180;
 							$('html, body').animate({
-								scrollTop: $("#chuongTrinhDaoTao").offset().top
+								scrollTop: pos
 							}, 800);
 						});
 					

@@ -12,7 +12,7 @@
 	            <intercept-url pattern="/service/dudoandiemhocphan" access="ROLE_ADMIN"/>
 	            <intercept-url pattern="/service/homepage" access="ROLE_USER, ROLE_ADMIN"/>
 	            <intercept-url pattern="/service/khhtsinhvien" access="ROLE_USER"/>
-	            <intercept-url pattern="/service/chuongtrinhdaotao" access="ROLE_ADMIN"/> 
+	            <intercept-url pattern="/service/chuongtrinhdaotao" access="ROLE_ADMIN, ROLE_USER"/> 
 	             
 	         	  <form-login login-page="/index.jsp" 
                           default-target-url="/service/homepage" always-use-default-target="true"  
