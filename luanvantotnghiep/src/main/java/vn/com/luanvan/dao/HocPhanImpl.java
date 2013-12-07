@@ -183,7 +183,7 @@ public class HocPhanImpl implements HocPhanDao{
 					+ "inner join ctdt.hocPhan hp "
 					+ "where kdt.khoaDaoTaoId = :khoaDaoTaoId "
 					+ "and ng.nganhId = :nganhId "
-					+ "order by cast(ctdt.hocKyMacDinh as integer) asc";
+					+ "order by cast(ctdt.hocKyMacDinh as integer) asc, cast(ctdt.nhomTuChon as integer) asc";
 			Query query = session.createQuery(hql);
 			query.setLong("khoaDaoTaoId", khoaDaoTaoId);
 			query.setLong("nganhId", nganhId);
