@@ -6,29 +6,37 @@
 			http://www.springframework.org/schema/security 
 			http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-            <http auto-config="true">
+            <http auto-config="true" access-denied-page="/accessDenied.jsp">
 	            <intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-	            <intercept-url pattern="/service/kehoachhoctap" access="ROLE_USER"/>
-	            <intercept-url pattern="/service/dudoandiemhocphan" access="ROLE_USER"/>
-	             <intercept-url pattern="/service/homepage" access="ROLE_USER"/>
+	            <intercept-url pattern="/service/kehoachhoctap" access="ROLE_USER, ROLE_ADMIN"/>
+	            <intercept-url pattern="/service/dudoandiemhocphan" access="ROLE_ADMIN"/>
+	            <intercept-url pattern="/service/homepage" access="ROLE_USER, ROLE_ADMIN"/>
+	            <intercept-url pattern="/service/khhtsinhvien" access="ROLE_USER"/>
+	            <intercept-url pattern="/service/chuongtrinhdaotao" access="ROLE_ADMIN"/> 
+	             
 	         	  <form-login login-page="/index.jsp" 
                           default-target-url="/service/homepage" always-use-default-target="true"  
                           authentication-failure-url="/index.jsp?login_error=1" />
-                  <logout logout-success-url="/index.jsp" />
+                  <logout invalidate-session="true" logout-success-url="/index.jsp" />
+                  <remember-me key="uniqueAndSecret" />
+                  <session-management session-authentication-error-url="/index.jsp?login_error=other">
+           			 <concurrency-control expired-url="/index.jsp?login_error=other" error-if-maximum-exceeded="false" max-sessions="1"/>
+				</session-management>
             </http>
 						
             <authentication-manager>
                   <authentication-provider>
+                  <password-encoder hash="sha" />
                       <user-service>
-	                        <user name="loan" password="123456" authorities="ROLE_USER" />
-	                    	<user name="tuyen" password="123456" authorities="ROLE_USER" />
-	                    	<user name="1940479" password="1" authorities="ROLE_USER" />
-	                    	<user name="1940485" password="1" authorities="ROLE_USER" />
-	                    	<user name="1940481" password="1" authorities="ROLE_USER" />
-	                    	<user name="140585" password="1" authorities="ROLE_USER" />
-	                    	<user name="1032688" password="1" authorities="ROLE_USER" />
-	                    	<user name="1032713" password="1" authorities="ROLE_USER" />
-	                    	<user name="1032720" password="1" authorities="ROLE_USER" />
+	                        <user name="loan" password="7c4a8d09ca3762af61e59520943dc26494f8941b" authorities="ROLE_ADMIN" />
+	                    	<user name="tuyen" password="7c4a8d09ca3762af61e59520943dc26494f8941b" authorities="ROLE_ADMIN" />
+	                    	<user name="1940479" password="356a192b7913b04c54574d18c28d46e6395428ab" authorities="ROLE_USER" />
+	                    	<user name="1940485" password="356a192b7913b04c54574d18c28d46e6395428ab" authorities="ROLE_USER" />
+	                    	<user name="1940481" password="356a192b7913b04c54574d18c28d46e6395428ab" authorities="ROLE_USER" />
+	                    	<user name="140585" password="356a192b7913b04c54574d18c28d46e6395428ab" authorities="ROLE_USER" />
+	                    	<user name="1032688" password="356a192b7913b04c54574d18c28d46e6395428ab" authorities="ROLE_USER" />
+	                    	<user name="1032713" password="356a192b7913b04c54574d18c28d46e6395428ab" authorities="ROLE_USER" />
+	                    	<user name="1032720" password="356a192b7913b04c54574d18c28d46e6395428ab" authorities="ROLE_USER" />
                       </user-service>
                   </authentication-provider>
             </authentication-manager>
