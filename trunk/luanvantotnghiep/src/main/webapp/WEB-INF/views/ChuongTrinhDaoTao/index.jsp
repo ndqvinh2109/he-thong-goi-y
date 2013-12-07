@@ -315,79 +315,7 @@
 							if(data){
 								$('.alert-success').css({"display":"block", "padding": "10px", "margin-bottom": "10px"}).addClass("alert-info text-center").fadeOut(3000);
 							}	
-							
-							$('#chuongTrinhDaoTao').empty();
-							$('#thongTinChung').empty();
-							var nganhId = $('#selNganh').val();
-							var khoaDaoTaoId = $('#selKhoaDaoTao').val();
-							$.ajax({
-								url: '${pageContext.request.contextPath}/service/loadChuongTrinhDaoTao',
-								type: 'GET',
-								dataType: "json",
-								data:{
-									nganhId: nganhId,
-									khoaDaoTaoId: khoaDaoTaoId
-								},
-								success: function(data){
-									$('#chuongTrinhDaoTao').empty();
-									$('#thongTinChung').empty();
-									var nganhId = $('#selNganh').val();
-									var khoaDaoTaoId = $('#selKhoaDaoTao').val();
-									$.ajax({
-										url: '${pageContext.request.contextPath}/service/loadChuongTrinhDaoTao',
-										type: 'GET',
-										dataType: "json",
-										data:{
-											nganhId: nganhId,
-											khoaDaoTaoId: khoaDaoTaoId
-										},
-										success: function(data){
-											console.log(data);
-											var $tr = $('<tr></tr>');
-											var $table1 = $('<table class="table" style="margin: 0 auto; width: 600px"></table>');
-											$('<td><strong>Ngành học:</strong> '+data.tenNganh+'</td>').appendTo($tr);
-											$('<td><strong>Hệ đào tạo:</strong> Chính quy</td>').appendTo($tr);
-											$($tr).appendTo($table1);
-											
-											$tr = $('<tr></tr>');
-											$('<td><strong>Mã ngành:</strong> '+data.maNganh+'</td>').appendTo($tr);
-											$('<td><strong>Bộ môn:</strong> '+data.tenNganh+'</td>').appendTo($tr);
-											$($tr).appendTo($table1);
-											$tr = $('<tr></tr>');
-											$('<td><strong>Đơn vị quản lý:</strong> Khoa Công nghệ Thông tin & TT</td>').appendTo($tr);
-											$('<td></td>').appendTo($tr);
-											$($tr).appendTo($table1);
-											
-											$('#thongTinChung').append($table1);
-											
-											 
-											var str = 'Khối kiến thức giáo dục đại cương';
-									        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
-									        var $table = $('<table></table>',{
-									        	'class':'table table-bordered table-hover'
-									        });
-									        
-									    	$($thead).appendTo($table);
-									        var $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'1'),str);
-									        $($tbody).appendTo($table);
-									        str = 'Khối kiến thức cơ sở ngành';
-									       	$tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'2'),str);
-									        $($tbody).appendTo($table);
-									        str = 'Khối kiến thức chuyên ngành';
-									        $tbody = createTable(getHocPhansByNhomKienThuc(data.danhSachHocPhan,'3'),str);
-									        $($tbody).appendTo($table);
-															
-											$('#chuongTrinhDaoTao').append($table);
-											$('#chuongTrinhDaoTao').fadeIn(800,function(){
-												$('html, body').animate({
-													scrollTop: $("#chuongTrinhDaoTao").offset().top
-												}, 800);
-											});
-										
-										}
-									});
-								}
-							});
+							inChuongTrinhDaoTao();
 						}
 					});
 				}
@@ -450,6 +378,7 @@
 		    	$($tr).append('<td colspan="9" class="success text-center"><strong>'+str+'</strong></td>');
 		    	$($tr).appendTo($tbody);
 		    	for(var i = 0; i < data.length; i++){
+		    		var stt = i + 1;
 		        	hocPhan = data[i][0];
 		      		chuongTrinhDaoTao = data[i][1];
 		      		rowCount = countItemInArray(data[i], getNhomTuChons(chuongTrinhDaoTao.nhomTuChon, data, i));
@@ -477,7 +406,7 @@
 									strTemp += hptqTemp[i].maHocPhanTienQuyet + ', ';
 								}
 							}
-							$($tr).append('<td>'+hocPhan.hocPhanId+'</td>')
+							$($tr).append('<td>'+stt+'</td>')
 							  .append('<td>'+hocPhan.maHP+'</td>')
 							  .append('<td>'+hocPhan.tenHP+'</td>')
 							  .append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTC+'</td>');
@@ -519,7 +448,7 @@
 				return $tbody;
 			}
 			// Test
-			$('#inKeHoach').click(function(){
+			function inChuongTrinhDaoTao(){
 				$('#chuongTrinhDaoTao').empty();
 				$('#thongTinChung').empty();
 				var nganhId = $('#selNganh').val();
@@ -585,6 +514,10 @@
 					
 					}
 				});
+			}
+			
+			$('#inKeHoach').click(function(){
+				inChuongTrinhDaoTao();
 				
 			});
 			
