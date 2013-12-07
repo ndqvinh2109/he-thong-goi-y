@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
+<link rel="shortcut icon" href="http://www.google.com/s2/favicons?domain=http://www.ctu.edu.vn/" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/font-awesome.css"/>  
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/jqueryUi.css"/>
