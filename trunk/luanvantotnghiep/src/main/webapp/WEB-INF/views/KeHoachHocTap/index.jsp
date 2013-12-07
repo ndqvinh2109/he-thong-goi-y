@@ -133,16 +133,48 @@
 			return arrayUnique(arrVarI.concat(arrVarJ));
 		}
 		
+		function countItemInArray(item, array){
+			if(item[0].hocPhanId == array[0][0].hocPhanId){
+				if(array.length == 1)
+					return 0;
+				else
+					return array.length;
+			}
+			else {
+				return 0;
+			}
+		}
+					
+		function getNhomTuChons(item,array,index){
+			var myArray = [];
+			if(item == '0'){
+				myArray.push(array[index]);
+				return myArray;
+			}
+			else{
+				for(var i = 0; i < array.length; i++){
+					if(item == array[i][1].nhomTuChon){
+						myArray.push(array[i]);
+					}
+				}
+			}
+			return myArray;
+		}
+		
 		function createTable(data,str){
+			var dataTemp = data;
 			var $tbody = $('<tbody></tbody>');
 	    	var hocPhan = new Object();
 	    	var chuongTrinhDaoTao = new Object();
+	    	var rowCount = 0;
 	    	var $tr = $('<tr></tr>');
 	    	$($tr).append('<td colspan="10" class="danger"><strong>'+str+'</strong></td>');
 	    	$($tr).appendTo($tbody);
 	    	for(var i = 0; i < data.length; i++){
 	        	hocPhan = data[i][0];
 	      		chuongTrinhDaoTao = data[i][1];
+	      		rowCount = countItemInArray(data[i], getNhomTuChons(chuongTrinhDaoTao.nhomTuChon, data, i));
+	      		console.log(rowCount);
 	      		$.ajax({
 					url: '${pageContext.request.contextPath}/service/loadHocPhanTienQuyetKHHTByHocPhanId',
 					type: 'GET',
@@ -152,6 +184,7 @@
 					},
 					async: false,
 					success: function(data){
+						var j = 0;
 						var strTemp = '';
 						$tr = $('<tr></tr>');
 						
@@ -176,13 +209,26 @@
 						else{
 							 $($tr).append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTC+'</td>');
 						}
+						
+						var arrTemp = getNhomTuChons(chuongTrinhDaoTao.nhomTuChon, dataTemp, i);
 					
-					    if(chuongTrinhDaoTao.tuChon != '0'){
-					  		$($tr).append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTC+'</td>');
-					    }
-					    else{
-							$($tr).append('<td style="vertical-align: middle; text-align: center"></td>');  
-					    }
+						if(chuongTrinhDaoTao.tuChon != '0'){
+							if(chuongTrinhDaoTao.nhomTuChon == '0'){
+								$($tr).append('<td></td>');
+							}
+							else{
+								if(j != rowCount){
+									  $($tr).append('<td style="vertical-align: middle; text-align: center" rowspan="'+rowCount+'">'+chuongTrinhDaoTao.tuChon+'</td>');
+								}
+								else
+								{
+									if(arrTemp.length - 1 == 0)
+									$($tr).append('<td style="vertical-align: middle; text-align: center">'+chuongTrinhDaoTao.tuChon+'</td>');
+								}
+							}			
+						}else{
+							 $($tr).append('<td style="vertical-align: middle; text-align: center"></td>');
+						}
 					  
 					  
 					  $($tr).append('<td style="vertical-align: middle; text-align: center">'+hocPhan.soTietLT+'</td>')
