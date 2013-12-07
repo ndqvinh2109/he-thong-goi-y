@@ -152,7 +152,7 @@
             <p>Xin lỗi, trang web mà bạn truy cập không tồn tại hoặc bạn không thuộc quyền để truy cập vào trang web này.</p>
              <ul>
                 <li>Xin kiểm tra liên kết và quyền truy cập</li>
-                <li><a href="${pageContext.request.contextPath}/index.jsp">Quay về trang chủ</a></li>
+                <li><a href="${pageContext.request.contextPath}/service/homepage">Quay về trang chủ</a></li>
             </ul>
             
         </div>

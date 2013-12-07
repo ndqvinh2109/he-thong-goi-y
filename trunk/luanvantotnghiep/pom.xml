@@ -41,6 +41,8 @@
 	        <artifactId>spring-oxm</artifactId>
 	        <version>${org.springframework-version}</version>
         </dependency>
+        
+        
 				
 		<!-- PostgreSQL JDBC Driver -->
 		<dependency>
@@ -122,13 +124,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.spring-security-version}</version>
-		</dependency>
-		
-		<!-- Spring Faces: Spring security -->
-		<dependency>
-			<groupId>org.springframework.webflow</groupId>
-			<artifactId>spring-faces</artifactId>
-			<version>2.3.2.RELEASE</version>
 		</dependency>
 		
 		<!-- SLF4J Logging -->

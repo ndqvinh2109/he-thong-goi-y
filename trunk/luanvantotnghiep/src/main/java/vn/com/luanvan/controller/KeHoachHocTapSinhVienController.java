@@ -54,9 +54,12 @@ public class KeHoachHocTapSinhVienController {
 			long sinhVienId = sinhVien.getSinhVienId();
 			nganh = nganhService.findNganhBySinhVienId(sinhVienId);
 			khoaDaoTao = khoaDaoTaoService.findKhoaDaoTaoBySinhVienId(sinhVienId);
+			loggedInMember = sinhVien.getHoTen();
 		}
+		
 		map.put("nganh", nganh);
 		map.put("khoaDaoTao", khoaDaoTao);
+		map.put("tenSinhVien", loggedInMember);
 		return "kehoachhoctapsinhvien";
 	}
 	
@@ -66,8 +69,9 @@ public class KeHoachHocTapSinhVienController {
 		String loggedMember = utils.getLoggedInMember();
 		SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(loggedMember);
 		List<Object[]> hps = new ArrayList<Object[]>();
-		if(sinhVien != null)
+		if(sinhVien != null){
 			hps = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhVien.getSinhVienId());
+		}
 		map.put("danhSachDiemHocPhan", hps);
 		return map;
 	}

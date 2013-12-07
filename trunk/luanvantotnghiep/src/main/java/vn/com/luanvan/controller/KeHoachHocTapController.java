@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import vn.com.luanvan.model.HocPhanTienQuyet;
+import vn.com.luanvan.model.Nganh;
+import vn.com.luanvan.model.SinhVien;
 import vn.com.luanvan.service.HocPhanService;
 import vn.com.luanvan.service.KhoaDaoTaoService;
 import vn.com.luanvan.service.NganhService;
+import vn.com.luanvan.service.SinhVienService;
+import vn.com.luanvan.utils.Utils;
 
 @Controller
 public class KeHoachHocTapController {
@@ -25,10 +29,21 @@ public class KeHoachHocTapController {
     private KhoaDaoTaoService khoaDaoTaoService;
 	@Autowired
 	private HocPhanService hocPhanService;
+	@Autowired
+	private SinhVienService sinhVienService;
+	@Autowired
+	private Utils utils;
 	
 	@RequestMapping(value="kehoachhoctap", method = RequestMethod.GET)
 	public String loadPageKeHoachHocTap(Map<String,Object> map){
 		try {
+			String maSinhVien = utils.getLoggedInMember();
+			SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(maSinhVien);
+			String result = maSinhVien;
+			if(sinhVien != null){
+				result = sinhVien.getHoTen();
+			}
+			map.put("tenSinhVien", result);
 			map.put("nganhs", nganhService.findAllNganh());
 			map.put("khoaDaoTaos", khoaDaoTaoService.findAllKhoaDaoTao());
 		} catch (Exception e) {
@@ -42,7 +57,10 @@ public class KeHoachHocTapController {
 			@RequestParam(value="khoaDaoTaoId", required= false) long khoaDaoTaoId){
 		Map<String,Object> map = new HashMap<String,Object>();
 		List<Object[]> hps = hocPhanService.findHocPhanByNganhIdAndKhoaDaoTaoKHHTId(nganhId, khoaDaoTaoId);
+		Nganh nganh = nganhService.findNganhById(nganhId);
 		map.put("danhSachHocPhan", hps);
+		map.put("maNganh", nganh.getMaNganh());
+		map.put("tenNganh", nganh.getTenNganh());
 		return map;
 	}
 	

@@ -16,10 +16,13 @@ import vn.com.luanvan.model.HocPhan;
 import vn.com.luanvan.model.HocPhanTienQuyet;
 import vn.com.luanvan.model.KhoaDaoTao;
 import vn.com.luanvan.model.Nganh;
+import vn.com.luanvan.model.SinhVien;
 import vn.com.luanvan.service.ChuongTrinhDaoTaoService;
 import vn.com.luanvan.service.HocPhanService;
 import vn.com.luanvan.service.KhoaDaoTaoService;
 import vn.com.luanvan.service.NganhService;
+import vn.com.luanvan.service.SinhVienService;
+import vn.com.luanvan.utils.Utils;
 
 @Controller
 public class ChuongTrinhDaoTaoController {
@@ -32,10 +35,21 @@ public class ChuongTrinhDaoTaoController {
 	private HocPhanService hocPhanService;
 	@Autowired
 	private ChuongTrinhDaoTaoService chuongTrinhDaoTaoService;
-    
+	@Autowired
+	private SinhVienService sinhVienService;
+	@Autowired
+	private Utils utils;
+	
 	@RequestMapping(value="chuongtrinhdaotao", method = RequestMethod.GET)
 	public String loadPageChuongTrinhDaoTao(Map<String,Object> map){
 		try {
+			String maSinhVien = utils.getLoggedInMember();
+			SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(maSinhVien);
+			String result = maSinhVien;
+			if(sinhVien != null){
+				result = sinhVien.getHoTen();
+			}
+			map.put("tenSinhVien", result);
 			map.put("nganhs", nganhService.findAllNganh());
 			map.put("khoaDaoTaos", khoaDaoTaoService.findAllKhoaDaoTao());
 		} catch (Exception e) {

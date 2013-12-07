@@ -66,7 +66,8 @@
 		</fieldset>
 		<fieldset class="bs-example">
 			<h3 class="title-field">Thông tin kế hoạch học tập</h3>
-		<div id="keHoachHocTap"></div>
+			<div id="thongTinChung"></div>			
+			<div id="keHoachHocTap"></div>
 		</fieldset>
 		
 		
@@ -304,6 +305,24 @@
 				},
 				success: function(data){
 					console.log(data);
+					var $tr = $('<tr></tr>');
+					var $table1 = $('<table class="table" style="margin: 0 auto; width: 600px"></table>');
+					$('<td><strong>Ngành học:</strong> '+data.tenNganh+'</td>').appendTo($tr);
+					$('<td><strong>Hệ đào tạo:</strong> Chính quy</td>').appendTo($tr);
+					$($tr).appendTo($table1);
+					
+					$tr = $('<tr></tr>');
+					$('<td><strong>Mã ngành:</strong> '+data.maNganh+'</td>').appendTo($tr);
+					$('<td><strong>Bộ môn:</strong> '+data.tenNganh+'</td>').appendTo($tr);
+					$($tr).appendTo($table1);
+					$tr = $('<tr></tr>');
+					$('<td><strong>Đơn vị quản lý:</strong> Khoa Công nghệ Thông tin & TT</td>').appendTo($tr);
+					$('<td></td>').appendTo($tr);
+					$($tr).appendTo($table1);
+					
+					$('#thongTinChung').append($table1);
+					
+					
 			        var $thead = $('<thead></thead>').append('<tr><td>TT</td><td>Mã số HP</td><td>Tên học phần</td><td>Số tín chỉ</td><td>Bắt buộc</td><td>Tự chọn</td><td>Số tiết LT</td><td>Số tiết TH</td><td>Học Phần TQ</td></tr>');
 			        var $table = $('<table></table>',{
 			        	'class':'table table-bordered table-hover'
