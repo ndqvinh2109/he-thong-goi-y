@@ -90,7 +90,9 @@
 					  setTimeout($.unblockUI, 500); 
 				},
 				success: function(data){
-					console.log(data);
+					if(data == true){
+						duDoanDiemSinhVien();
+					}
 				}
 			});
 		});
@@ -151,6 +153,11 @@
 		});
 		
 		$('#duDoanDiem').click(function(){
+			duDoanDiemSinhVien();
+		});
+		
+		
+		function duDoanDiemSinhVien(){
 			$('#keHoachHocTap').empty();
 			$.ajax({
 				url: '${pageContext.request.contextPath}/service/loadDuDoanDiemChoSinhVien',
@@ -261,7 +268,7 @@
 					 });
 				}
 			});
-		});
+		}
 		
 	});
 	</script>

@@ -6,6 +6,7 @@ import java.util.Properties;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
@@ -28,8 +29,8 @@ public class Utils {
 	}
 	
 	public String getLoggedInMember(){
-		User loggedInMember = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String username = loggedInMember.getUsername();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
 		return username;
 	}
 }
