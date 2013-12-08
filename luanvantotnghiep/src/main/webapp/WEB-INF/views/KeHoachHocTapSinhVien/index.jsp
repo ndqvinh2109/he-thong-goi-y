@@ -40,6 +40,8 @@
 					<td class="col-lg-3">Ngành học</td>
 					<td class="col-lg-3">Khóa đào tạo</td>
 					<td class="col-lg-3"></td>
+					<td class="col-lg-3"></td>
+					
 				</tr>
 			</thead>
 			<tbody>
@@ -53,6 +55,7 @@
 						</select>
 		  			</td>
 					<td><button id="duDoanDiem" class="btn btn-info">Dự đoán điểm</button></td>
+					<td><button id="exportDiem" class="btn btn-info">In điểm</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -66,6 +69,11 @@
 	</div>	
 	<script type="text/javascript">
 	$(document).ready(function(){
+		
+		$('#exportDiem').click(function(){
+			window.location = '${pageContext.request.contextPath}/service/exportDiem';
+		});
+		
 		$(document).on('click','.capNhat',function(){
 			var diemId = $(this).attr("id").split("-")[1];
 			
