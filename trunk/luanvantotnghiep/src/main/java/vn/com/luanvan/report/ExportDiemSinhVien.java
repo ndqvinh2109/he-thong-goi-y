@@ -46,14 +46,14 @@ public class ExportDiemSinhVien extends AbstractPdfView{
 		
 		BaseFont baseFont = BaseFont.createFont("c:\\WINDOWS\\fonts\\times.ttf", BaseFont.IDENTITY_H, true);
 		
-		Font f1;
-		Font f2;
-		Font f3;
-		f1 = new Font(baseFont, 12);
-		f2 = new Font(baseFont, 16);
-		f3 = new Font(baseFont, 10);
+			Font f1;
+			Font f2;
+			Font f3;
+			f1 = new Font(baseFont, 12);
+			f2 = new Font(baseFont, 16);
+			f3 = new Font(baseFont, 10);
 		
-		  String text = "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM";
+		  	String text = "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM";
 		    Paragraph p = new Paragraph(text,f1);
 		    p.setAlignment(Element.ALIGN_CENTER);
 		    document.add(p);
@@ -152,7 +152,6 @@ public class ExportDiemSinhVien extends AbstractPdfView{
 		    cell.setPadding(8);
 		    table.addCell(cell);
 		    
-		    
 		    int i = 0;
 		    
 		    for(Object[] obj : printDiem){
@@ -185,33 +184,34 @@ public class ExportDiemSinhVien extends AbstractPdfView{
 		    	cellItem.setPadding(8);
 		    	table.addCell(cellItem);
 		    	
-		    	cellItem = new PdfPCell(new Paragraph(String.valueOf(hocPhan.getSoTC()),f1));
+		    	cellItem = new PdfPCell(new Paragraph(diem.getDiem(),f1));
 		    	cellItem.setHorizontalAlignment(Element.ALIGN_CENTER);
 		    	cellItem.setVerticalAlignment(Element.ALIGN_MIDDLE);
 		    	cellItem.setPadding(8);
 		    	table.addCell(cellItem);
 		    	
-		    	cellItem = new PdfPCell(new Paragraph(String.valueOf(diem.getDiem()),f1));
+		    	cellItem = new PdfPCell(new Paragraph(diem.getDiemDuDoan(),f1));
 		    	cellItem.setHorizontalAlignment(Element.ALIGN_CENTER);
 		    	cellItem.setVerticalAlignment(Element.ALIGN_MIDDLE);
 		    	cellItem.setPadding(8);
 		    	table.addCell(cellItem);
 		    	
-		    	cellItem = new PdfPCell(new Paragraph(String.valueOf(diem.getDiemDuDoan()),f1));
+		    	cellItem = new PdfPCell(new Paragraph(nienKhoaHocKy.getHocKy(),f1));
 		    	cellItem.setHorizontalAlignment(Element.ALIGN_CENTER);
 		    	cellItem.setVerticalAlignment(Element.ALIGN_MIDDLE);
 		    	cellItem.setPadding(8);
 		    	table.addCell(cellItem);
 		    	
-		    	cellItem = new PdfPCell(new Paragraph(String.valueOf(nienKhoaHocKy.getHocKy()),f1));
+		    	cellItem = new PdfPCell(new Paragraph(nienKhoaHocKy.getNamHoc(),f1));
 		    	cellItem.setHorizontalAlignment(Element.ALIGN_CENTER);
 		    	cellItem.setVerticalAlignment(Element.ALIGN_MIDDLE);
 		    	cellItem.setPadding(8);
 		    	table.addCell(cellItem);
 		    }
+		    float[] columnWidths = new float[] {7f, 11f, 30f, 10f, 9f, 10f, 10f, 15f};
+            table.setWidths(columnWidths);
 		    
 		    document.add(table);
-		    
 	}
 
 }
