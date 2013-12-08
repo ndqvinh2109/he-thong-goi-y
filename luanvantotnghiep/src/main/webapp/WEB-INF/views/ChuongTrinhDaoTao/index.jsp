@@ -77,7 +77,7 @@
 				</div>
 			</div>
 		</div>
-		<button id="inKeHoach" class="btn btn-primary" style="margin-top: 30px">In chương trình đào tạo</button>
+		<button id="inKeHoach" class="btn btn-primary" style="margin-top: 30px"><span class="fa fa-inbox fa-fw"></span>In chương trình đào tạo</button>
 		</fieldset>
 		<sec:authorize ifAnyGranted="ROLE_ADMIN">
 		<fieldset class="bs-example">
@@ -163,7 +163,7 @@
 			</div>
 			<div class="col-sm-12">
 				<div class="alert-exist" style="display: none"></div>
-				<button type="button" class="btn btn-primary" id="themHocPhan">Thêm học phần</button>
+				<button type="button" class="btn btn-primary" id="themHocPhan"><span class="fa fa-plus fa-fw"></span>Thêm học phần</button>
 			</div>
 		</fieldset>
 		</sec:authorize>
