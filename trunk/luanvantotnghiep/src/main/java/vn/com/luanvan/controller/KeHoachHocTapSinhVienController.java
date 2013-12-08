@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import vn.com.luanvan.model.Diem;
 import vn.com.luanvan.model.KhoaDaoTao;
@@ -75,6 +76,20 @@ public class KeHoachHocTapSinhVienController {
 		map.put("danhSachDiemHocPhan", hps);
 		return map;
 	}
+	
+	@RequestMapping(value="exportDiem", method=RequestMethod.GET)
+	public ModelAndView exportDiem(){
+		String loggedMember = utils.getLoggedInMember();
+		SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(loggedMember);
+		List<Object[]> hps = new ArrayList<Object[]>();
+		if(sinhVien != null){
+			hps = hocPhanService.findHocPhanBySinhVienIdAndNienKhoaId(sinhVien.getSinhVienId());
+		}
+		
+		return new ModelAndView("exportDiemPDF", "danhSachDiemHocPhan", hps);
+	}
+	
+	
 	
 	@RequestMapping(value="updateHocKyNamHoc", method=RequestMethod.GET)
 	public @ResponseBody boolean updateHocKyNamHoc(

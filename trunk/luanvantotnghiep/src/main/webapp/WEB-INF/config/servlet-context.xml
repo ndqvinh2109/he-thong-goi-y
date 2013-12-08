@@ -12,12 +12,6 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
-
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
-	</bean> -->
 	
 	<!-- Apache Tiles Config  -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
@@ -26,6 +20,13 @@
 			<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
 		</property>
 	</bean>	
+	
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+	<property name="order" value="2" />
+		<property name="location">
+			<value>/WEB-INF/config/spring-pdf-views.xml</value>
+		</property>
+	</bean>
 	
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
@@ -36,7 +37,7 @@
 	</bean>
 	
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-			<property name="order" value="2" />
+			<property name="order" value="3" />
 			<property name="contentNegotiationManager">
 				 <bean class="org.springframework.web.accept.ContentNegotiationManager">
 				 	<constructor-arg>
@@ -45,6 +46,7 @@
 				 				<map>
 				 					<entry key="json" value="application/json"/>
                                	    <entry key="xml" value="application/xml"/>
+                               	    
 				 				</map>
 				 			</constructor-arg>
 				 		</bean>
