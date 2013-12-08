@@ -55,7 +55,7 @@
 						</select>
 		  			</td>
 					<td><button id="duDoanDiem" class="btn btn-info"><span class="fa fa-cog fa-fw"></span>Dự đoán điểm</button></td>
-					<td><button id="exportDiem" class="btn btn-info"><span class="fa fa-file fa-fw"></span>In điểm</button></td>
+					<td><button id="exportDiem" class="btn btn-info"><span class="fa fa-download fa-fw"></span>In điểm</button></td>
 				</tr>
 			</tbody>
 		</table>

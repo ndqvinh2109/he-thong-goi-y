@@ -53,9 +53,9 @@
 						</div>
 					</div>
 					<div class="col-sm-5" style="margin-top: 24px">
-						<button id="inKeHoachHocTap" class="btn btn-info">In kế hoạch học tập</button>
-			  			<button id="ghiFile" class="btn btn-info">Ghi File</button>
-			  			<button id="duDoanDiem" class="btn btn-info">Dự đoán điểm</button>
+						<button id="inKeHoachHocTap" class="btn btn-info"><span class="fa fa-check-square fa-fw"></span>In kế hoạch học tập</button>
+			  			<button id="ghiFile" class="btn btn-info"><span class="fa fa-share-square-o fa-fw"></span>Ghi File</button>
+			  			<button id="duDoanDiem" class="btn btn-info"><span class="fa fa-check-circle fa-fw"></span>Dự đoán điểm</button>
 					</div>
 				</div>
 			
