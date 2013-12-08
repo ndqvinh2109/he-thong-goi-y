@@ -14,6 +14,10 @@ import org.springframework.web.servlet.view.document.AbstractPdfView;
 import vn.com.luanvan.model.Diem;
 import vn.com.luanvan.model.HocPhan;
 import vn.com.luanvan.model.NienKhoaHocKy;
+import vn.com.luanvan.model.SinhVien;
+import vn.com.luanvan.service.SinhVienService;
+import vn.com.luanvan.utils.SpringContext;
+import vn.com.luanvan.utils.Utils;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
@@ -25,7 +29,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
 public class ExportDiemSinhVien extends AbstractPdfView{
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document,
@@ -33,7 +37,8 @@ public class ExportDiemSinhVien extends AbstractPdfView{
 			throws Exception {
 		
 		response.setHeader("Content-Type", "application/octet-stream");
-		response.setHeader("Content-Disposition", "inline; filename=yourExcelFile.pdf");
+		String fileName = getStudentName().trim() + ".pdf";
+		response.setHeader("Content-Disposition", "inline; filename="+fileName+"");
 		
 		List<Object[]> printDiem = (List<Object[]>) model.get("danhSachDiemHocPhan");
 		
@@ -70,7 +75,7 @@ public class ExportDiemSinhVien extends AbstractPdfView{
 		    p.setSpacingAfter(35);
 		    document.add(p);
 		    
-		    text = "BẢNG ĐIỂM SINH VIÊN";
+		    text = "BẢNG ĐIỂM SINH VIÊN " + getStudentName();
 		    p = new Paragraph(text,f2);
 		    p.setAlignment(Element.ALIGN_CENTER);
 		    p.setSpacingAfter(25);	
@@ -212,6 +217,19 @@ public class ExportDiemSinhVien extends AbstractPdfView{
             table.setWidths(columnWidths);
 		    
 		    document.add(table);
+	}
+	
+	private String getStudentName(){
+		Utils utils = (Utils) SpringContext.getApplicationContext().getBean(Utils.class);
+		SinhVienService sinhVienService = (SinhVienService) SpringContext.getApplicationContext().getBean(SinhVienService.class);
+		String maSinhVien = utils.getLoggedInMember();
+		SinhVien sinhVien = sinhVienService.findSinhVienByMaSinhVien(maSinhVien);
+		String result = maSinhVien;
+		if(sinhVien != null){
+			result = sinhVien.getHoTen();
+		}
+		
+		return result;
 	}
 
 }
