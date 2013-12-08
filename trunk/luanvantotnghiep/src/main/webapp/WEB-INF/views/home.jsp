@@ -6,6 +6,7 @@
 	<title>Home</title>
 </head>
 <body>
+<div class="jumbotron">
 	<div class="container">
 	   <div class="row featurette">
 	 	  <div class="col-md-5">
@@ -17,6 +18,7 @@
 			<p class="lead">Hệ thống hỗ trợ sinh viên lập kế hoạch học tập ra đời với những ưu điểm: gợi ý một kế hoạch học tập mẫu, hỗ trợ sinh viên dự đoán kết quả học phần theo khả năng,  giúp sinh viên giảm lo lắng, bối rối khi đưa ra quyết định chọn học phần, giảm thiểu thời gian cố vấn học tập tư vấn cho từng sinh viên.</p>
 	      </div>
 	  </div>
+	</div>
 	</div>
 </body>
 </html>
