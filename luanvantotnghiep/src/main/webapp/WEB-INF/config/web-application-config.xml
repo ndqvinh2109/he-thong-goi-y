@@ -24,6 +24,9 @@
 		<property name="location" value="classpath:wro.properties" />
 	</bean>
 	
+	<!-- Application context  -->
+	<bean id="springContext" class="vn.com.luanvan.utils.SpringContext" />
+	
 	<!-- Imports the configurations of the different infrastructure systems 
 		of the application -->
 	<import resource="servlet-context.xml" />
