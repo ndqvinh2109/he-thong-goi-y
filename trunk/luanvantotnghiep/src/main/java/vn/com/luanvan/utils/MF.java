@@ -44,9 +44,9 @@ public class MF{
 
     public float minTarget = Float.MAX_VALUE, maxTarget = Float.MIN_VALUE;    
 
-    public float learnRate = 0.005f;
-    public float regularization = 0.015f;
-    public int num_factors = 64;
+    public float learnRate = 0.001f;
+    public float regularization = 0.005f;
+    public int num_factors = 112;
     public int num_iterations = 80;
 
     
@@ -287,13 +287,13 @@ public class MF{
     				if (performancePred < minTarget) performancePred = minTarget;
     				else if (performancePred > maxTarget) performancePred = maxTarget;
     			}
-    			System.out.println("globalAverage: " + globalAverage);
+    			//System.out.println("globalAverage: " + globalAverage);
     			
     			//set the prediction value
     			float temp = performancePred / truePerformance.length;
     			predictedPerformance[predRow++] = performancePred;
     			
-    			System.out.println("student: " + student + "; hp: " + task + "; performancePred: " + performancePred + "; diemId: " + diemId + "; temp: " + temp);
+    			//System.out.println("student: " + student + "; hp: " + task + "; performancePred: " + performancePred + "; diemId: " + diemId + "; temp: " + temp);
     			// Update diem sinh vien vao database
     			DecimalFormat df = new DecimalFormat("#.#");
     			String diemDuDoan = df.format(Double.parseDouble(String.valueOf(performancePred)));
