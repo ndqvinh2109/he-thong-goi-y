@@ -8,9 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Đăng nhập</title>
 <link rel="shortcut icon" href="http://www.google.com/s2/favicons?domain=http://www.ctu.edu.vn/" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/font-awesome.css"/>  
-<script src="${pageContext.request.contextPath}/bundles/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/libs/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/libs/FontAwesome/css/font-awesome.min.css"/>
+<script src="${pageContext.request.contextPath}/resources/assets/libs/Jquery/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 
@@ -55,7 +55,6 @@
 	</form>
 	</div>
 </div>
-
-      <script src="${pageContext.request.contextPath}/bundles/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/resources/assets/libs/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
