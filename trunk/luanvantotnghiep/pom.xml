@@ -332,6 +332,7 @@
   	</dependencies>
 		
     <build>
+    	<finalName>luanvan</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>

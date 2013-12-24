@@ -7,11 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 <link rel="shortcut icon" href="http://www.google.com/s2/favicons?domain=http://www.ctu.edu.vn/" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/font-awesome.css"/>  
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/jqueryUi.css"/>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/bundles/bootstrap-editable.css"/>
-<script src="${pageContext.request.contextPath}/bundles/jquery.js"></script>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/libs/bootstrap/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/libs/FontAwesome/css/font-awesome.min.css"/>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/libs/bootstrap3-editable/css/bootstrap-editable.css"/>
+<script src="${pageContext.request.contextPath}/resources/assets/libs/Jquery/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <div id="wrapper">
@@ -26,7 +27,7 @@
 		<tiles:insertAttribute name="footer" />
 	</div>
 </div>
-	<script src="${pageContext.request.contextPath}/bundles/bootstrap.js"></script>
-	<script src="${pageContext.request.contextPath}/bundles/bootstrap-editable.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/libs/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/libs/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
